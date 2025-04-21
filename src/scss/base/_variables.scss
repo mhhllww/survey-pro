@@ -1,10 +1,45 @@
-// TODO: FONT FAMILY, FONT SIZES, FONT WEIGHT, SHADOWS, ANIMATION
+// TODO: SHADOWS, ANIMATION
 
-$radius-lg: 16px;
-$radius-md: 14px;
-$radius-sm: 12px;
+$padding-breakpoints: (xs: 1rem, sm: 2rem, md: 3rem, lg: 4rem, xl: 6rem);
 
-// LIGHT THEME
+$screens: (sm: 480px, md: 768px, lg: 1024px, xl: 1440px);
+
+/* FONT */
+
+// font-family
+$font-code: "JetBrains Mono", monospace;
+$font-segoe-ui: "Segoe UI", "Roboto";
+
+// font-size
+$text-xs: 0.8rem;
+$text-sm: 1rem;
+$text-md: 1.25rem;
+$text-lg: 1.5rem;
+$text-xl: 2rem;
+$text-2xl: 2.5rem;
+$text-3xl: 3.5rem;
+
+// font-weight
+$regular: 400;
+$medium: 500;
+$semibold: 600;
+$bold: 700;
+
+// line-height
+$leading-tighter: 1.2;
+$leading-tight: 1.4;
+$leading-normal: 1.5;
+$leading-relaxed: 1.625;
+$leading-loose: 1.75;
+
+// letter-spacing
+$tracking-tighter: -0.02em;
+$tracking-tight: -0.01em;
+$tracking-regular: 0;
+$tracking-wide: 0.01em;
+$tracking-wider: 0.02em;
+
+/* LIGHT THEME */
 
 $background: #ffffff;
 $foreground: #020817;
@@ -39,7 +74,7 @@ $chart-2: #84cc16;
 $chart-3: #eab308;
 $chart-4: #f97316;
 
-// DARK THEME
+/* DARK THEME */
 
 $background: #020817;
 $foreground: #f8fafc;
@@ -68,3 +103,8 @@ $destructive-foreground: #f8fafc;
 $border: #1e293b;
 $input: #1e293b;
 $ring: #10b981;
+
+//
+$radius-lg: 8px;
+$radius-md: 6px;
+$radius-sm: 4px;

@@ -1,11 +1,21 @@
-// TODO: ADD BASIC MIXINS
+@use 'variables' as var;
 
 @mixin container {
   @include center;
 
-  margin: auto;
+  margin-inline: auto;
 
+  padding-left: map-get(var.$padding-breakpoints, xs);
+  padding-right: map-get(var.$padding-breakpoints, xs);
 
+  @each $key, $value in var.$padding-breakpoints {
+    @if $key != xs {
+      @media (min-width: map-get(var.$screens, $key)) {
+        padding-left: $value;
+        padding-right: $value;
+      }
+    }
+  }
 }
 
 @mixin center {
