@@ -1,0 +1,15 @@
+// TODO: ADD BASIC MIXINS
+
+@mixin container {
+  @include center;
+
+  margin: auto;
+
+
+}
+
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
