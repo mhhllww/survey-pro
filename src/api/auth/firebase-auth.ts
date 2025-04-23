@@ -6,7 +6,7 @@ import {
   signOut,
 } from 'firebase/auth';
 
-import { auth } from '@/shared/firebase.ts';
+import { auth } from '@/shared/lib/firebase.ts';
 
 export const registerUser = (email: string, password: string) => {
   return createUserWithEmailAndPassword(auth, email, password);
