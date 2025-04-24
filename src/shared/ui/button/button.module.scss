@@ -1,0 +1,113 @@
+@use "../../../scss/base/variables" as var;
+@use "../../../scss/base/mixins" as mixins;
+@use "../../../scss/base/reset";
+
+/* === Base style === */
+
+.button {
+  @include mixins.center;
+  gap: 8px;
+
+  font-size: var.$text-sm;
+  font-weight: var.$medium;
+
+  border-radius: var.$radius-md;
+  white-space: nowrap;
+
+  transition: all ease-in-out 0.1s;
+  cursor: pointer;
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  &:disabled {
+    pointer-events: none;
+    opacity: 50;
+  }
+
+  svg {
+    pointer-events: none;
+
+    width: 16px;
+    height: 16px;
+
+    flex-shrink: 0;
+  }
+}
+
+/* === Design variants === */
+
+.destructive {
+  background-color: var.$destructive;
+  color: var.$destructive-foreground;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+
+  &:hover {
+    background-color: rgba(var.$destructive, 0.9);
+  }
+}
+
+.outline {
+  border: 1px solid var.$foreground;
+  background-color: var.$background;
+  box-shadow: var.$shadow;
+
+
+  &:hover {
+    background-color: var.$accent;
+    color: var.$accent-foreground;
+  }
+}
+
+.foreground {
+  background-color: var.$foreground;
+  color: var.$background;
+  box-shadow: var.$shadow;
+
+  &:hover {
+    background-color: rgba(var.$foreground, 0.8);
+  }
+}
+
+.link {
+  color: rgba(var.$foreground, 0.5);
+
+  &:hover {
+    color: var.$foreground;
+  }
+}
+
+/* === Size variants === */
+
+.md {
+  height: 36px;
+  padding: 4px 8px;
+}
+
+.sm {
+  height: 32px;
+  padding: 0 12px;
+  font-size: var.$text-xs;
+}
+
+.lg {
+  height: 40px;
+  padding: 0 32px;
+}
+
+.icon {
+  height: 36px;
+  width: 36px;
+}
+
+/* === Layout variants === */
+
+.block {
+  display: flex;
+  width: 100%;
+}
+
+.inline {
+  display: inline-flex;
+}

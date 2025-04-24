@@ -1,0 +1,132 @@
+/* === In animations === */
+
+@mixin animate-in {
+  animation-duration: 200ms;
+  animation-timing-function: ease-out;
+  animation-fill-mode: both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@mixin fade-in {
+  animation-name: fadeIn;
+  @include animate-in;
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@mixin zoom-in {
+  animation-name: zoomIn;
+  @include animate-in;
+}
+
+@keyframes slideInFromLeftHalf {
+  from {
+    opacity: 0;
+    transform: translateX(-50%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+@mixin slide-in-from-left-half {
+  animation-name: slideInFromLeftHalf;
+  @include animate-in;
+}
+
+@keyframes slideInFromTopHalf {
+  from {
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@mixin slide-in-from-top-half {
+  animation-name: slideInFromTopHalf;
+  @include animate-in;
+}
+
+/* === Out animations === */
+
+@mixin animate-out {
+  animation-duration: 200ms;
+  animation-timing-function: ease-in;
+  animation-fill-mode: both;
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+@mixin fade-out {
+  animation-name: fadeOut;
+  @include animate-out;
+}
+
+@keyframes zoomOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+@mixin zoom-out {
+  animation-name: zoomOut;
+  @include animate-out;
+}
+
+@keyframes slideOutToLeftHalf {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-50%);
+  }
+}
+
+@mixin slide-out-to-left-half {
+  animation-name: slideOutToLeftHalf;
+  @include animate-out;
+}
+
+@keyframes slideOutToTopHalf {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+}
+
+@mixin slide-out-to-top-half {
+  animation-name: slideOutToTopHalf;
+  @include animate-out;
+}
