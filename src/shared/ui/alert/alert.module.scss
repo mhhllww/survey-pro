@@ -1,0 +1,76 @@
+@use '@/scss/base/variables' as var;
+
+.alert {
+  position: relative;
+  width: 100%;
+  border-radius: var.$radius-lg;
+
+  box-shadow: var.$shadow-lg;
+
+  padding: 0.75rem 1rem;
+
+  svg {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+  }
+
+  svg + div {
+    transform: translateY(-3px);
+  }
+
+  svg ~ * {
+    padding-left: 2rem;
+  }
+
+  .__alert-title {
+    color: var.$foreground;
+
+    font-size: var.$text-sm;
+    font-weight: var.$medium;
+
+    margin-bottom: 0.25rem;
+    line-height: 1;
+    letter-spacing: var.$tracking-tight;
+  }
+
+  .__alert-description {
+    color: var.$muted-foreground;
+
+    font-size: var.$text-xs;
+
+    p {
+      line-height: var.$leading-relaxed;
+    }
+  }
+}
+
+.default {
+  border: 1px solid var.$foreground;
+
+  svg {
+    color: var.$foreground;
+  }
+}
+
+.error {
+  border: 1px solid var.$muted-destructive;
+
+  svg {
+    color: var.$muted-destructive;
+  }
+}
+
+.success {
+  border: 1px solid var.$primary;
+
+  svg {
+    color: var.$primary;
+  }
+}
+
+[data-sonner-toast][data-styled="true"] {
+  padding: 0;
+}
+
+

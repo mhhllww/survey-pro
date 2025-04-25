@@ -2,7 +2,7 @@
 @use '../../../scss/base/mixins' as mixins;
 
 .form-item {
-  @include mixins.space-y(2); // TODO: check
+  @include mixins.space-y(2);
 }
 
 .form-description {
