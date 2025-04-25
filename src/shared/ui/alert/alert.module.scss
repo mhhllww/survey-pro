@@ -1,0 +1,57 @@
+@use '../../../scss/base/variables' as var;
+
+.alert {
+  position: relative;
+  width: 100%;
+  border-radius: var.$radius-lg;
+
+  padding: 0.75rem 1rem;
+  font-size: var.$text-sm;
+
+  svg {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+  }
+
+  svg + div {
+    transform: translateY(-3px);
+  }
+
+  svg ~ * {
+    padding-left: 1.75rem;
+  }
+}
+
+.default {
+  background-color: var.$background;
+  border: 1px solid var.$muted-foreground;
+
+  svg {
+    color: var.$foreground;
+  }
+}
+
+.destructive {
+  border: 1px solid var.$destructive;
+  color: var.$destructive;
+
+  svg {
+    color: var.$destructive;
+  }
+}
+
+.alertTitle {
+  margin-bottom: 0.25rem;
+  font-weight: var.$medium;
+  line-height: 1;
+  letter-spacing: var.$tracking-tight;
+}
+
+.alertDescription {
+  font-size: var.$text-sm;
+
+  p {
+    line-height: var.$leading-relaxed;
+  }
+}
