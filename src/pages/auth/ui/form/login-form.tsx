@@ -25,13 +25,31 @@ import { UiInput } from '@/shared/ui/input/input';
 import { UiButton } from '@/shared/ui/button/button';
 
 
+// const formSchema = z.object({
+//   email: z.string()
+//     .min(1, { message: "Поле обязательно для заполнения" })
+//     .email({ message: `Адрес электронной почты должен содержать символ "@".` }),
+//   password: z.string()
+//     .min(6, { message: "Пароль должен содержать минимум 6 символов" })
+// });
+
 const formSchema = z.object({
   email: z.string()
-    .min(1, { message: "Поле обязательно для заполнения" })
-    .email({ message: `Адрес электронной почты должен содержать символ "@".` }),
+    .min(1, { message: "This field is required" })
+    .email({ message: 'Please enter a valid email address.' })
+    .refine((value) => value.includes('@'), {
+      message: 'The email address must contain the "@" symbol.',
+    }),
+
   password: z.string()
-    .min(6, { message: "Пароль должен содержать минимум 6 символов" })
+    .min(1, { message: "This field is required" })
+    .min(6, { message: "The password must be at least 6 characters long." })
+    .refine((value) => /^[A-Za-z0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]*$/.test(value), {
+      message: 'The password must be in Latin keyboard layout.',
+    }),
 });
+
+type FormSchemaType = z.infer<typeof formSchema>;
 
 type LoginFormProps = {
   action: 'login' | 'register';
@@ -39,7 +57,7 @@ type LoginFormProps = {
 
 export function LoginForm({action}: LoginFormProps) {
   const location = useLocation();
-  const methods = useForm({
+  const methods = useForm<FormSchemaType>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       email: '',
@@ -54,6 +72,8 @@ export function LoginForm({action}: LoginFormProps) {
     control,
   } = methods;
 
+
+
   const params = new URLSearchParams(location.search);
   const redirectedEmail = params.get('email');
 
@@ -63,16 +83,14 @@ export function LoginForm({action}: LoginFormProps) {
     }
   }, [redirectedEmail, setValue]);
 
-  const onSubmit = async (data: { email: string; password: string }) => {
+  const onSubmit = async (data: FormSchemaType) => {
     try {
       if (action === 'login') {
         await loginUser(data.email, data.password);
         window.location.href = '/';
-        console.log('successful authorization');
       } else {
         await registerUser(data.email, data.password);
         window.location.href = '/';
-        console.log('successful registration');
       }
     } catch (err) {
       console.log(err);
@@ -95,7 +113,7 @@ export function LoginForm({action}: LoginFormProps) {
           <path d='M5 6h14'></path>
           <rect width='18' height='12' x='3' y='10' rx='2'></rect>
         </svg>
-        <p className='login-form__logo-p'>Acme Inc.</p>
+        <p className='login-form__logo-p'>Survey Pro.</p>
       </div>
       <div className='login-form-card'>
         <div className='login-form-card__header'>
@@ -146,7 +164,7 @@ export function LoginForm({action}: LoginFormProps) {
             <UiFormField
               control={control}
               name='email'
-              render={({ field }) => (
+              render={({ field, fieldState }) => (
                 <UiFormItem>
                   <div className='login-form-card__form-label'>
                     <UiFormLabel style={{ fontSize: '14px' }}>
@@ -155,7 +173,7 @@ export function LoginForm({action}: LoginFormProps) {
                   </div>
                   <UiFormControl>
                     <UiInput
-                      style={{ border: '1px solid rgba(211, 211, 207, 0.59)' }}
+                      style={{ border: fieldState.error ? '1px solid red' : '1px solid rgba(211, 211, 207, 0.59)' }}
                       placeholder='m@example.com'
                       {...field}
                     />
@@ -170,7 +188,7 @@ export function LoginForm({action}: LoginFormProps) {
             <UiFormField
               control={control}
               name='password'
-              render={({ field }) => (
+              render={({ field, fieldState }) => (
                 <UiFormItem>
                   <div className='login-form-card__form-label'>
                     <UiFormLabel style={{ fontSize: '14px' }}>
@@ -182,7 +200,7 @@ export function LoginForm({action}: LoginFormProps) {
                   </div>
                   <UiFormControl>
                     <UiInput
-                      style={{ border: '1px solid rgba(211, 211, 207, 0.59)' }}
+                      style={{ border: fieldState.error ? '1px solid red' : '1px solid rgba(211, 211, 207, 0.59)' }}
                       type='password'
                       {...field}
                     />
