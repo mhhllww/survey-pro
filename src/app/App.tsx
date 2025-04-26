@@ -1,5 +1,5 @@
 import { RouteProvider } from './route-provider';
-import { Toaster } from '@/shared/ui/alert/alert.tsx';
+import { Toaster } from '@/shared/ui/toast/toast';
 
 function App() {
   return (

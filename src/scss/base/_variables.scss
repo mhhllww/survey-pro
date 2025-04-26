@@ -43,6 +43,10 @@ $tracking-wider: 0.02em;
 
 /* LIGHT THEME */
 
+$success: #157c37;
+$error: #b62929;
+$warning: #eab308;
+
 $background: #ffffff;
 $foreground: #020817;
 
@@ -52,9 +56,8 @@ $card-foreground: #020817;
 $popover: #ffffff;
 $popover-foreground: #020817;
 
-$primary: #157c37;
 $muted-primary: #dbffec;
-$primary-foreground: #f8fafc;
+$primary-foreground: #157c37;
 
 $secondary: #f1f5fb;
 $secondary-foreground: #1e293b;
