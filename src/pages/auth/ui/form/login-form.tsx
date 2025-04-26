@@ -149,12 +149,20 @@ export function LoginForm({action}: LoginFormProps) {
               render={({ field }) => (
                 <UiFormItem>
                   <div className='login-form-card__form-label'>
-                    <UiFormLabel style={{fontSize: '14px'}}>Email</UiFormLabel>
+                    <UiFormLabel style={{ fontSize: '14px' }}>
+                      Email
+                    </UiFormLabel>
                   </div>
                   <UiFormControl>
-                    <UiInput style={{ border: '1px solid rgba(211, 211, 207, 0.59)' }} placeholder='m@example.com' {...field} />
+                    <UiInput
+                      style={{ border: '1px solid rgba(211, 211, 207, 0.59)' }}
+                      placeholder='m@example.com'
+                      {...field}
+                    />
                   </UiFormControl>
-                  <UiFormMessage style={{fontSize:'14px'}}/>
+                  <div style={{ minHeight: '1.5rem' }}>
+                    <UiFormMessage style={{ fontSize: '12px' }} />
+                  </div>
                 </UiFormItem>
               )}
             />
@@ -165,16 +173,22 @@ export function LoginForm({action}: LoginFormProps) {
               render={({ field }) => (
                 <UiFormItem>
                   <div className='login-form-card__form-label'>
-                    <UiFormLabel style={{fontSize: '14px'}}>Password</UiFormLabel>
+                    <UiFormLabel style={{ fontSize: '14px' }}>
+                      Password
+                    </UiFormLabel>
                     <Link to='/' className='login-form-card__form-link'>
                       Forgot your password?
                     </Link>
                   </div>
                   <UiFormControl>
-                    <UiInput style={{ border: '1px solid rgba(211, 211, 207, 0.59)' }} type='password' {...field} />
+                    <UiInput
+                      style={{ border: '1px solid rgba(211, 211, 207, 0.59)' }}
+                      type='password'
+                      {...field}
+                    />
                   </UiFormControl>
-                  <div style={{ minHeight: '20px' }}>
-                    <UiFormMessage style={{fontSize:'14px'}}/>
+                  <div style={{ minHeight: '1.5rem' }}>
+                    <UiFormMessage style={{ fontSize: '12px' }} />
                   </div>
                 </UiFormItem>
               )}
@@ -184,23 +198,51 @@ export function LoginForm({action}: LoginFormProps) {
               type='submit'
               design='foreground'
               size='md'
-              style={{fontSize: '14px'}}
-              >
+              style={{ fontSize: '14px' }}>
               {action === 'login' ? 'Login' : 'Sign Up'}
             </UiButton>
 
             <div className='login-form-card__footer'>
-              {action === 'login' ? (<p style={{fontSize:'0.875rem'}}>Don't have an account?</p>) : (<p style={{fontSize:'0.875rem'}}>Do you already have an Account?</p>)}
-              {action === 'login' ? (<Link to={'/register'} style={{fontSize:'0.875rem', textDecoration:'underline', cursor:'pointer' }}>Sign Up</Link>) : (<Link to={'/login'} style={{fontSize:'0.875rem', textDecoration:'underline', cursor:'pointer'}}>Log in</Link>)}
+              {action === 'login' ? (
+                <p style={{ fontSize: '0.875rem' }}>Don't have an account?</p>
+              ) : (
+                <p style={{ fontSize: '0.875rem' }}>
+                  Do you already have an Account?
+                </p>
+              )}
+              {action === 'login' ? (
+                <Link
+                  to={'/register'}
+                  style={{
+                    fontSize: '0.875rem',
+                    textDecoration: 'underline',
+                    cursor: 'pointer',
+                  }}>
+                  Sign Up
+                </Link>
+              ) : (
+                <Link
+                  to={'/login'}
+                  style={{
+                    fontSize: '0.875rem',
+                    textDecoration: 'underline',
+                    cursor: 'pointer',
+                  }}>
+                  Log in
+                </Link>
+              )}
             </div>
-
           </form>
         </UiForm>
       </div>
 
       <div className='login-form__footer'>
-        <p>By clicking continue, you agree to our <br/>
-          <span className={'login-form__footer-span'}>Terms of Service</span> and <span className={'login-form__footer-span'}>Privacy Policy</span>.
+        <p>
+          By clicking continue, you agree to our <br />
+          <span className={'login-form__footer-span'}>
+            Terms of Service
+          </span>{' '}
+          and <span className={'login-form__footer-span'}>Privacy Policy</span>.
         </p>
       </div>
     </div>

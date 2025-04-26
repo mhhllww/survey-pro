@@ -115,7 +115,6 @@
   &__form {
     display: flex;
     flex-direction: column;
-    row-gap: 1.5rem;
     width: 100%;
     &-label {
       display: flex;
@@ -134,6 +133,7 @@
 
   &__footer {
     @include mixins.center;
+    margin-top: 1.5rem;
     flex-direction: row;
     column-gap: 0.3rem;
   }
