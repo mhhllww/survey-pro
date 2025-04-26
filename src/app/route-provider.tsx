@@ -4,6 +4,8 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useAuth } from '@/hooks/use-auth.ts';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { Home } from '@/pages/home/home.tsx';
+import { Login } from '@/pages/auth/ui/login.tsx'
+import { Register } from '@/pages/auth/ui/register.tsx'
 import { RouterPaths } from '@/app/consts/RouterPaths.ts';
 
 export const RouteProvider = () => {
@@ -11,6 +13,8 @@ export const RouteProvider = () => {
     <BrowserRouter>
       <Routes>
         <Route path={RouterPaths.HOME} element={<Home />} />
+        <Route path={RouterPaths.LOGIN} element={<Login />} />
+        <Route path={RouterPaths.REGISTER} element={<Register />} />
       </Routes>
     </BrowserRouter>
   );
@@ -23,6 +27,7 @@ const layoutTransition = {
   transition: { duration: 0.5 },
 };
 
+// @ts-ignore
 function AnimatedRoute({ children }: { children: ReactNode }) {
   return (
     <AnimatePresence mode={'wait'}>
@@ -31,6 +36,7 @@ function AnimatedRoute({ children }: { children: ReactNode }) {
   );
 }
 
+// @ts-ignore
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { user, loading } = useAuth();
 
