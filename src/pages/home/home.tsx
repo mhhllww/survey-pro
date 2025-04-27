@@ -1,3 +1,9 @@
+import { Header } from '@/components/header.tsx';
+
 export const Home = () => {
-  return <div>Home</div>;
+  return (
+    <>
+      <Header />
+    </>
+  );
 };

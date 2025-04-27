@@ -1,0 +1,82 @@
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 8vh;
+  top: 0;
+  position: sticky;
+  border-bottom: grey solid 0.1px;
+  padding-left: 1vw;
+  padding-right: 1.5vw;
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    &--svg {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &--text {
+      font-weight: bolder;
+      font-size: large;
+    }
+  }
+
+  &__nav {
+    &--list {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    &--item {
+    }
+
+    &--link {
+      color: grey;
+      text-decoration: none;
+      transition: color 0.2s ease;
+      font-weight: bold;
+
+      &:hover {
+        color: #000000;
+      }
+    }
+  }
+
+
+
+
+  &__actions {
+    display: flex;
+    gap: 10px;
+  }
+}
+
+.button--white {
+  color: #020817;
+  background-color: white;
+  font-weight: bold;
+  width: 4.5vw;
+  border: 0.5px solid lightgray;
+
+  &:hover {
+    background-color: #f3f4f6;
+  }
+}
+
+.button--black {
+  width: 7vw;
+  font-weight: bold;
+}
