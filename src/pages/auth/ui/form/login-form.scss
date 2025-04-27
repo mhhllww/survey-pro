@@ -131,6 +131,17 @@
     }
   }
 
+  &__password-container {
+    position: relative;
+  }
+
+  &__password-toggle-button {
+    position: absolute;
+    right: 2%;
+    top: 22%;
+    z-index: 33;
+  }
+
   &__footer {
     @include mixins.center;
     margin-top: 1.5rem;
