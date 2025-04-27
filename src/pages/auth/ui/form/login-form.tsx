@@ -2,6 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { useToast } from '@/shared/ui/toast/toast'
 import { z } from 'zod';
 import './login-form.scss'
 
@@ -83,17 +84,35 @@ export function LoginForm({action}: LoginFormProps) {
     }
   }, [redirectedEmail, setValue]);
 
+
   const onSubmit = async (data: FormSchemaType) => {
     try {
       if (action === 'login') {
         await loginUser(data.email, data.password);
-        window.location.href = '/';
+        window.location.href = '/?toast=success&title=Welcome&description=You have successfully logged in!';
       } else {
         await registerUser(data.email, data.password);
-        window.location.href = '/';
+        window.location.href = '/?toast=success&title=Welcome&description=You have successfully registered!';
       }
-    } catch (err) {
+    } catch (err: any) {
       console.log(err);
+
+      if (action === 'register' && err.code === 'auth/email-already-in-use') {
+        useToast({
+          type: 'error',
+          title: 'Registration Failed',
+          description: 'A user with this email already exists.'
+        });
+      } else{
+        useToast({
+          type: 'error',
+          title: 'Authentication Failed',
+          description: 'Incorrect login or password. Try again.'
+        });
+      }
+
+      setValue('email', '');
+      setValue('password', '');
     }
   };
 
