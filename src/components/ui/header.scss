@@ -1,14 +1,16 @@
+@use '@/scss/base/variables' as var;
+
 .header {
   width: 100%;
   display: flex;
+  position: sticky;
   justify-content: space-between;
   align-items: center;
   height: 8vh;
   top: 0;
-  position: sticky;
   border-bottom: grey solid 0.1px;
-  padding-left: 1vw;
-  padding-right: 1.5vw;
+  padding-left: map-get(var.$padding-breakpoints, xs);
+  padding-right: map-get(var.$padding-breakpoints, xs);
 
   &__logo {
     display: flex;
@@ -26,8 +28,9 @@
     }
 
     &--text {
-      font-weight: bolder;
-      font-size: large;
+      font-weight: var.$bold;
+      font-size: var.$text-md;
+      font-family: var.$font-segoe-ui;
     }
   }
 
@@ -47,7 +50,8 @@
       color: grey;
       text-decoration: none;
       transition: color 0.2s ease;
-      font-weight: bold;
+      font-weight: var.$bold;
+      //font-family: var.$font-segoe-ui;
 
       &:hover {
         color: #000000;
@@ -65,9 +69,9 @@
 }
 
 .button--white {
-  color: #020817;
-  background-color: white;
-  font-weight: bold;
+  color: var.$foreground;
+  background-color: var.$background;
+  font-weight: var.$bold;
   width: 4.5vw;
   border: 0.5px solid lightgray;
 
@@ -78,5 +82,5 @@
 
 .button--black {
   width: 7vw;
-  font-weight: bold;
+  font-weight: var.$bold;
 }
