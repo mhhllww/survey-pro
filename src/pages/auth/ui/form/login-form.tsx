@@ -136,7 +136,6 @@ export function LoginForm({action}: LoginFormProps) {
 
         <div className='login-form-card__oauth'>
           <UiButton
-            style={{ border: '1px solid rgba(211, 211, 207, 0.59)' }}
             design={'outline'}
             size={'md'}>
             <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>
@@ -148,7 +147,6 @@ export function LoginForm({action}: LoginFormProps) {
             <p style={{ fontSize: '0.875rem' }}>Login With Apple</p>
           </UiButton>
           <UiButton
-            style={{ border: '1px solid rgba(211, 211, 207, 0.59)' }}
             onClick={loginWithGoogle}
             design='outline'
             size='md'>
