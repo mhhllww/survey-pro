@@ -14,8 +14,7 @@ export const Home = () => {
   const shownRef = useRef(false);
 
   useEffect(() => {
-    if(toastType && toastTitle && toastDescription && !shownRef.current)
-    {
+    if (toastType && toastTitle && toastDescription && !shownRef.current) {
       useToast({
         type: toastType as 'success' | 'error' | 'warning' | 'info',
         title: toastTitle,
@@ -26,7 +25,6 @@ export const Home = () => {
     shownRef.current = true;
     navigate(location.pathname, { replace: true });
   }, [location.pathname]);
-
 
   return <div>Home</div>;
 };

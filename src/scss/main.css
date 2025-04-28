@@ -37,22 +37,25 @@ ol {
 }
 
 body {
-  font-family: "Segoe UI", "Roboto";
+  font-family: 'Segoe UI', 'Roboto';
 }
 
-h1, h2 {
+h1,
+h2 {
   line-height: 1.2;
   font-weight: 700;
   letter-spacing: -0.01em;
 }
 
-h3, h4 {
+h3,
+h4 {
   line-height: 1.4;
   font-weight: 600;
   letter-spacing: -0.01em;
 }
 
-h5, h6 {
+h5,
+h6 {
   line-height: 1.5;
   font-weight: 600;
   letter-spacing: 0;
@@ -99,7 +102,7 @@ h6 {
   line-height: 1.5;
   font-weight: 400;
   letter-spacing: 0;
-  font-family: "JetBrains Mono", monospace;
+  font-family: 'JetBrains Mono', monospace;
 }
 
 .text-caption {
@@ -109,7 +112,7 @@ h6 {
 }
 
 body {
-  font-family: "Segoe UI", "Roboto";
+  font-family: 'Segoe UI', 'Roboto';
 }
 
 /*# sourceMappingURL=main.css.map */
