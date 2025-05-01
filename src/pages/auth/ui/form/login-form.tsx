@@ -124,14 +124,14 @@ export function LoginForm({ action }: LoginFormProps) {
           <path d='M5 6h14'></path>
           <rect width='18' height='12' x='3' y='10' rx='2'></rect>
         </svg>
-        <p className='login-form__logo-p'>Survey Pro.</p>
+        <span className='login-form__logo-text'>Survey Pro.</span>
       </div>
       <div className='login-form-card'>
         <div className='login-form-card__header'>
-          <p className='login-form-card__title'>Welcome back</p>
-          <p className='login-form-card__subtitle'>
+          <span className='login-form-card__title'>Welcome back</span>
+          <span className='login-form-card__subtitle'>
             Login with your Apple or Google account
-          </p>
+          </span>
         </div>
 
         <div className='login-form-card__oauth'>
@@ -142,7 +142,7 @@ export function LoginForm({ action }: LoginFormProps) {
                 fill='currentColor'
               />
             </svg>
-            <p style={{ fontSize: '0.875rem' }}>Login With Apple</p>
+            <span style={{ fontSize: '0.875rem' }}>Login With Apple</span>
           </UiButton>
           <UiButton onClick={loginWithGoogle} design='outline' size='md'>
             <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>
@@ -151,14 +151,14 @@ export function LoginForm({ action }: LoginFormProps) {
                 fill='currentColor'
               />
             </svg>
-            <p style={{ fontSize: '0.875rem' }}>Login With Google</p>
+            <span style={{ fontSize: '0.875rem' }}>Login With Google</span>
           </UiButton>
         </div>
 
         <div className='login-form-card__divider'>
-          <hr className='login-form-card__divider-hr' />
-          <p className='login-form-card__subtitle'>Or continue with</p>
-          <hr className='login-form-card__divider-hr' />
+          <hr className='login-form-card__divider-inside' />
+          <span className='login-form-card__subtitle'>Or continue with</span>
+          <hr className='login-form-card__divider-inside' />
         </div>
 
         <UiForm {...methods}>
@@ -171,13 +171,11 @@ export function LoginForm({ action }: LoginFormProps) {
               render={({ field, fieldState }) => (
                 <UiFormItem>
                   <div className='login-form-card__form-label'>
-                    <UiFormLabel
-                      style={{ fontSize: '14px', minHeight: '18.4px' }}>
-                      Email
-                    </UiFormLabel>
+                    <UiFormLabel>Email</UiFormLabel>
                   </div>
                   <UiFormControl>
                     <UiInput
+                      className={'login-form-card__UiInput'}
                       style={{
                         border: fieldState.error
                           ? '1px solid red'
@@ -200,10 +198,7 @@ export function LoginForm({ action }: LoginFormProps) {
               render={({ field, fieldState }) => (
                 <UiFormItem>
                   <div className='login-form-card__form-label'>
-                    <UiFormLabel
-                      style={{ fontSize: '14px', minHeight: '18.4px' }}>
-                      Password
-                    </UiFormLabel>
+                    <UiFormLabel>Password</UiFormLabel>
                     {action === 'login' && (
                       <Link to='/' className='login-form-card__form-link'>
                         Forgot your password?
@@ -213,6 +208,7 @@ export function LoginForm({ action }: LoginFormProps) {
                   <UiFormControl>
                     <div className='login-form-card__password-container'>
                       <UiInput
+                        className={'login-form-card__UiInput'}
                         style={{
                           border: fieldState.error
                             ? '1px solid red'
@@ -283,11 +279,13 @@ export function LoginForm({ action }: LoginFormProps) {
 
             <div className='login-form-card__footer'>
               {action === 'login' ? (
-                <p style={{ fontSize: '0.875rem' }}>Don't have an account?</p>
+                <span style={{ fontSize: '0.875rem' }}>
+                  Don't have an account?
+                </span>
               ) : (
-                <p style={{ fontSize: '0.875rem' }}>
+                <span style={{ fontSize: '0.875rem' }}>
                   Do you already have an Account?
-                </p>
+                </span>
               )}
               {action === 'login' ? (
                 <Link
@@ -316,13 +314,17 @@ export function LoginForm({ action }: LoginFormProps) {
       </div>
 
       <div className='login-form__footer'>
-        <p>
-          By clicking continue, you agree to our <br />
-          <span className={'login-form__footer-span'}>
+        <span>By clicking continue, you agree to our</span>
+        <span>
+          <Link to={'/'} className={'login-form__footer-conditions'}>
             Terms of Service
-          </span>{' '}
-          and <span className={'login-form__footer-span'}>Privacy Policy</span>.
-        </p>
+          </Link>{' '}
+          and{' '}
+          <Link to={'/'} className={'login-form__footer-conditions'}>
+            Privacy Policy
+          </Link>
+          .
+        </span>
       </div>
     </div>
   );
