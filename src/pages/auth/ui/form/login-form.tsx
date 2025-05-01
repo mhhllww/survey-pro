@@ -1,6 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useToast } from '@/shared/ui/toast/toast';
 import { z } from 'zod';
@@ -23,37 +23,16 @@ import {
 
 import { UiInput } from '@/shared/ui/input/input';
 import { UiButton } from '@/shared/ui/button/button';
+import { getFormSchema } from '@/pages/auth/model/formSchema.tsx';
 
-const formSchema = z.object({
-  email: z
-    .string()
-    .min(1, { message: 'This field is required' })
-    .email({ message: 'Please enter a valid email address.' })
-    .refine((value) => value.includes('@'), {
-      message: 'The email address must contain the "@" symbol.',
-    }),
-
-  password: z
-    .string()
-    .min(1, { message: 'This field is required' })
-    .min(6, { message: 'The password must be at least 6 characters long.' })
-    .refine(
-      (value) =>
-        /^[A-Za-z0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]*$/.test(value),
-      {
-        message: 'The password must be in Latin keyboard layout.',
-      }
-    ),
-});
-
-type FormSchemaType = z.infer<typeof formSchema>;
-
-type LoginFormProps = {
+export type LoginFormProps = {
   action: 'login' | 'register';
 };
 
 export function LoginForm({ action }: LoginFormProps) {
-  const location = useLocation();
+  const formSchema = getFormSchema({ action });
+  type FormSchemaType = z.infer<typeof formSchema>;
+
   const methods = useForm<FormSchemaType>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -62,16 +41,7 @@ export function LoginForm({ action }: LoginFormProps) {
     },
   });
 
-  const { handleSubmit, setValue, control } = methods;
-
-  const params = new URLSearchParams(location.search);
-  const redirectedEmail = params.get('email');
-
-  useEffect(() => {
-    if (redirectedEmail) {
-      setValue('email', redirectedEmail);
-    }
-  }, [redirectedEmail, setValue]);
+  const { handleSubmit, control } = methods;
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -102,9 +72,6 @@ export function LoginForm({ action }: LoginFormProps) {
           description: 'Incorrect login or password. Try again.',
         });
       }
-
-      setValue('email', '');
-      setValue('password', '');
     }
   };
 

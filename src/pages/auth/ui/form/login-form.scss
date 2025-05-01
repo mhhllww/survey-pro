@@ -1,6 +1,7 @@
 @use '@/scss/base/variables' as var;
 @use '@/scss/base/mixins' as mixins;
 @use '@/scss/base/animation' as anim;
+@use "sass:map";
 
 .login-form {
   @include mixins.center;
@@ -126,7 +127,15 @@
   }
 
   &__UiInput {
-    min-width: 334px;
+    min-width: 254px;
+
+    @media (min-width: map.get(var.$screens, sm)) {;
+      min-width: 300px;
+    }
+
+    @media (min-width: map.get(var.$screens, md)) {;
+      min-width: 354px;
+    }
   }
 
   &__password-container {
