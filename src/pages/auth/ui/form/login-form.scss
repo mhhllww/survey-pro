@@ -19,10 +19,9 @@
 
   &__logo-text {
     font-weight: var.$medium;
-    font-size: var.$text-sm;
   }
 
-  &__logo-svg {
+  &__logo-icon {
     background-color: var.$foreground;
     color: var.$background;
     border-radius: var.$radius-lg;
@@ -127,6 +126,7 @@
   }
 
   &__UiInput {
+    border: 1px solid var.$muted !important;
     min-width: 254px;
 
     @media (min-width: map.get(var.$screens, sm)) {;
@@ -136,6 +136,22 @@
     @media (min-width: map.get(var.$screens, md)) {;
       min-width: 354px;
     }
+  }
+
+  &__UiInput_error {
+    border: 1px solid var.$error !important;
+  }
+
+  &__UiInput_password {
+    padding-right: 26px !important;
+  }
+
+  &__UiFormMessage-container {
+    min-height: 24px;
+  }
+
+  &__UiFormMessage {
+    font-size: var.$text-xs !important;
   }
 
   &__password-container {
@@ -151,7 +167,14 @@
 
   &__footer {
     @include mixins.center;
+    font-size: var.$text-sm;
     gap: 5px;
     margin-top: 24px;
+  }
+
+  &__footer-redirect {
+    font-size: var.$text-sm;
+    text-decoration: underline;
+    cursor: pointer;
   }
 }
