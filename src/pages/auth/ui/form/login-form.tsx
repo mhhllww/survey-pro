@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { useToast } from '@/shared/ui/toast/toast';
 import { z } from 'zod';
 import './login-form.scss';
+import { FirebaseError } from 'firebase/app';
 
 import {
   loginUser,
@@ -41,7 +42,7 @@ export function LoginForm({ action }: LoginFormProps) {
   const formSchema = getFormSchema({ action });
   type FormSchemaType = z.infer<typeof formSchema>;
 
-  const methods = useForm<FormSchemaType>({
+  const form = useForm<FormSchemaType>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       email: '',
@@ -49,36 +50,36 @@ export function LoginForm({ action }: LoginFormProps) {
     },
   });
 
-  const { handleSubmit, control } = methods;
-
   const [showPassword, setShowPassword] = useState(false);
 
   const onSubmit = async (data: FormSchemaType) => {
     try {
       if (action === 'login') {
         await loginUser(data.email, data.password);
-        window.location.href =
-          '/?toast=success&title=Welcome&description=You have successfully logged in!';
+        window.location.href = '/';
+        // window.location.href =
+        //   '/?toast=success&title=Welcome&description=You have successfully logged in!';
       } else {
         await registerUser(data.email, data.password);
-        window.location.href =
-          '/?toast=success&title=Welcome&description=You have successfully registered!';
+        window.location.href = '/';
+        // window.location.href =
+        //   '/?toast=success&title=Welcome&description=You have successfully registered!';
       }
-    } catch (err: any) {
-      console.log(err);
-
-      if (action === 'register' && err.code === 'auth/email-already-in-use') {
-        useToast({
-          type: 'error',
-          title: 'Registration Failed',
-          description: 'A user with this email already exists.',
-        });
-      } else {
-        useToast({
-          type: 'error',
-          title: 'Authentication Failed',
-          description: 'Incorrect login or password. Try again.',
-        });
+    } catch (err: unknown) {
+      if (err instanceof FirebaseError) {
+        if (action === 'register' && err.code === 'auth/email-already-in-use') {
+          useToast({
+            type: 'error',
+            title: 'Registration Failed',
+            description: 'A user with this email already exists.',
+          });
+        } else {
+          useToast({
+            type: 'error',
+            title: 'Authentication Failed',
+            description: 'Incorrect login or password. Try again.',
+          });
+        }
       }
     }
   };
@@ -114,12 +115,12 @@ export function LoginForm({ action }: LoginFormProps) {
           <hr className='login-form-card__divider-inside' />
         </div>
 
-        <UiForm {...methods}>
+        <UiForm {...form}>
           <form
-            onSubmit={handleSubmit(onSubmit)}
+            onSubmit={form.handleSubmit(onSubmit)}
             className='login-form-card__form'>
             <UiFormField
-              control={control}
+              control={form.control}
               name='email'
               render={({ field, fieldState }) => (
                 <UiFormItem>
@@ -146,7 +147,7 @@ export function LoginForm({ action }: LoginFormProps) {
             />
 
             <UiFormField
-              control={control}
+              control={form.control}
               name='password'
               render={({ field, fieldState }) => (
                 <UiFormItem>
