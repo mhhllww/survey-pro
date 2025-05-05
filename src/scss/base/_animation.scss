@@ -7,8 +7,12 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @mixin fade-in {
@@ -43,7 +47,6 @@
   }
 }
 
-
 @mixin slide-in-from-left-half {
   animation-name: slideInFromLeftHalf;
   @include animate-in;
@@ -74,8 +77,12 @@
 }
 
 @keyframes fadeOut {
-  from { opacity: 1; }
-  to   { opacity: 0; }
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 @mixin fade-out {
