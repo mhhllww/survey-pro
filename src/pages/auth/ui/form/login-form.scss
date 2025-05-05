@@ -148,6 +148,15 @@
 
   &__UiFormMessage-container {
     min-height: 24px;
+    max-width: 254px;
+
+    @media (min-width: map.get(var.$screens, sm)) {;
+      max-width: 300px;
+    }
+
+    @media (min-width: map.get(var.$screens, md)) {;
+      max-width: 354px;
+    }
   }
 
   &__UiFormMessage {

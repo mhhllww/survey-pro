@@ -10,24 +10,21 @@ const BaseAuthSchema = z.object({
 export const RegisterSchema = BaseAuthSchema.extend({
   password: z
     .string()
-    .min(1, { message: 'This field is required' })
+    .min(1, { message: 'This field is required.' })
+    .min(8, { message: 'Password must be at least 8 characters.' })
     .refine(
       (value) => {
-        const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+        const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).+$/;
 
         return regex.test(value);
       },
       {
         message:
-          'Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character.',
+          'The password is not strong enough. Try a combination of letters, numbers, and symbols.',
       }
     ),
 });
 
-export type RegisterFields = z.infer<typeof RegisterSchema>;
-
 export const LoginSchema = BaseAuthSchema.extend({
   password: z.string().min(1, { message: 'This field is required' }),
 });
-
-export type LoginFields = z.infer<typeof LoginSchema>;
