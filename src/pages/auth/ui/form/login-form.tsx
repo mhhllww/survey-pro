@@ -24,7 +24,6 @@ import {
 
 import { UiInput } from '@/shared/ui/input/input';
 import { UiButton } from '@/shared/ui/button/button';
-import { getFormSchema } from '@/pages/auth/model/formSchema.tsx';
 import {
   AppleIcon,
   GoogleIcon,
@@ -33,13 +32,14 @@ import {
   ShowPasswordIcon,
 } from '@/assets/icons/svgIcons.tsx';
 import clsx from 'clsx';
+import { LoginSchema, RegisterSchema } from '@/pages/auth/model/schema.ts';
 
 export type LoginFormProps = {
   action: 'login' | 'register';
 };
 
 export function LoginForm({ action }: LoginFormProps) {
-  const formSchema = getFormSchema({ action });
+  const formSchema = action === 'login' ? LoginSchema : RegisterSchema;
   type FormSchemaType = z.infer<typeof formSchema>;
 
   const form = useForm<FormSchemaType>({
