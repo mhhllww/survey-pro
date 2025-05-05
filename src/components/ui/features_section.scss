@@ -1,0 +1,110 @@
+@use '@/scss/base/variables' as var;
+@use '@/components/ui/header';
+
+.features{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: whitesmoke;
+  gap: 50px;
+
+  &__heading{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 15vh;
+    gap: 10px;
+  }
+
+  &__label{
+    width: 80px;
+    height: 30px;
+    background-color: #020817;
+    border-radius: var.$radius-lg;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: var.$semibold;
+  }
+
+  &__title{
+
+  }
+
+  &__subtitle{
+    font-size: 1.3rem;
+    color: dimgrey;
+  }
+
+  &__body{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 15vw;
+    padding-right: 15vw;
+    padding-bottom: 20vh;
+    gap: 30px;
+  }
+
+  &__list{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  &__item{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+
+    &-content{
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    &-title{
+      font-size: var.$text-md;
+    }
+
+    &-text{
+      font-size: var.$text-sm;
+      color: dimgrey;
+      text-wrap: wrap;
+      width: 450px;
+      line-height: var.$leading-tighter;
+    }
+  }
+
+  &__icon{
+    width: 20px;
+    height: 40px;
+    border-radius: var.$radius-lg;
+    background-color: lightgray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__image-container {
+    width: 50%;
+    height: 60vh;
+    overflow: hidden;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var.$radius-lg;
+  }
+}
+
+
+
