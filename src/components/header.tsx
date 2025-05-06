@@ -25,11 +25,6 @@ export const Header = () => {
           </li>
           <li className='header-nav__item'>
             <a href='/' className='header-nav__link'>
-              Testimonials
-            </a>
-          </li>
-          <li className='header-nav__item'>
-            <a href='/' className='header-nav__link'>
               Contact
             </a>
           </li>
