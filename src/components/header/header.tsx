@@ -14,9 +14,15 @@ export const Header = () => {
       <nav className='header-nav'>
         <ul className='header-nav__list'>
           <li className='header-nav__item'>
-            <a href='#features' className='header-nav__link'>
+            <button
+              onClick={() =>
+                document
+                  .getElementById('features')
+                  ?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+              }
+              className='header-nav__link'>
               Features
-            </a>
+            </button>
           </li>
           <li className='header-nav__item'>
             <a href='/' className='header-nav__link'>
