@@ -1,0 +1,27 @@
+@use '@/scss/base/variables' as var;
+
+@mixin dropdown-menu-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-size: var.$text-sm;
+  border-radius: var.$radius-sm;
+  outline: none;
+
+  cursor: pointer;
+  user-select: none;
+
+  transition: all .1s ease-in-out;
+
+  &:focus {
+    color: var.$accent-foreground;
+    background-color: var.$accent;
+  }
+
+  &[data-disabled] {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+}
