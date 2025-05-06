@@ -1,0 +1,45 @@
+@use '@/scss/base/variables' as var;
+@use '@/components/ui/hero_section';
+
+.cta{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 20vh;
+  padding-bottom: 20vh;
+  border-bottom: #e5e7eb 1px solid;
+
+  &__content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  &__title{
+
+  }
+
+  &__text{
+    font-size: 1.2rem;
+    color: dimgrey;
+    text-align: center;
+    text-wrap: wrap;
+    width: 550px;
+  }
+
+  &__buttons{
+    display: flex;
+    gap: 15px;
+  }
+
+  &-button__black{
+    height: 5.5vh;
+    padding: 0 24px;
+  }
+
+  &-button__white{
+    @extend .hero-button__white;
+  }
+}
+
