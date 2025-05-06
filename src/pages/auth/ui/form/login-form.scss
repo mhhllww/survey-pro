@@ -11,42 +11,46 @@
   padding: 40px;
   font-family: var.$font-segoe-ui;
   background-color: rgba(211, 211, 207, 0.15);
-
-  &__logo {
-    display: flex;
-    gap: 8px;
-  }
-
-  &__logo-text {
-    font-weight: var.$medium;
-  }
-
-  &__logo-icon {
-    background-color: var.$foreground;
-    color: var.$background;
-    border-radius: var.$radius-lg;
-    width: 24px;
-    height: 24px;
-    padding: 4px;
-  }
-
-  &__footer {
-    @include mixins.center;
-    flex-direction: column;
-    font-size: var.$text-xs;
-    color: var.$muted-foreground;
-    line-height: var.$leading-tight;
-    white-space: nowrap;
-  }
-
-  &__footer-conditions {
-    text-decoration: underline;
-  }
-  &__footer-conditions:hover {
-    cursor: pointer;
-    color: var.$foreground;
-  }
 }
+
+.login-form__logo {
+  display: flex;
+  gap: 8px;
+}
+
+.login-form__logo-text {
+  font-weight: var.$medium;
+}
+
+.login-form__logo-icon {
+  background-color: var.$foreground;
+  color: var.$background;
+  border-radius: var.$radius-lg;
+  width: 24px;
+  height: 24px;
+  padding: 4px;
+}
+
+.login-form__footer {
+  @include mixins.center;
+  flex-direction: column;
+  font-size: var.$text-xs;
+  color: var.$muted-foreground;
+  line-height: var.$leading-tight;
+  white-space: nowrap;
+}
+
+.login-form__footer-conditions {
+  text-decoration: underline;
+}
+.login-form__footer-conditions:hover {
+  cursor: pointer;
+  color: var.$foreground;
+}
+
+
+
+
 
 .login-form-card {
   display: flex;
@@ -56,134 +60,149 @@
   box-shadow: var.$shadow;
   background-color: var.$card;
   border-radius: var.$radius-lg;
+}
 
-  &__header {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
+.login-form-card__header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+  @media (min-width: map.get(var.$screens, sm)) {;
+    margin-bottom: 18px;
+  }
+
+  @media (min-width: map.get(var.$screens, md)) {;
     margin-bottom: 24px;
   }
+}
 
-  &__title,
-  &__subtitle {
-    display: flex;
-    justify-content: center;
-  }
-  &__title {
-    font-size: var.$text-md;
-    font-weight: var.$semibold;
-    line-height: var.$leading-tight;
-  }
-  &__subtitle {
-    font-size: var.$text-sm;
-    color: var.$muted-foreground;
-    font-weight: var.$regular;
-    line-height: var.$leading-tight;
-    white-space: nowrap;
+.login-form-card__title,
+.login-form-card__subtitle {
+  display: flex;
+  justify-content: center;
+}
+.login-form-card__title {
+  font-size: var.$text-md;
+  font-weight: var.$semibold;
+  line-height: var.$leading-tight;
+}
+.login-form-card__subtitle {
+  font-size: var.$text-sm;
+  color: var.$muted-foreground;
+  font-weight: var.$regular;
+  line-height: var.$leading-tight;
+  white-space: nowrap;
+}
+
+.login-form-card__oauth {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.login-form-card__divider {
+  @include mixins.center;
+  gap: 5px;
+  width: 100%;
+  margin: 14px 0 14px 0;
+
+  @media (min-width: map.get(var.$screens, sm)) {;
+    margin: 18px 0 18px 0;
   }
 
-  &__oauth {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    width: 100%;
-  }
-
-  &__divider {
-    @include mixins.center;
-    gap: 5px;
-    width: 100%;
+  @media (min-width: map.get(var.$screens, md)) {;
     margin: 24px 0 24px 0;
   }
+}
 
-  &__divider-inside {
-    border-color: var.$background;
-    border-bottom: none;
-    opacity: 30%;
-    width: 100%;
+.login-form-card__divider-inside {
+  border-color: var.$background;
+  border-bottom: none;
+  opacity: 30%;
+  width: 100%;
+}
+
+.login-form-card__form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.login-form-card__form-link {
+  font-size: var.$text-sm;
+}
+.login-form-card__form-link:hover {
+  text-decoration: underline;
+}
+
+.login-form-card__form-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var.$text-sm;
+  min-height: 19px;
+  margin-bottom: 8px;
+}
+
+.login-form-card__UiInput {
+  border: 1px solid var.$muted !important;
+  min-width: 254px;
+
+  @media (min-width: map.get(var.$screens, sm)) {;
+    min-width: 300px;
   }
 
-  &__form {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+  @media (min-width: map.get(var.$screens, md)) {;
+    min-width: 354px;
+  }
+}
+
+.login-form-card__UiInput_error {
+  border: 1px solid var.$error !important;
+}
+
+.login-form-card__UiInput_password {
+  padding-right: 26px !important;
+}
+
+.login-form-card__UiFormMessage-container {
+  min-height: 24px;
+  max-width: 254px;
+
+  @media (min-width: map.get(var.$screens, sm)) {;
+    max-width: 300px;
   }
 
-  &__form-link {
-    font-size: var.$text-sm;
+  @media (min-width: map.get(var.$screens, md)) {;
+    max-width: 354px;
   }
-  &__form-link:hover {
-    text-decoration: underline;
-  }
+}
 
-  &__form-label {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: var.$text-sm;
-    min-height: 19px;
-    margin-bottom: 8px;
-  }
+.login-form-card__UiFormMessage {
+  font-size: var.$text-xs !important;
+}
 
-  &__UiInput {
-    border: 1px solid var.$muted !important;
-    min-width: 254px;
+.login-form-card__password-container {
+  position: relative;
+}
 
-    @media (min-width: map.get(var.$screens, sm)) {;
-      min-width: 300px;
-    }
+.login-form-card__password-toggle-button {
+  position: absolute;
+  right: 2%;
+  top: 22%;
+  z-index: 1;
+}
 
-    @media (min-width: map.get(var.$screens, md)) {;
-      min-width: 354px;
-    }
-  }
+.login-form-card__footer {
+  @include mixins.center;
+  font-size: var.$text-sm;
+  gap: 5px;
+  margin-top: 24px;
+}
 
-  &__UiInput_error {
-    border: 1px solid var.$error !important;
-  }
-
-  &__UiInput_password {
-    padding-right: 26px !important;
-  }
-
-  &__UiFormMessage-container {
-    min-height: 24px;
-    max-width: 254px;
-
-    @media (min-width: map.get(var.$screens, sm)) {;
-      max-width: 300px;
-    }
-
-    @media (min-width: map.get(var.$screens, md)) {;
-      max-width: 354px;
-    }
-  }
-
-  &__UiFormMessage {
-    font-size: var.$text-xs !important;
-  }
-
-  &__password-container {
-    position: relative;
-  }
-
-  &__password-toggle-button {
-    position: absolute;
-    right: 2%;
-    top: 22%;
-    z-index: 1;
-  }
-
-  &__footer {
-    @include mixins.center;
-    font-size: var.$text-sm;
-    gap: 5px;
-    margin-top: 24px;
-  }
-
-  &__footer-redirect {
-    font-size: var.$text-sm;
-    text-decoration: underline;
-    cursor: pointer;
-  }
+.login-form-card__footer-redirect {
+  font-size: var.$text-sm;
+  text-decoration: underline;
+  cursor: pointer;
 }

@@ -1,6 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useToast } from '@/shared/ui/toast/toast';
 import { z } from 'zod';
@@ -30,7 +30,7 @@ import {
   LogoIcon,
   HidePasswordIcon,
   ShowPasswordIcon,
-} from '@/assets/icons/svgIcons.tsx';
+} from '@/assets/icons/icons.tsx';
 import clsx from 'clsx';
 import { LoginSchema, RegisterSchema } from '@/pages/auth/model/schema.ts';
 
@@ -39,6 +39,7 @@ export type LoginFormProps = {
 };
 
 export function LoginForm({ action }: LoginFormProps) {
+  const navigate = useNavigate();
   const formSchema = action === 'login' ? LoginSchema : RegisterSchema;
   type FormSchemaType = z.infer<typeof formSchema>;
 
@@ -56,14 +57,10 @@ export function LoginForm({ action }: LoginFormProps) {
     try {
       if (action === 'login') {
         await loginUser(data.email, data.password);
-        window.location.href = '/';
-        // window.location.href =
-        //   '/?toast=success&title=Welcome&description=You have successfully logged in!';
+        navigate('/');
       } else {
         await registerUser(data.email, data.password);
-        window.location.href = '/';
-        // window.location.href =
-        //   '/?toast=success&title=Welcome&description=You have successfully registered!';
+        navigate('/');
       }
     } catch (err: unknown) {
       if (err instanceof FirebaseError) {
