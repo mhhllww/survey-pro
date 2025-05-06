@@ -1,5 +1,5 @@
-import { UiButton } from '@/shared/ui/button/button';
-import '../components/ui/header.scss';
+import { UiButton } from '@/shared/ui/button/button.tsx';
+import '../header/header.scss';
 import { ChartColumn } from 'lucide-react';
 
 export const Header = () => {
@@ -14,7 +14,7 @@ export const Header = () => {
       <nav className='header-nav'>
         <ul className='header-nav__list'>
           <li className='header-nav__item'>
-            <a href='/' className='header-nav__link'>
+            <a href='#features' className='header-nav__link'>
               Features
             </a>
           </li>

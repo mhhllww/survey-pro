@@ -1,5 +1,5 @@
 @use '@/scss/base/variables' as var;
-@use '@/components/ui/hero_section';
+@use '@/components/hero-section/hero_section.scss';
 
 .cta{
   width: 100%;

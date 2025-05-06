@@ -1,5 +1,5 @@
 @use '@/scss/base/variables' as var;
-@use '@/components/ui/header';
+@use '@/components/header/header.scss';
 
 .features{
   width: 100%;

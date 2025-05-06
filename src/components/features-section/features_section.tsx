@@ -1,12 +1,12 @@
-import '../components/ui/features_section.scss';
+import '../features-section/features_section.scss';
 import { PencilLine } from 'lucide-react';
 import { Users } from 'lucide-react';
 import { ChartColumn } from 'lucide-react';
-import Survey from '../assets/survey.jpg';
+import FeaturePhoto from '../../assets/FeaturePhoto.png';
 
 export const FeaturesSection = () => {
   return (
-    <section className='features'>
+    <section id='features' className='features'>
       <div className='features__heading'>
         <span className='features__label'>Features</span>
         <h2 className='features__title'>
@@ -65,7 +65,7 @@ export const FeaturesSection = () => {
           </li>
         </ul>
         <div className='features__image-container'>
-          <img src={Survey} alt='Survey' className='features__image' />
+          <img src={FeaturePhoto} alt='Feature' className='features__image' />
         </div>
       </div>
     </section>

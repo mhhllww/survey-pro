@@ -1,6 +1,6 @@
 import { UiButton } from '@/shared/ui/button/button.tsx';
-import '../components/ui/hero_section.scss';
-import Survey from '../assets/survey.jpg';
+import '../hero-section/hero_section.scss';
+import HeroPhoto from '../../assets/heroPhoto.png';
 import { ArrowRight } from 'lucide-react';
 
 export const HeroSection = () => {
@@ -25,7 +25,7 @@ export const HeroSection = () => {
         </div>
       </div>
       <div className='hero-image'>
-        <img src={Survey} alt='Survey' className='hero-image__image' />
+        <img src={HeroPhoto} alt='Survey' className='hero-image__image' />
       </div>
     </section>
   );

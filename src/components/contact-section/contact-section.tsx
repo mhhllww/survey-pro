@@ -1,6 +1,6 @@
 import { UiButton } from '@/shared/ui/button/button.tsx';
 import { ArrowRight } from 'lucide-react';
-import '../components/ui/contact_section.scss';
+import '../contact-section/contact_section.scss';
 
 export const ContactSection = () => {
   return (

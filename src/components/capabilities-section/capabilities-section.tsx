@@ -1,7 +1,7 @@
 import { CircleCheckBig } from 'lucide-react';
 import { ChartColumn } from 'lucide-react';
 import { Users } from 'lucide-react';
-import '../components/ui/capabilities_section.scss';
+import '../capabilities-section/capabilities_section.scss';
 
 export const CapabilitiesSection = () => {
   return (

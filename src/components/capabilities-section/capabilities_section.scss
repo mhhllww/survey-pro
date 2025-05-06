@@ -1,0 +1,120 @@
+@use '@/scss/base/variables' as var;
+@use '@/components/header/header.scss';
+
+.capabilities {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20vh;
+  padding-bottom: 20vh;
+  border-bottom: #e5e7eb 1px solid;
+
+  &__heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__title {
+  }
+
+  &__subtitle {
+    font-size: 1.3rem;
+    color: dimgrey;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-top: 7vh;
+  }
+  
+  @media (max-width: map-get(var.$screens, md)) {
+    &__container {
+      flex-direction: column;
+    }
+
+    &__subtitle {
+      font-size: 1rem;
+      display: flex;
+      text-align: center;
+    }
+  }
+}
+
+.capability-card {
+  padding: clamp(16px, 2vw, 24px);
+  border: 1px solid #e5e7eb;
+  box-shadow: var.$shadow;
+  border-radius: var.$radius-lg;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+
+  &__icon {
+    width: clamp(36px, 8vw, 45px);
+    height: clamp(36px, 8vw, 45px);
+    border-radius: 50%;
+    background-color: lightgray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__title {
+    margin-top: 0.5rem;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+  }
+
+  &__text {
+    font-size: var.$text-sm;
+    color: dimgrey;
+    text-wrap: wrap;
+    width: 100%;
+    max-width: 260px;
+    line-height: var.$leading-tight;
+    margin: 0.5rem 0;
+  }
+
+
+  @media (max-width: map-get(var.$screens, md)) {
+    max-width: 400px;
+    padding: 16px;
+
+    &__icon {
+      width: 40px;
+      height: 40px;
+    }
+
+    &__text {
+      font-size: 0.875rem;
+      max-width: 100%;
+    }
+  }
+
+  @media (max-width: map-get(var.$screens, sm)) {
+    max-width: 350px;
+    padding: 8px;
+
+    &__icon {
+      width: 20px;
+      height: 20px;
+    }
+
+    &__text {
+      font-size: 0.875rem;
+      max-width: 100%;
+    }
+  }
+
+}

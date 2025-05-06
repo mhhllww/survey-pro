@@ -32,7 +32,6 @@
     &__text {
       font-weight: var.$bold;
       font-size: var.$text-sm;
-      font-family: var.$font-segoe-ui;
       letter-spacing: var.$tracking-wider;
     }
   }
@@ -67,6 +66,24 @@
     display: flex;
     gap: 10px;
   }
+
+  @media (max-width: map-get(var.$screens, sm)) {
+    &-logo{
+      &__bg-logo {
+        width: 20px;
+        height: 20px;
+      }
+      &__text{
+        font-size: var.$text-xs;
+      }
+    }
+
+    &-nav{
+      &__link{
+        font-size: var.$text-xs;
+      }
+    }
+  }
 }
 
 .button__white {
@@ -80,10 +97,18 @@
   &:hover {
     background-color: #f3f4f6;
   }
+
+  @media (max-width: map-get(var.$screens, sm)) {
+
+  }
 }
 
 .button__black {
   width: 7vw;
   font-weight: var.$semibold;
   font-size: 0.9rem;
+}
+
+#features{
+  scroll-behavior: smooth;
 }
