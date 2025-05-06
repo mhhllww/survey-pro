@@ -1,0 +1,31 @@
+@use '@/scss/base/variables' as var;
+
+.footer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 40px 50px;
+
+  &__container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__copyright{
+    font-size: 0.9rem;
+    color: dimgrey;
+  }
+
+  &__links{
+    display: flex;
+    gap: 1rem;
+    font-size: 0.9rem;
+    color: dimgrey;
+  }
+
+  &__link{
+    border-bottom: 1px solid dimgrey;
+  }
+}
