@@ -1,0 +1,131 @@
+$padding-breakpoints: (
+  xs: 1rem,
+  sm: 2rem,
+  md: 3rem,
+  lg: 4rem,
+  xl: 6rem,
+);
+
+$screens: (
+  sm: 480px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1440px,
+);
+
+$radius-lg: 8px;
+$radius-md: 6px;
+$radius-sm: 4px;
+
+/* FONT */
+
+// font-family
+$font-code: 'JetBrains Mono', monospace;
+$font-segoe-ui: 'Segoe UI', 'Roboto';
+
+// font-size
+$text-xs: 0.75rem;
+$text-sm: 0.875rem;
+$text-md: 1.25rem;
+$text-lg: 1.5rem;
+$text-xl: 2rem;
+$text-2xl: 2.5rem;
+$text-3xl: 3.5rem;
+
+// font-weight
+$regular: 400;
+$medium: 500;
+$semibold: 600;
+$bold: 700;
+
+// line-height
+$leading-tighter: 1.2;
+$leading-tight: 1.4;
+$leading-normal: 1.5;
+$leading-relaxed: 1.625;
+$leading-loose: 1.75;
+
+// letter-spacing
+$tracking-tighter: -0.02em;
+$tracking-tight: -0.01em;
+$tracking-regular: 0;
+$tracking-wide: 0.01em;
+$tracking-wider: 0.02em;
+
+/* LIGHT THEME */
+
+$success: #157c37;
+$error: #b62929;
+$warning: #eab308;
+
+$background: #ffffff;
+$foreground: #020817;
+
+$card: #ffffff;
+$card-foreground: #020817;
+
+$popover: #ffffff;
+$popover-foreground: #020817;
+
+$muted-primary: #dbffec;
+$primary-foreground: #157c37;
+
+$secondary: #f1f5fb;
+$secondary-foreground: #1e293b;
+
+$muted: #e4e4e7;
+$muted-foreground: #71717a;
+
+$accent: #f1f5fb;
+$accent-foreground: #1e293b;
+
+$destructive: #f43f5e;
+$muted-destructive: #b62929;
+$destructive-foreground: #f8fafc;
+
+$border: #e2e8f0;
+$input: #e2e8f0;
+$ring: #1db954;
+
+$chart-1: #1db954;
+$chart-2: #84cc16;
+$chart-3: #eab308;
+$chart-4: #f97316;
+
+// shadows
+
+$shadow:
+  0 1px 3px 0 rgb(0 0 0 / 0.1),
+  0 1px 2px -1px rgb(0 0 0 / 0.1);
+$shadow-lg:
+  0 10px 15px -3px rgb(0 0 0 / 0.1),
+  0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+/* DARK THEME */
+
+//$background: #020817;
+//$foreground: #f8fafc;
+//
+//$card: #020817;
+//$card-foreground: #f8fafc;
+//
+//$popover: #020817;
+//$popover-foreground: #f8fafc;
+//
+//$primary: #10b981;
+//$primary-foreground: #1e293b;
+//
+//$secondary: #1e293b;
+//$secondary-foreground: #f8fafc;
+//
+//$muted: #1e293b;
+//$muted-foreground: #94a3b8;
+//
+//$accent: #1e293b;
+//$accent-foreground: #f8fafc;
+//
+//$destructive-foreground: #f8fafc;
+//
+//$border: #1e293b;
+//$input: #1e293b;
+//$ring: #10b981;

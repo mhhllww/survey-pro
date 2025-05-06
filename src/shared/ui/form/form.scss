@@ -1,0 +1,17 @@
+@use '../../../scss/base/variables' as var;
+@use '../../../scss/base/mixins' as mixins;
+
+.form-item {
+  @include mixins.space-y(2px);
+}
+
+.form-description {
+  font-size: var.$text-sm;
+  color: var.$muted-foreground;
+}
+
+.form-message {
+  font-size: var.$text-sm;
+  font-weight: var.$medium;
+  color: var.$destructive;
+}

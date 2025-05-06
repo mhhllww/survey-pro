@@ -1,0 +1,122 @@
+@use '@/scss/base/animation' as animation;
+@use '@/scss/base/variables' as var;
+@use '@/scss/base/mixins' as mixins;
+@use '@/scss/base/reset';
+
+.dialog-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+
+  background: rgba(var.$foreground, 0.8);
+
+  &[data-state='open'] {
+    @include animation.fade-in;
+  }
+
+  &[data-state='closed'] {
+    @include animation.fade-out;
+  }
+}
+
+.dialog-content {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 50;
+
+  display: grid;
+  grid-gap: 16px;
+  padding: 24px;
+
+  border: 1px solid var.$foreground;
+  background-color: var.$background;
+  border-radius: var.$radius-sm;
+
+  transform: translate(-50%, -50%);
+  box-shadow: var.$shadow-lg;
+
+  &[data-state='open'] {
+    @include animation.fade-in;
+  }
+
+  &[data-state='closed'] {
+    @include animation.fade-out;
+  }
+
+  @media (min-width: map-get(var.$screens, sm)) {
+    border-radius: var.$radius-lg;
+  }
+}
+
+.dialog-close {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+
+  border-radius: var.$radius-sm;
+
+  opacity: 0.7;
+  transition: opacity ease-in-out 0.1s;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:disabled {
+    pointer-events: none;
+  }
+
+  &[data-state='open'] {
+    background-color: var.$accent;
+    color: var.$muted-foreground;
+  }
+}
+
+.dialog-close__icon {
+  height: 16px;
+  width: 16px;
+}
+
+.dialog-close__content {
+  @include mixins.sr-only;
+}
+
+.dialog-header {
+  display: flex;
+  flex-direction: column;
+
+  @include mixins.space-y(6px);
+
+  @media (min-width: nth(var.$screens, 1)) {
+    text-align: left;
+  }
+}
+
+.dialog-footer {
+  display: flex;
+  flex-direction: column-reverse;
+
+  @media (min-width: nth(var.$screens, 1)) {
+    flex-direction: row;
+    justify-content: flex-end;
+
+    @include mixins.space-x(8px);
+  }
+}
+
+.dialog-title {
+  font-size: var.$text-lg;
+  font-weight: var.$semibold;
+  line-height: 0;
+  letter-spacing: var.$tracking-tight;
+}
+
+.dialog-description {
+  font-size: var.$text-sm;
+  color: var.$muted-foreground;
+}

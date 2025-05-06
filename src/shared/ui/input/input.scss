@@ -1,0 +1,40 @@
+@use '../../../scss/base/variables' as var;
+
+.input {
+  display: flex;
+  height: 2.25rem;
+  width: 100%;
+  border-radius: var.$radius-md;
+  border: 1px solid var.$muted-foreground;
+  background-color: transparent;
+  padding: 0.25rem 0.75rem;
+  font-size: var.$text-sm;
+  box-shadow: var.$shadow;
+  transition: all ease-in-out 0.2s;
+
+  &::file-selector-button {
+    border: 0;
+    background-color: transparent;
+    font-size: var.$text-xs;
+    font-weight: var.$medium;
+    color: var.$foreground;
+  }
+
+  &::placeholder {
+    color: var.$muted-foreground;
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: var.$shadow;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  @media (min-width: 768px) {
+    font-size: var.$text-xs;
+  }
+}

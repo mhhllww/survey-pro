@@ -1,0 +1,49 @@
+@use 'variables' as var;
+
+@mixin container {
+  @include center;
+
+  margin-inline: auto;
+
+  padding-left: map-get(var.$padding-breakpoints, xs);
+  padding-right: map-get(var.$padding-breakpoints, xs);
+
+  @each $key, $value in var.$padding-breakpoints {
+    @if $key != xs {
+      @media (min-width: map-get(var.$screens, $key)) {
+        padding-left: $value;
+        padding-right: $value;
+      }
+    }
+  }
+}
+
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+@mixin space-x($space) {
+  > * + * {
+    margin-left: $space;
+  }
+}
+
+@mixin space-y($space) {
+  > * + * {
+    margin-top: $space;
+  }
+}
