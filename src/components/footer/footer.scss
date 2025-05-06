@@ -1,3 +1,44 @@
+//@use '@/scss/base/variables' as var;
+//
+//.footer {
+//  width: 100%;
+//  display: flex;
+//  align-items: center;
+//  padding: 40px 50px;
+//
+//  &__container {
+//    width: 100%;
+//    display: flex;
+//    justify-content: space-between;
+//    align-items: center;
+//  }
+//
+//  &__copyright{
+//    font-size: 0.9rem;
+//    color: dimgrey;
+//  }
+//
+//  &__links{
+//    display: flex;
+//    gap: 1rem;
+//    font-size: 0.9rem;
+//    color: dimgrey;
+//  }
+//
+//  &__link{
+//    border-bottom: 1px solid dimgrey;
+//  }
+//
+//  @media (max-width: map-get(var.$screens, sm)) {
+//
+//  }
+//
+//  @media (max-width: map-get(var.$screens, md)) {
+//
+//  }
+//}
+
+
 @use '@/scss/base/variables' as var;
 
 .footer {
@@ -5,27 +46,70 @@
   display: flex;
   align-items: center;
   padding: 40px 50px;
+  box-sizing: border-box;
 
   &__container {
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
   }
 
-  &__copyright{
+  &__copyright {
     font-size: 0.9rem;
     color: dimgrey;
   }
 
-  &__links{
+  &__links {
     display: flex;
     gap: 1rem;
     font-size: 0.9rem;
     color: dimgrey;
   }
 
-  &__link{
+  &__link {
     border-bottom: 1px solid dimgrey;
+    white-space: nowrap;
+  }
+
+  @media (max-width: map-get(var.$screens, md)) {
+    padding: 30px 40px;
+
+    &__container {
+      gap: 20px;
+    }
+
+    &__links {
+      gap: 0.8rem;
+    }
+  }
+
+  @media (max-width: map-get(var.$screens, sm)) {
+    padding: 25px 20px;
+
+    &__container {
+      flex-direction: column;
+      gap: 15px;
+      align-items: flex-start;
+    }
+
+    &__copyright {
+      font-size: 0.85rem;
+      order: 2;
+      width: 100%;
+      text-align: center;
+    }
+
+    &__links {
+      width: 100%;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      order: 1;
+    }
+
+    &__link {
+      font-size: 0.85rem;
+    }
   }
 }

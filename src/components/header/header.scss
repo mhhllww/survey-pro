@@ -68,20 +68,87 @@
   }
 
   @media (max-width: map-get(var.$screens, sm)) {
-    &-logo{
+    height: 7vh;
+    padding-left: map-get(var.$padding-breakpoints, xs);
+    padding-right: map-get(var.$padding-breakpoints, xs);
+
+    &-logo {
       &__bg-logo {
         width: 20px;
         height: 20px;
       }
-      &__text{
+
+      &__text {
+        font-size: 0.7rem;
+        margin-right: 0.5rem;
+      }
+    }
+
+    &-nav {
+      margin-right: 0.5rem;
+
+      &__list {
+        gap: 12px;
+      }
+
+      &__link {
+        font-size: 0.7rem;
+      }
+    }
+
+    .button__white {
+      height: 4vh;
+      width: 14vw;
+      min-width: 60px;
+      font-size: 0.7rem;
+    }
+
+    .button__black {
+      height: 4vh;
+      width: 18vw;
+      min-width: 80px;
+      font-size: 0.7rem;
+    }
+  }
+
+  @media (max-width: map-get(var.$screens, md)) {
+    padding-left: map-get(var.$padding-breakpoints, sm);
+    padding-right: map-get(var.$padding-breakpoints, sm);
+
+    &-logo {
+      &__text {
         font-size: var.$text-xs;
       }
     }
 
-    &-nav{
-      &__link{
-        font-size: var.$text-xs;
+    &-nav {
+      &__list {
+        gap: 20px;
       }
+
+      &__link {
+        font-size: 0.8rem;
+      }
+    }
+
+    .button__white {
+      width: 6vw;
+      font-size: 0.8rem;
+    }
+
+    .button__black {
+      width: 9vw;
+      font-size: 0.8rem;
+    }
+  }
+
+  @media (max-width: map-get(var.$screens, lg)) {
+    .button__white{
+      width: 7vw;
+    }
+
+    .button__black{
+      width: 10vw;
     }
   }
 }
@@ -97,18 +164,10 @@
   &:hover {
     background-color: #f3f4f6;
   }
-
-  @media (max-width: map-get(var.$screens, sm)) {
-
-  }
 }
 
 .button__black {
   width: 7vw;
   font-weight: var.$semibold;
   font-size: 0.9rem;
-}
-
-#features{
-  scroll-behavior: smooth;
 }

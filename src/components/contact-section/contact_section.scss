@@ -1,45 +1,128 @@
 @use '@/scss/base/variables' as var;
 @use '@/components/hero-section/hero_section.scss';
 
-.cta{
+.cta {
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding-top: 15vh;
-  padding-bottom: 20vh;
-  border-bottom: #e5e7eb 1px solid;
+  padding: 15vh 0 20vh;
+  border-bottom: 1px solid #e5e7eb;
+  box-sizing: border-box;
 
-  &__content{
+  &__content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5vw;
   }
 
-  &__title{
-
+  &__title {
   }
 
-  &__text{
+  &__text {
     font-size: 1.2rem;
     color: dimgrey;
     text-align: center;
-    text-wrap: wrap;
-    width: 550px;
+    text-wrap: pretty;
+    width: 100%;
+    max-width: 550px;
+    line-height: 1.5;
   }
 
-  &__buttons{
+  &__buttons {
     display: flex;
-    gap: 15px;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
-  &-button__black{
-    height: 5.5vh;
-    padding: 0 24px;
+  &-button__black {
+    height: 45px;
+    padding: 0 30px;
+    min-width: 160px;
   }
 
-  &-button__white{
+  &-button__white {
     @extend .hero-button__white;
+    height: 45px;
+    padding: 0 30px;
+    min-width: 160px;
+  }
+
+  @media (max-width: map-get(var.$screens, lg)) {
+    padding: 14vh 0 18vh;
+
+    &__content {
+      gap: 18px;
+    }
+
+    &__text {
+      font-size: 1.15rem;
+      max-width: 500px;
+    }
+
+    &__buttons {
+      gap: 18px;
+    }
+  }
+
+  @media (max-width: map-get(var.$screens, md)) {
+    padding: 12vh 0 15vh;
+
+    &__content {
+      gap: 16px;
+    }
+
+    &__text {
+      font-size: 1.1rem;
+      max-width: 450px;
+      padding: 0 3vw;
+    }
+
+    &__buttons {
+      gap: 15px;
+    }
+
+    &-button__black,
+    &-button__white {
+      height: 48px;
+      padding: 0 25px;
+      min-width: 150px;
+    }
+  }
+
+  @media (max-width: map-get(var.$screens, sm)) {
+    padding: 10vh 0 12vh;
+
+    &__content {
+      gap: 14px;
+    }
+
+    &__title {
+      font-size: 1.3rem;
+    }
+
+    &__text {
+      font-size: 1rem;
+      padding: 0 5vw;
+    }
+
+    &__buttons {
+      flex-direction: column;
+      width: 100%;
+      max-width: 280px;
+      gap: 12px;
+    }
+
+    &-button__black,
+    &-button__white {
+      width: 100%;
+      height: 46px;
+      min-width: auto;
+    }
   }
 }
-
