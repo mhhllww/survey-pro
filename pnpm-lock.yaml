@@ -27,7 +27,7 @@ importers:
         specifier: ^2.7.0
         version: 2.7.0(react-redux@9.2.0(@types/react@19.1.2)(react@19.1.0)(redux@5.0.1))(react@19.1.0)
       '@tanstack/react-query':
-        specifier: ^5.75.4
+        specifier: ^5.75.0
         version: 5.75.4(react@19.1.0)
       clsx:
         specifier: ^2.1.1
