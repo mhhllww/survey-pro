@@ -42,18 +42,18 @@
   }
 }
 
-[data-sonner-toast][data-styled="true"][class*="warning"] {
+[data-sonner-toast][data-styled='true'][class*='warning'] {
   border-color: var.$warning;
 }
 
-[data-sonner-toast][data-styled="true"][class*="error"] {
+[data-sonner-toast][data-styled='true'][class*='error'] {
   border-color: var.$error;
 }
 
-[data-sonner-toast][data-styled="true"][class*="success"] {
+[data-sonner-toast][data-styled='true'][class*='success'] {
   border-color: var.$success;
 }
 
-[data-sonner-toast][data-styled="true"][class*="info"] {
+[data-sonner-toast][data-styled='true'][class*='info'] {
   border-color: var.$foreground;
 }
