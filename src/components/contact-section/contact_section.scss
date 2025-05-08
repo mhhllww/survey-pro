@@ -47,9 +47,9 @@
   }
 
   &-button__white {
-    @extend .hero-button__white;
+    @extend .button__white;
+    border: 1px solid lightgray;
     height: 45px;
-    padding: 0 30px;
     min-width: 160px;
   }
 

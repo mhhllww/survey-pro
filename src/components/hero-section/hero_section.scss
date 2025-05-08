@@ -58,13 +58,6 @@
     height: 50px;
   }
 
-  &-button__white {
-    @extend .button__white;
-    width: 150px;
-    height: 50px;
-    border: 1px solid lightgray;
-  }
-
   @media (max-width: map-get(var.$screens, lg)) {
     padding: 12vh 6vw 0;
     gap: 4vw;

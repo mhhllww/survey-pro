@@ -19,9 +19,6 @@ export const HeroSection = () => {
             Get Started
             <ArrowRight />
           </UiButton>
-          <UiButton className='hero-button__white' size='lg'>
-            Learn More
-          </UiButton>
         </div>
       </div>
       <div className='hero-image'>
