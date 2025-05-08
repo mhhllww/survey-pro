@@ -1,0 +1,50 @@
+@use '@/scss/base/variables' as var;
+@use '@/scss/base/mixins' as mixins;
+@use '@/scss/base/typography' as typography;
+@use '@/scss/base/animation' as animation;
+
+.analytics {
+  @include mixins.center;
+}
+
+.analytics-inner {
+  font-family: var.$font-segoe-ui;
+  width: 1400px;
+  margin: 40px 0;
+}
+
+.analytics-inner__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.analytics-inner__subtitle {
+  color: var.$muted-foreground;
+  line-height: var.$leading-normal;
+}
+
+.analytics-inner__header-dropdown-trigger {
+  @include mixins.center;
+  gap: 5px
+}
+
+.analytics-inner__UiDropdownMenuTrigger {
+  font-size: var.$text-sm;
+  border: 1px solid var.$muted;
+  border-radius: var.$radius-md;
+  width: 240px;
+  height: 40px;
+}
+
+.analytics-inner__UiDropdownMenuContent {
+  font-size: var.$text-sm;
+  width: 240px;
+}
+
+.analytics-inner__UiDropdownMenuCheckboxItem {
+  display: flex;
+  justify-content: left;
+  padding-left: 32px !important;
+}
