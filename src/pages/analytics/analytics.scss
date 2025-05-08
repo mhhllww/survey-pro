@@ -2,49 +2,64 @@
 @use '@/scss/base/mixins' as mixins;
 @use '@/scss/base/typography' as typography;
 @use '@/scss/base/animation' as animation;
+@use "sass:map";
 
 .analytics {
   @include mixins.center;
 }
 
-.analytics-inner {
+.analytics-content {
   font-family: var.$font-segoe-ui;
   width: 1400px;
-  margin: 40px 0;
+  margin: 40px 16px;
 }
 
-.analytics-inner__header {
+.analytics-content__header {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 16px;
   margin-bottom: 32px;
+  
+  @media (min-width: map.get(var.$screens, md)) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+  }
+
 }
 
-.analytics-inner__subtitle {
+.analytics-content__subtitle {
   color: var.$muted-foreground;
   line-height: var.$leading-normal;
 }
 
-.analytics-inner__header-dropdown-trigger {
+.analytics-content__header-dropdown-trigger {
   @include mixins.center;
+  line-height: var.$leading-tighter;
   gap: 5px
 }
 
-.analytics-inner__UiDropdownMenuTrigger {
+.analytics-content__UiDropdownMenuTrigger {
   font-size: var.$text-sm;
-  border: 1px solid var.$muted;
+  border: 1px solid var.$border;
   border-radius: var.$radius-md;
   width: 240px;
   height: 40px;
 }
 
-.analytics-inner__UiDropdownMenuContent {
+.analytics-content__UiDropdownMenuContent {
   font-size: var.$text-sm;
   width: 240px;
 }
 
-.analytics-inner__UiDropdownMenuCheckboxItem {
+.analytics-content__UiDropdownMenuCheckboxItem {
   display: flex;
   justify-content: left;
   padding-left: 32px !important;
+}
+
+.analytics-content__cards {
+  display: flex;
+  gap: 16px;
 }

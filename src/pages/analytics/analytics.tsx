@@ -6,8 +6,9 @@ import {
   UiDropdownMenuTrigger,
   UiDropdownMenuCheckboxItem,
 } from '@/shared/ui/dropdown-menu/dropdown-menu.tsx';
-import { ChevronDownIcon } from 'lucide-react';
+import { ChevronDownIcon, UsersIcon } from 'lucide-react';
 import { useState } from 'react';
+import { AnalyticsCard } from '@/components/ui/analytics-card/analytics-card';
 
 const surveys = [
   'Customer Satisfaction Survey',
@@ -20,11 +21,11 @@ export const Analytics = () => {
 
   return (
     <div className={'analytics'}>
-      <div className={'analytics-inner'}>
-        <div className={'analytics-inner__header'}>
-          <div className={'analytics-inner__header-text'}>
+      <div className={'analytics-content'}>
+        <div className={'analytics-content__header'}>
+          <div className={'analytics-content__header-text'}>
             <h2>Analytics</h2>
-            <span className={'analytics-inner__subtitle'}>
+            <span className={'analytics-content__subtitle'}>
               View and analyze your survey responses
             </span>
           </div>
@@ -32,18 +33,18 @@ export const Analytics = () => {
           <UiDropdownMenu>
             <UiDropdownMenuTrigger
               asChild
-              className={'analytics-inner__UiDropdownMenuTrigger'}>
-              <button className={'analytics-inner__header-dropdown-trigger'}>
+              className={'analytics-content__UiDropdownMenuTrigger'}>
+              <button className={'analytics-content__header-dropdown-trigger'}>
                 <span>{selected}</span>
                 <ChevronDownIcon size={16} />
               </button>
             </UiDropdownMenuTrigger>
             <UiDropdownMenuContent
               sideOffset={5}
-              className={'analytics-inner__UiDropdownMenuContent'}>
+              className={'analytics-content__UiDropdownMenuContent'}>
               {surveys.map((survey) => (
                 <UiDropdownMenuCheckboxItem
-                  className={'analytics-inner__UiDropdownMenuCheckboxItem'}
+                  className={'analytics-content__UiDropdownMenuCheckboxItem'}
                   onSelect={() =>
                     console.log('на данный момент без функционала')
                   }
@@ -58,6 +59,48 @@ export const Analytics = () => {
             </UiDropdownMenuContent>
           </UiDropdownMenu>
         </div>
+        <section className={'analytics-content__cards'}>
+          <AnalyticsCard
+            title={'Total Responses'}
+            icon={<UsersIcon size={16} />}
+            value={'1,284'}
+            change={{
+              direction: 'up',
+              percent: '12.5',
+              caption: 'from last month',
+            }}
+          />
+          <AnalyticsCard
+            title={'Total Responses'}
+            icon={<UsersIcon size={16} />}
+            value={'1,284'}
+            change={{
+              direction: 'up',
+              percent: '12.5',
+              caption: 'from last month',
+            }}
+          />
+          <AnalyticsCard
+            title={'Total Responses'}
+            icon={<UsersIcon size={16} />}
+            value={'1,284'}
+            change={{
+              direction: 'up',
+              percent: '12.5',
+              caption: 'from last month',
+            }}
+          />
+          <AnalyticsCard
+            title={'Total Responses'}
+            icon={<UsersIcon size={16} />}
+            value={'1,284'}
+            change={{
+              direction: 'up',
+              percent: '12.5',
+              caption: 'from last month',
+            }}
+          />
+        </section>
       </div>
     </div>
   );

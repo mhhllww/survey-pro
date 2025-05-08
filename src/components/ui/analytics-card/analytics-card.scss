@@ -1,0 +1,55 @@
+@use '@/scss/base/variables' as var;
+@use '@/scss/base/mixins' as mixins;
+@use '@/scss/base/typography' as typography;
+@use '@/scss/base/animation' as animation;
+@use "sass:map";
+
+.analytics-card {
+  background-color: var.$background;
+  border: 1px solid var.$border;
+  box-shadow: var.$shadow;
+  border-radius: var.$radius-md;
+  width: 100%;
+  padding: 24px;
+}
+
+.analytics-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.analytics-card__title {
+  font-size: var.$text-sm;
+  font-weight: var.$medium;
+}
+
+.analytics-card__icon-container {
+  width: 16px;
+  height: 16px;
+  opacity: 55%;
+}
+
+.analytics-card__value {
+  font-size: var.$text-lg;
+  font-weight: var.$bold;
+  height: 32px;
+}
+
+.analytics-card__change {
+  font-size: var.$text-xs;
+  height: 16px;
+}
+
+.analytics-card__change-content {
+  color: var.$ring;
+}
+
+.analytics-card__percent {
+  margin-left: 4px;
+}
+
+.analytics-card__caption {
+  color: var.$muted-foreground;
+}
