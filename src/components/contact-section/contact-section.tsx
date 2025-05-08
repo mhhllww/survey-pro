@@ -4,7 +4,7 @@ import '../contact-section/contact_section.scss';
 
 export const ContactSection = () => {
   return (
-    <section className='cta'>
+    <section id='contact' className='cta'>
       <div className='cta__content'>
         <h2 className='cta__title'>
           Ready to Start Collecting Valuable Insights?

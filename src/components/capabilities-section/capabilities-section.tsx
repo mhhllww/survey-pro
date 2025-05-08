@@ -5,7 +5,7 @@ import '../capabilities-section/capabilities_section.scss';
 
 export const CapabilitiesSection = () => {
   return (
-    <section className='capabilities'>
+    <section id='capabilities' className='capabilities'>
       <div className='capabilities__heading'>
         <h2 className='capabilities__title'>Perfect For Every Need</h2>
         <p className='capabilities__subtitle text-caption'>

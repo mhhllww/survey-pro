@@ -25,14 +25,26 @@ export const Header = () => {
             </button>
           </li>
           <li className='header-nav__item'>
-            <a href='/' className='header-nav__link'>
-              Pricing
-            </a>
+            <button
+              onClick={() =>
+                document
+                  .getElementById('capabilities')
+                  ?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+              }
+              className='header-nav__link'>
+              Capabilities
+            </button>
           </li>
           <li className='header-nav__item'>
-            <a href='/' className='header-nav__link'>
+            <button
+              onClick={() =>
+                document
+                  .getElementById('contact')
+                  ?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+              }
+              className='header-nav__link'>
               Contact
-            </a>
+            </button>
           </li>
         </ul>
       </nav>
