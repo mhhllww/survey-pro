@@ -6,7 +6,12 @@ import {
   UiDropdownMenuTrigger,
   UiDropdownMenuCheckboxItem,
 } from '@/shared/ui/dropdown-menu/dropdown-menu.tsx';
-import { ChevronDownIcon, UsersIcon } from 'lucide-react';
+import {
+  ChevronDownIcon,
+  UsersIcon,
+  CircleCheckBigIcon,
+  ClockIcon,
+} from 'lucide-react';
 import { useState } from 'react';
 import { AnalyticsCard } from '@/components/ui/analytics-card/analytics-card';
 
@@ -71,32 +76,32 @@ export const Analytics = () => {
             }}
           />
           <AnalyticsCard
-            title={'Total Responses'}
-            icon={<UsersIcon size={16} />}
-            value={'1,284'}
+            title={'Completion Rate'}
+            icon={<CircleCheckBigIcon size={16} />}
+            value={'86%'}
             change={{
               direction: 'up',
-              percent: '12.5',
+              percent: '2.3',
               caption: 'from last month',
             }}
           />
           <AnalyticsCard
-            title={'Total Responses'}
-            icon={<UsersIcon size={16} />}
-            value={'1,284'}
+            title={'Avg. Time to Complete'}
+            icon={<ClockIcon size={16} />}
+            value={'4m 12s'}
             change={{
-              direction: 'up',
-              percent: '12.5',
+              direction: 'down',
+              percent: '18',
               caption: 'from last month',
             }}
           />
           <AnalyticsCard
-            title={'Total Responses'}
+            title={'Satisfaction Score'}
             icon={<UsersIcon size={16} />}
-            value={'1,284'}
+            value={'4.2/5'}
             change={{
               direction: 'up',
-              percent: '12.5',
+              percent: '0.3',
               caption: 'from last month',
             }}
           />

@@ -60,6 +60,15 @@
 }
 
 .analytics-content__cards {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 16px;
+
+  @media (max-width: map.get(var.$screens, lg)) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: map.get(var.$screens, md)) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
