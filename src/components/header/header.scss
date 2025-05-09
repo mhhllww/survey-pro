@@ -1,0 +1,129 @@
+@use '@/scss/base/variables' as var;
+@use '@/scss/base/mixins' as mixins;
+
+.header {
+  @include mixins.container;
+  width: 100%;
+  display: flex;
+  position: sticky;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  top: 0;
+  border-bottom: var.$muted-foreground solid 0.1px;
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(7px);
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-logo__bg-logo {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: var.$foreground;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-logo__text {
+  font-weight: var.$bold;
+  font-size: var.$text-sm;
+  letter-spacing: var.$tracking-wider;
+}
+
+.header-nav__list {
+  display: flex;
+  gap: 30px;
+}
+
+.header-nav__link {
+  color: var.$muted-foreground;
+  transition: color 0.2s ease;
+  font-weight: var.$bold;
+  font-size: var.$text-sm;
+  letter-spacing: var.$tracking-wide;
+
+  &:hover {
+    color: var.$foreground;
+  }
+}
+
+.header-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.mobile-only {
+  display: block;
+}
+
+.desktop-only {
+  display: none;
+}
+
+@media (min-width: map-get(var.$screens, md)) {
+  .mobile-only {
+    display: none;
+  }
+
+  .desktop-only {
+    display: flex;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: map-get(var.$screens, md)) {
+  .header-logo__text {
+    font-size: var.$text-xs;
+  }
+
+  .header-nav__list {
+    gap: 20px;
+  }
+
+  .header-nav__link {
+    font-size: var.$text-sm;
+  }
+}
+
+@media (max-width: map-get(var.$screens, sm)) {
+  .header {
+    width: 400px;
+    padding: 0 1rem;
+  }
+
+  .header-logo__bg-logo {
+    width: 20px;
+    height: 20px;
+  }
+
+  .header-logo__text {
+    font-size: var.$text-xs;
+  }
+
+  .header-nav {
+    display: none;
+  }
+}
+
+@media (max-width: map-get(var.$screens, xs)) {
+  .header {
+    width: 400px;
+    padding: 0 1.5rem;
+  }
+
+  .header-logo__bg-logo {
+    width: 20px;
+    height: 20px;
+  }
+
+  .header-logo__text {
+    font-size: var.$text-xs;
+  }
+}

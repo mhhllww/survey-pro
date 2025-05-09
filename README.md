@@ -1,3 +1,3 @@
-# Survey Pro 
+# Survey Pro
 
 # Based on React, Typescript, SCSS

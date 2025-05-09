@@ -1,0 +1,77 @@
+@use '@/scss/base/variables' as var;
+@use '@/scss/base/mixins' as mixins;
+
+.footer {
+  @include mixins.container;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 40px;
+}
+
+.footer__container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.footer__copyright {
+  font-size: var.$text-sm;
+  color: var.$muted-foreground;
+}
+
+.footer__links {
+  display: flex;
+  gap: 1rem;
+  font-size: var.$text-sm;
+  color: var.$muted-foreground;
+}
+
+.footer__link {
+  border-bottom: 1px solid var.$muted-foreground;
+}
+
+@media (max-width: map-get(var.$screens, md)) {
+  .footer {
+    padding: 30px;
+  }
+
+  .footer__container {
+    gap: 20px;
+  }
+
+  .footer__links {
+    gap: var.$text-sm;
+  }
+}
+
+@media (max-width: map-get(var.$screens, sm)) {
+  .footer__container {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
+
+  .footer__copyright {
+    font-size: var.$text-sm;
+    order: 2;
+    width: 100%;
+    text-align: center;
+  }
+
+  .footer__links {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: var.$text-xs;
+    order: 1;
+    padding-left: 20px;
+  }
+}
+
+@media (max-width: map-get(var.$screens, xs)) {
+  .footer__links {
+    padding-left: 50px;
+  }
+}
