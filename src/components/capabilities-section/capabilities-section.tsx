@@ -1,6 +1,4 @@
-import { CircleCheckBig } from 'lucide-react';
-import { ChartColumn } from 'lucide-react';
-import { Users } from 'lucide-react';
+import { CircleCheckBigIcon, ChartColumnIcon, UsersIcon } from 'lucide-react';
 import '../capabilities-section/capabilities_section.scss';
 
 export const CapabilitiesSection = () => {
@@ -17,7 +15,7 @@ export const CapabilitiesSection = () => {
       <div className='capabilities__container'>
         <div className='capability-card'>
           <div className='capability-card__icon'>
-            <Users />
+            <UsersIcon />
           </div>
           <h3 className='capability-card__title'>Customer Feedback</h3>
           <p className='capability-card__text'>
@@ -28,7 +26,7 @@ export const CapabilitiesSection = () => {
 
         <div className='capability-card'>
           <div className='capability-card__icon'>
-            <CircleCheckBig />
+            <CircleCheckBigIcon />
           </div>
           <h3 className='capability-card__title'>Market Research</h3>
           <p className='capability-card__text'>
@@ -39,7 +37,7 @@ export const CapabilitiesSection = () => {
 
         <div className='capability-card'>
           <div className='capability-card__icon'>
-            <ChartColumn />
+            <ChartColumnIcon />
           </div>
           <h3 className='capability-card__title'>Employee Engagement</h3>
           <p className='capability-card__text'>

@@ -1,7 +1,7 @@
 import { UiButton } from '@/shared/ui/button/button.tsx';
 import '../hero-section/hero_section.scss';
-import HeroPhoto from '../../assets/heroPhoto.png';
-import { ArrowRight } from 'lucide-react';
+import HeroPhoto from '../../assets/HeroPhoto.jpeg';
+import { ArrowRightIcon } from 'lucide-react';
 
 export const HeroSection = () => {
   return (
@@ -14,12 +14,10 @@ export const HeroSection = () => {
           SurveyPro helps you gather insights, make data-driven decisions, and
           improve your products and services with powerful survey tools.
         </p>
-        <div className='hero-buttons'>
-          <UiButton className='hero-button__black' size='lg'>
-            Get Started
-            <ArrowRight />
-          </UiButton>
-        </div>
+        <UiButton className='hero-black_button' size='lg'>
+          Get Started
+          <ArrowRightIcon />
+        </UiButton>
       </div>
       <div className='hero-image'>
         <img src={HeroPhoto} alt='Survey' className='hero-image__image' />

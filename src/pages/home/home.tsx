@@ -4,15 +4,18 @@ import { FeaturesSection } from '@/components/features-section/features_section.
 import { CapabilitiesSection } from '@/components/capabilities-section/capabilities-section.tsx';
 import { ContactSection } from '@/components/contact-section/contact-section.tsx';
 import { Footer } from '@/components/footer/footer.tsx';
+import '@/scss/main.scss';
 
 export const Home = () => {
   return (
     <>
       <Header />
-      <HeroSection />
-      <FeaturesSection />
-      <CapabilitiesSection />
-      <ContactSection />
+      <main>
+        <HeroSection />
+        <FeaturesSection />
+        <CapabilitiesSection />
+        <ContactSection />
+      </main>
       <Footer />
     </>
   );

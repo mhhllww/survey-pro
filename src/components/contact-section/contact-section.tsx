@@ -1,5 +1,5 @@
 import { UiButton } from '@/shared/ui/button/button.tsx';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRightIcon } from 'lucide-react';
 import '../contact-section/contact_section.scss';
 
 export const ContactSection = () => {
@@ -15,12 +15,12 @@ export const ContactSection = () => {
         </p>
 
         <div className='cta__buttons'>
-          <UiButton className='cta-button__black' size='lg'>
+          <UiButton size='lg'>
             Get Started for Free
-            <ArrowRight />
+            <ArrowRightIcon />
           </UiButton>
 
-          <UiButton className='cta-button__white' size='lg'>
+          <UiButton design='outline' size='lg'>
             Contact Sales
           </UiButton>
         </div>

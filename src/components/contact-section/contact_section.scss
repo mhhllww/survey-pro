@@ -5,124 +5,95 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 15vh 0 20vh;
-  border-bottom: 1px solid #e5e7eb;
-  box-sizing: border-box;
+  padding: 130px 0 150px;
+  border-bottom: var.$border 1px solid;
+}
 
-  &__content {
-    display: flex;
+.cta__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cta__text {
+  font-size: var.$text-md;
+  color: var.$muted-foreground;
+  text-align: center;
+  width: 100%;
+  max-width: 550px;
+}
+
+.cta__buttons {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+@media (max-width: map-get(var.$screens, lg)) {
+  .cta__content {
+    gap: 18px;
+  }
+
+  .cta__text {
+    font-size: var.$text-md;
+    max-width: 500px;
+  }
+
+  .cta__buttons {
+    gap: 18px;
+  }
+}
+
+@media (max-width: map-get(var.$screens, md)) {
+  .cta__content {
+    gap: 16px;
+  }
+
+  .cta__text {
+    font-size: var.$text-md;
+    max-width: 450px;
+  }
+
+  .cta__buttons {
+    gap: 15px;
+  }
+}
+
+@media (max-width: map-get(var.$screens, sm)) {
+  .cta__content {
+    gap: 14px;
+  }
+
+  .cta__title {
+    font-size: var.$text-md;
+  }
+
+  .cta__text {
+    font-size: var.$text-sm;
+    width: 350px;
+  }
+
+  .cta__buttons {
     flex-direction: column;
-    align-items: center;
-    gap: 20px;
     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 5vw;
+    max-width: 280px;
+    gap: 12px;
   }
+}
 
-  &__title {
-  }
-
-  &__text {
-    font-size: 1.2rem;
-    color: dimgrey;
+@media (max-width: map-get(var.$screens, xs)) {
+  .cta__title {
+    width: 250px;
     text-align: center;
-    text-wrap: pretty;
-    width: 100%;
-    max-width: 550px;
-    line-height: 1.5;
   }
 
-  &__buttons {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  &-button__black {
-    height: 45px;
-    padding: 0 30px;
-    min-width: 160px;
-  }
-
-  &-button__white {
-    @extend .button__white;
-    border: 1px solid lightgray;
-    height: 45px;
-    min-width: 160px;
-  }
-
-  @media (max-width: map-get(var.$screens, lg)) {
-    padding: 14vh 0 18vh;
-
-    &__content {
-      gap: 18px;
-    }
-
-    &__text {
-      font-size: 1.15rem;
-      max-width: 500px;
-    }
-
-    &__buttons {
-      gap: 18px;
-    }
-  }
-
-  @media (max-width: map-get(var.$screens, md)) {
-    padding: 12vh 0 15vh;
-
-    &__content {
-      gap: 16px;
-    }
-
-    &__text {
-      font-size: 1.1rem;
-      max-width: 450px;
-      padding: 0 3vw;
-    }
-
-    &__buttons {
-      gap: 15px;
-    }
-
-    &-button__black,
-    &-button__white {
-      height: 48px;
-      padding: 0 25px;
-      min-width: 150px;
-    }
-  }
-
-  @media (max-width: map-get(var.$screens, sm)) {
-    padding: 10vh 0 12vh;
-
-    &__content {
-      gap: 14px;
-    }
-
-    &__title {
-      font-size: 1.3rem;
-    }
-
-    &__text {
-      font-size: 1rem;
-      padding: 0 5vw;
-    }
-
-    &__buttons {
-      flex-direction: column;
-      width: 100%;
-      max-width: 280px;
-      gap: 12px;
-    }
-
-    &-button__black,
-    &-button__white {
-      width: 100%;
-      height: 46px;
-      min-width: auto;
-    }
+  .cta__text {
+    font-size: var.$text-sm;
+    width: 300px;
   }
 }

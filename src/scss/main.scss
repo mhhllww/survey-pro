@@ -1,8 +1,11 @@
-@use 'base/variables';
+@use 'base/variables' as var;
 @use 'base/mixins';
 @use 'base/reset';
 @use 'base/typography';
 
 body {
-  font-family: variables.$font-segoe-ui;
+  font-family: var.$font-geist;
+  @include mixins.container;
 }
+
+

@@ -1,7 +1,5 @@
 import '../features-section/features_section.scss';
-import { PencilLine } from 'lucide-react';
-import { Users } from 'lucide-react';
-import { ChartColumn } from 'lucide-react';
+import { PencilLineIcon, UsersIcon, ChartColumnIcon } from 'lucide-react';
 import FeaturePhoto from '../../assets/FeaturePhoto.png';
 
 export const FeaturesSection = () => {
@@ -22,7 +20,7 @@ export const FeaturesSection = () => {
         <ul className='features__list'>
           <li className='features__item'>
             <span className='features__icon'>
-              <PencilLine />
+              <PencilLineIcon />
             </span>
             <div className='features__item-content'>
               <h3 className='features__item-title'>Intuitive Survey Builder</h3>
@@ -36,7 +34,7 @@ export const FeaturesSection = () => {
 
           <li className='features__item'>
             <span className='features__icon'>
-              <Users />
+              <UsersIcon />
             </span>
             <div className='features__item-content'>
               <h3 className='features__item-title'>
@@ -52,7 +50,7 @@ export const FeaturesSection = () => {
 
           <li className='features__item'>
             <span className='features__icon'>
-              <ChartColumn />
+              <ChartColumnIcon />
             </span>
             <div className='features__item-content'>
               <h3 className='features__item-title'>Advanced Analytics</h3>

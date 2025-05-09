@@ -1,173 +1,129 @@
 @use '@/scss/base/variables' as var;
+@use '@/scss/base/mixins' as mixins;
 
 .header {
+  @include mixins.container;
   width: 100%;
   display: flex;
   position: sticky;
   justify-content: space-between;
   align-items: center;
-  height: 8vh;
+  height: 60px;
   top: 0;
-  border-bottom: grey solid 0.1px;
-  padding-left: map-get(var.$padding-breakpoints, md);
-  padding-right: map-get(var.$padding-breakpoints, md);
+  border-bottom: var.$muted-foreground solid 0.1px;
   background-color: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(7px);
-
-  &-logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    &__bg-logo {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      background-color: black;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    &__text {
-      font-weight: var.$bold;
-      font-size: var.$text-sm;
-      letter-spacing: var.$tracking-wider;
-    }
-  }
-
-  &-nav {
-    &__list {
-      display: flex;
-      gap: 30px;
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    &__item {
-    }
-
-    &__link {
-      color: grey;
-      text-decoration: none;
-      transition: color 0.2s ease;
-      font-weight: var.$bold;
-      font-size: 0.9rem;
-      letter-spacing: var.$tracking-wide;
-
-      &:hover {
-        color: #000000;
-      }
-    }
-  }
-
-  &-actions {
-    display: flex;
-    gap: 10px;
-  }
-
-  @media (max-width: map-get(var.$screens, sm)) {
-    height: 7vh;
-    padding-left: map-get(var.$padding-breakpoints, xs);
-    padding-right: map-get(var.$padding-breakpoints, xs);
-
-    &-logo {
-      &__bg-logo {
-        width: 20px;
-        height: 20px;
-      }
-
-      &__text {
-        font-size: 0.7rem;
-        margin-right: 0.5rem;
-      }
-    }
-
-    &-nav {
-      margin-right: 0.5rem;
-
-      &__list {
-        gap: 12px;
-      }
-
-      &__link {
-        font-size: 0.7rem;
-      }
-    }
-
-    .button__white {
-      height: 4vh;
-      width: 14vw;
-      min-width: 60px;
-      font-size: 0.7rem;
-    }
-
-    .button__black {
-      height: 4vh;
-      width: 18vw;
-      min-width: 80px;
-      font-size: 0.7rem;
-    }
-  }
-
-  @media (max-width: map-get(var.$screens, md)) {
-    padding-left: map-get(var.$padding-breakpoints, sm);
-    padding-right: map-get(var.$padding-breakpoints, sm);
-
-    &-logo {
-      &__text {
-        font-size: var.$text-xs;
-      }
-    }
-
-    &-nav {
-      &__list {
-        gap: 20px;
-      }
-
-      &__link {
-        font-size: 0.8rem;
-      }
-    }
-
-    .button__white {
-      width: 6vw;
-      font-size: 0.8rem;
-    }
-
-    .button__black {
-      width: 9vw;
-      font-size: 0.8rem;
-    }
-  }
-
-  @media (max-width: map-get(var.$screens, lg)) {
-    .button__white{
-      width: 7vw;
-    }
-
-    .button__black{
-      width: 10vw;
-    }
-  }
 }
 
-.button__white {
-  color: var.$foreground;
-  background-color: var.$background;
-  font-weight: var.$semibold;
-  font-size: 0.9rem;
-  width: 4.5vw;
-  border: 0.5px solid lightgray;
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-logo__bg-logo {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: var.$foreground;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-logo__text {
+  font-weight: var.$bold;
+  font-size: var.$text-sm;
+  letter-spacing: var.$tracking-wider;
+}
+
+.header-nav__list {
+  display: flex;
+  gap: 30px;
+}
+
+.header-nav__link {
+  color: var.$muted-foreground;
+  transition: color 0.2s ease;
+  font-weight: var.$bold;
+  font-size: var.$text-sm;
+  letter-spacing: var.$tracking-wide;
 
   &:hover {
-    background-color: #f3f4f6;
+    color: var.$foreground;
   }
 }
 
-.button__black {
-  width: 7vw;
-  font-weight: var.$semibold;
-  font-size: 0.9rem;
+.header-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.mobile-only {
+  display: block;
+}
+
+.desktop-only {
+  display: none;
+}
+
+@media (min-width: map-get(var.$screens, md)) {
+  .mobile-only {
+    display: none;
+  }
+
+  .desktop-only {
+    display: flex;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: map-get(var.$screens, md)) {
+  .header-logo__text {
+    font-size: var.$text-xs;
+  }
+
+  .header-nav__list {
+    gap: 20px;
+  }
+
+  .header-nav__link {
+    font-size: var.$text-sm;
+  }
+}
+
+@media (max-width: map-get(var.$screens, sm)) {
+  .header {
+    width: 400px;
+    padding: 0 1rem;
+  }
+
+  .header-logo__bg-logo {
+    width: 20px;
+    height: 20px;
+  }
+
+  .header-logo__text {
+    font-size: var.$text-xs;
+  }
+
+  .header-nav {
+    display: none;
+  }
+}
+
+@media (max-width: map-get(var.$screens, xs)) {
+  .header {
+    width: 400px;
+    padding: 0 1.5rem;
+  }
+
+  .header-logo__bg-logo {
+    width: 20px;
+    height: 20px;
+  }
+
+  .header-logo__text {
+    font-size: var.$text-xs;
+  }
 }
