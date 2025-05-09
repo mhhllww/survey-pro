@@ -4,6 +4,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  GithubAuthProvider,
 } from 'firebase/auth';
 
 import { auth } from '@/shared/lib/firebase.ts';
@@ -18,6 +19,10 @@ export const loginUser = (email: string, password: string) => {
 
 export const loginWithGoogle = () => {
   return signInWithPopup(auth, new GoogleAuthProvider());
+};
+
+export const loginWithGithub = () => {
+  return signInWithPopup(auth, new GithubAuthProvider());
 };
 
 export const signOutUser = () => {
