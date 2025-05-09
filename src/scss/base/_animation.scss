@@ -137,3 +137,33 @@
   animation-name: slideOutToTopHalf;
   @include animate-out;
 }
+
+@keyframes side-out-to-right {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@mixin slide-out-to-right {
+  animation: side-out-to-right 0.5s ease-in-out forwards;
+}
+
+@keyframes slide-in-from-right {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@mixin slide-in-from-right {
+  animation: slide-in-from-right 0.3s ease-in-out forwards;
+}

@@ -1,0 +1,59 @@
+@use '@/scss/base/variables' as var;
+
+.toast-title {
+  color: var.$foreground;
+
+  font-size: var.$text-sm;
+  font-weight: var.$medium;
+
+  line-height: 1;
+  letter-spacing: var.$tracking-tight;
+}
+
+.toast-description {
+  color: var.$muted-foreground;
+
+  font-size: var.$text-xs;
+
+  line-height: var.$leading-relaxed;
+}
+
+.success {
+  svg {
+    color: var.$success;
+  }
+}
+
+.error {
+  svg {
+    color: var.$error;
+  }
+}
+
+.warning {
+  svg {
+    color: var.$warning;
+  }
+}
+
+.info {
+  svg {
+    color: var.$foreground;
+  }
+}
+
+[data-sonner-toast][data-styled='true'][class*='warning'] {
+  border-color: var.$warning;
+}
+
+[data-sonner-toast][data-styled='true'][class*='error'] {
+  border-color: var.$error;
+}
+
+[data-sonner-toast][data-styled='true'][class*='success'] {
+  border-color: var.$success;
+}
+
+[data-sonner-toast][data-styled='true'][class*='info'] {
+  border-color: var.$foreground;
+}
