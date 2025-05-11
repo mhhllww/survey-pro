@@ -1,0 +1,21 @@
+@use '@/scss/base/variables' as var;
+
+.survey-metrics {
+  width: 100%;
+  padding: 0 24px 24px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.survey-metrics__item{
+  display: flex;
+  flex-direction: column;
+}
+
+.survey-metrics__label{
+  color: var.$muted-foreground;
+}
+
+.survey-metrics__value{
+  font-weight: var.$semibold;
+}

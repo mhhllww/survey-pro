@@ -1,6 +1,6 @@
 import { UiButton } from '@/shared/ui/button/button.tsx';
-import { Settings } from '@/components/dashboard-header/Settings/Settings.tsx';
-import { NewSurvey } from '@/components/dashboard-header/New-Survey/New-Survey.tsx';
+import { Settings } from '@/components/dashboard-header/settings/settings.tsx';
+import { NewSurvey } from '@/components/dashboard-header/new-survey/new-survey.tsx';
 import '../dashboard-header/dashboard_header.scss';
 import { ChartColumnIcon, AlignRightIcon } from 'lucide-react';
 import {

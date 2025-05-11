@@ -1,0 +1,43 @@
+@use '@/scss/base/variables' as var;
+@use '@/scss/base/mixins' as mixins;
+
+.main-section {
+  @include mixins.container;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 32px;
+}
+
+.main-section__header{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.main-section__subtitle{
+  font-size: var.$text-md;
+  color: var.$muted-foreground;
+}
+
+.main-section__container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 1rem;
+}
+
+.main-section__recent-title{
+  width: 100%;
+  font-size: var.$text-lg;
+  margin-top: 40px;
+  margin-bottom: 16px;
+}
+
+.main-section__surveys{
+  display: grid;
+  gap: 16px;
+  width: 100%;
+}

@@ -19,12 +19,16 @@ import {
 } from '@/shared/ui/dropdown-menu/dropdown-menu.tsx';
 import { DropdownMenuTrigger } from '@radix-ui/react-dropdown-menu';
 
-export const NewSurvey = () => {
+interface NewSurveyProps {
+  buttonText?: string;
+}
+
+export const NewSurvey = ({ buttonText = 'New Survey' }: NewSurveyProps) => {
   return (
     <UiDialog>
       <UiDialogTriggerProps asChild>
         <UiButton>
-          <CirclePlusIcon /> New Survey
+          <CirclePlusIcon /> {buttonText}
         </UiButton>
       </UiDialogTriggerProps>
       <UiDialogContent>
