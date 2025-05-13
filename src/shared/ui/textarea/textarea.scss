@@ -31,6 +31,14 @@
     opacity: 0.5;
   }
 
+  &[data-error='true'] {
+    @include mixins.ring(1, var.$destructive);
+
+    &::placeholder {
+      color: var.$destructive;
+    }
+  }
+
   @media (min-width: 768px) {
     font-size: var.$text-sm;
   }
