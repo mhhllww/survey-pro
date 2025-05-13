@@ -1,4 +1,4 @@
-import { RouteProvider } from './route-provider';
+import { RouteProvider } from './providers/route-provider.tsx';
 import { Toaster } from '@/shared/ui/toast/toast';
 import { Provider } from 'react-redux';
 import { store } from '@/shared/lib/redux/store.ts';

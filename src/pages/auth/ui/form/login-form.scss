@@ -1,6 +1,5 @@
 @use '@/scss/base/variables' as var;
 @use '@/scss/base/mixins' as mixins;
-@use '@/scss/base/animation' as anim;
 @use "sass:map";
 
 .login-form {
@@ -42,13 +41,11 @@
 .login-form__footer-conditions {
   text-decoration: underline;
 }
+
 .login-form__footer-conditions:hover {
   cursor: pointer;
   color: var.$foreground;
 }
-
-
-
 
 
 .login-form-card {
@@ -80,11 +77,13 @@
   display: flex;
   justify-content: center;
 }
+
 .login-form-card__title {
   font-size: var.$text-md;
   font-weight: var.$semibold;
   line-height: var.$leading-tight;
 }
+
 .login-form-card__subtitle {
   font-size: var.$text-sm;
   color: var.$muted-foreground;
@@ -131,6 +130,7 @@
 .login-form-card__form-link {
   font-size: var.$text-sm;
 }
+
 .login-form-card__form-link:hover {
   text-decoration: underline;
 }

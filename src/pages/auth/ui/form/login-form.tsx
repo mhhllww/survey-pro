@@ -12,7 +12,7 @@ import {
   loginWithGithub,
   loginWithGoogle,
   registerUser,
-} from '@/api/auth/firebase-auth.ts';
+} from '@/shared/api/auth/firebase-auth.ts';
 
 import {
   UiForm,
