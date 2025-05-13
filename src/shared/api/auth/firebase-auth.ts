@@ -39,7 +39,7 @@ export const resetPassword = async (
   if (!user) {
     return;
   }
-  if (currentPassword !== newPassword) {
+  if (currentPassword === newPassword) {
     return;
   }
 
