@@ -7,7 +7,7 @@
   position: sticky;
   height: 60px;
   top: 0;
-  border-bottom: var.$muted-foreground solid 0.1px;
+  border-bottom: rgba(var.$muted-foreground, 0.4) 1px solid;
   background-color: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(7px);
 }
@@ -66,7 +66,7 @@
 
   .desktop-only {
     display: flex;
-    gap: 1rem;
+    gap: 8px;
   }
 }
 
@@ -110,11 +110,6 @@
 }
 
 @media (max-width: map-get(var.$screens, xs)) {
-  .header {
-    width: 400px;
-    padding: 0 1.5rem;
-  }
-
   .header-logo__bg-logo {
     width: 20px;
     height: 20px;
