@@ -11,10 +11,12 @@ export const Home = () => {
     <>
       <Header />
       <main>
-        <HeroSection />
-        <FeaturesSection />
-        <CapabilitiesSection />
-        <ContactSection />
+        <div className='container'>
+          <HeroSection />
+          <FeaturesSection />
+          <CapabilitiesSection />
+          <ContactSection />
+        </div>
       </main>
       <Footer />
     </>

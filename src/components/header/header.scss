@@ -2,17 +2,22 @@
 @use '@/scss/base/mixins' as mixins;
 
 .header {
-  @include mixins.container;
   width: 100%;
   display: flex;
   position: sticky;
-  justify-content: space-between;
-  align-items: center;
   height: 60px;
   top: 0;
-  border-bottom: var.$muted-foreground solid 0.1px;
+  border-bottom: rgba(var.$muted-foreground, 0.4) 1px solid;
   background-color: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(7px);
+}
+
+.header__content{
+  @include mixins.container;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .header-logo {
@@ -74,7 +79,7 @@
 
   .desktop-only {
     display: flex;
-    gap: 1rem;
+    gap: 16px;
   }
 }
 
@@ -83,8 +88,8 @@
     font-size: var.$text-xs;
   }
 
-  .header-nav__list {
-    gap: 20px;
+  .header-nav {
+    display: none;
   }
 
   .header-nav__link {
@@ -94,8 +99,14 @@
 
 @media (max-width: map-get(var.$screens, sm)) {
   .header {
-    width: 400px;
-    padding: 0 1rem;
+    padding: 0 16px;
+  }
+
+  .header-nav__content{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
   }
 
   .header-logo__bg-logo {
@@ -110,12 +121,16 @@
   .header-nav {
     display: none;
   }
+
+  .header-nav__list{
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 @media (max-width: map-get(var.$screens, xs)) {
   .header {
-    width: 400px;
-    padding: 0 1.5rem;
+    padding: 0 24px;
   }
 
   .header-logo__bg-logo {

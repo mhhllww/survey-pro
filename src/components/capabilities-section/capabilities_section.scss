@@ -21,7 +21,7 @@
 }
 
 .capabilities__subtitle {
-  font-size: var.$text-md;
+  font-size: var.$text-lg;
   color: var.$muted-foreground;
 }
 
@@ -58,18 +58,18 @@
 }
 
 .capability-card__title {
-  margin-top: 0.5rem;
-  font-size: var.$text-md;
+  margin-top: 8px;
+  font-size: var.$text-lg;
 }
 
 .capability-card__text {
-  font-size: 1rem;
+  font-size: var.$text-md;
   color: var.$muted-foreground;
   text-wrap: wrap;
   width: 100%;
   max-width: 260px;
   line-height: var.$leading-tight;
-  margin: 0.5rem 0;
+  margin: 8px 0;
 }
 
 @media (max-width: map-get(var.$screens, md)) {
@@ -121,6 +121,10 @@
 }
 
 @media (max-width: map-get(var.$screens, xs)) {
+  .capabilities__heading{
+    width: 250px;
+    text-align: center;
+  }
   .capabilities__subtitle {
     width: 300px;
   }

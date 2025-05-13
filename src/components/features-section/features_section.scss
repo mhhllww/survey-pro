@@ -1,214 +1,203 @@
 @use '@/scss/base/variables' as var;
-@use '@/components/header/header.scss';
 
 .features {
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: whitesmoke;
+  background: var.$muted;
   gap: 40px;
   padding-bottom: 100px;
+}
 
-  &__heading {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 100px;
-    gap: 12px;
-    text-align: center;
-  }
+.features__heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 100px;
+  gap: 12px;
+  text-align: center;
+}
 
-  &__label {
-    width: 80px;
-    height: 30px;
-    background-color: var.$foreground;
-    border-radius: var.$radius-lg;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: var.$input;
-    font-size: var.$text-sm;
-    font-weight: var.$semibold;
-  }
+.features__label {
+  width: 80px;
+  height: 30px;
+  background-color: var.$foreground;
+  border-radius: var.$radius-lg;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var.$input;
+  font-size: var.$text-sm;
+  font-weight: var.$semibold;
+}
 
-  &__subtitle {
-    font-size: var.$text-md;
-    color: var.$muted-foreground;
-  }
+.features__subtitle {
+  font-size: var.$text-lg;
+  color: var.$muted-foreground;
+}
 
-  &__body {
-    display: flex;
-    align-items: flex-start;
-  }
+.features__body {
+  display: flex;
+  align-items: flex-start;
+}
 
-  &__list {
-    width: 550px;
-    display: flex;
-    flex-direction: column;
-    margin-top: 70px;
-    gap: 25px;
-  }
+.features__list {
+  width: 550px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 70px;
+  gap: 25px;
+}
 
-  &__item {
-    display: flex;
-    gap: 15px;
+.features__item {
+  display: flex;
+  gap: 15px;
+}
 
-    &-content {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
+.features__item-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
 
-    &-title {
-      font-size: var.$text-md;
-    }
+.features__item-title {
+  font-size: var.$text-lg;
+}
 
-    &-text {
-      font-size: 1rem;
-      color: var.$muted-foreground;
-      max-width: 450px;
-    }
-  }
+.features__item-text {
+  font-size: var.$text-md;
+  color: var.$muted-foreground;
+  max-width: 450px;
+}
 
-  &__icon {
-    min-width: 20px;
-    height: 40px;
-    border-radius: var.$radius-lg;
-    background-color: var.$muted;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0;
-  }
+.features__icon {
+  height: 35px;
+  display: flex;
+  justify-content: start;
+  border-radius: var.$radius-lg;
+  align-items: center;
+  flex-shrink: 0;
+}
 
-  &__image-container {
-    width: 500px;
-    min-height: 400px;
-    border-radius: var.$radius-lg;
-    overflow: hidden;
-  }
+.features__image-container {
+  width: 500px;
+  min-height: 400px;
+  border-radius: var.$radius-lg;
+  overflow: hidden;
+}
 
-  &__image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
+.features__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 @media (max-width: map-get(var.$screens, lg)) {
-  .features {
-    &__body {
-      max-width: 850px;
-    }
-    &__list {
-      margin-top: 40px;
-    }
+  .features__body {
+    max-width: 850px;
+  }
+
+  .features__list {
+    margin-top: 40px;
   }
 }
 
 @media (max-width: map-get(var.$screens, md)) {
   .features {
     gap: 35px;
+    padding-bottom: 30px;
+  }
 
-    &__title {
-      font-size: var.$text-lg;
-    }
+  .features__title {
+    font-size: var.$text-lg;
+  }
 
-    &__subtitle {
-      font-size: var.$text-md;
-      padding: 0 80px;
-    }
+  .features__subtitle {
+    font-size: var.$text-md;
+    padding: 0 80px;
+  }
 
-    &__body {
-      flex-direction: column;
-      align-items: center;
-    }
+  .features__body {
+    flex-direction: column;
+    align-items: center;
+  }
 
-    &__list {
-      width: 450px;
-    }
+  .features__list {
+    width: 450px;
+  }
 
-    &__image-container {
-      order: -1;
-    }
+  .features__image-container {
+    order: -1;
   }
 }
 
 @media (max-width: map-get(var.$screens, sm)) {
   .features {
     gap: 30px;
+  }
 
-    &__heading {
-      gap: 10px;
-    }
+  .features__heading {
+    gap: 10px;
+  }
 
-    &__label {
-      width: 70px;
-      height: 26px;
-    }
+  .features__label {
+    width: 70px;
+    height: 26px;
+  }
 
-    &__title {
-      font-size: var.$text-md;
-    }
+  .features__title {
+    font-size: var.$text-lg;
+  }
 
-    &__subtitle {
-      font-size: var.$text-sm;
-    }
+  .features__subtitle {
+    font-size: var.$text-sm;
+  }
 
-    &__list {
-      width: 370px;
-    }
+  .features__list {
+    width: 370px
+  }
 
-    &__item {
-      gap: 12px;
+  .features__item {
+    gap: 12px;
+  }
 
-      &-title {
-        font-size: var.$text-sm;
-      }
+  .features__item-title {
+    font-size: var.$text-md;
+  }
 
-      &-text {
-        font-size: var.$text-sm;
-      }
-    }
-
-    &__icon {
-      min-width: 18px;
-      height: 36px;
-    }
-
-    &__image-container {
-      width: 400px;
-    }
-
-    &__image {
-      object-fit: cover;
-    }
+  .features__image-container{
+    width: 375px;
   }
 }
 
 @media (max-width: map-get(var.$screens, xs)) {
-  .features {
-    &__title {
-      width: 300px;
-    }
 
-    &__subtitle {
-      font-size: var.$text-xs;
-      width: 500px;
-    }
+  .features__heading{
+    width: 200px;
+  }
+  .features__subtitle{
+    width: 400px;
+  }
+  .features__image-container{
+    width: 320px;
+    height: 200px;
+  }
 
-    &__list {
-      width: 300px;
-    }
+  .features__list{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+  }
 
-    &__image-container {
-      width: 325px;
-    }
+  .features__item{
+    width: 325px;
+  }
 
-    &__image {
-      object-fit: cover;
-    }
+  .features__icon {
+    width: 18px;
+    height: 20px;
   }
 }

@@ -2,6 +2,7 @@ import { UiButton } from '@/shared/ui/button/button.tsx';
 import '../hero-section/hero_section.scss';
 import HeroPhoto from '../../assets/HeroPhoto.jpeg';
 import { ArrowRightIcon } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export const HeroSection = () => {
   return (
@@ -15,8 +16,12 @@ export const HeroSection = () => {
           improve your products and services with powerful survey tools.
         </p>
         <UiButton className='hero-black_button' size='lg'>
-          Get Started
-          <ArrowRightIcon />
+          <Link to='/register'>
+            <div className='hero-content__button'>
+              Get Started
+              <ArrowRightIcon />
+            </div>
+          </Link>
         </UiButton>
       </div>
       <div className='hero-image'>
