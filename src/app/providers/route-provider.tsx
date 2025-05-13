@@ -3,6 +3,9 @@ import { Home } from '@/pages/home/home.tsx';
 import { Login } from '@/pages/auth/ui/login.tsx';
 import { Register } from '@/pages/auth/ui/register.tsx';
 import { RouterPaths } from '@/app/consts/RouterPaths.ts';
+import { UiButton } from '@/shared/ui/button/button.tsx';
+import { CreateSurveyFormDialog } from '@/components/create-survey-form-dialog/create-survey-form-dialog.tsx';
+import { useState } from 'react';
 
 export const RouteProvider = () => {
   return (
@@ -11,8 +14,23 @@ export const RouteProvider = () => {
         <Route path={RouterPaths.HOME} element={<Home />} />
         <Route path={RouterPaths.LOGIN} element={<Login />} />
         <Route path={RouterPaths.REGISTER} element={<Register />} />
+        {/* TODO: временная заглушка */}
+        <Route path='/dashboard' element={<Page />} />
       </Routes>
     </BrowserRouter>
+  );
+};
+
+const Page = () => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <UiButton onClick={() => setOpen(true)}>create survey</UiButton>
+      {open && (
+        <CreateSurveyFormDialog onClose={() => setOpen(false)} open={open} />
+      )}
+    </>
   );
 };
 
