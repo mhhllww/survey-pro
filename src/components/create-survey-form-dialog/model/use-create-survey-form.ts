@@ -7,6 +7,7 @@ import {
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useCallback } from 'react';
 import { useMutation } from '@tanstack/react-query';
+import { useNavigate } from 'react-router-dom';
 
 type ReturnType = {
   form: UseFormReturn<CreateSurveyDto>;
@@ -15,8 +16,11 @@ type ReturnType = {
 };
 
 export function useCreateSurveyForm(): ReturnType {
+  const navigate = useNavigate();
+
   const mutation = useMutation({
-    mutationFn: createSurvey,
+    mutationFn: (dto: CreateSurveyDto) => createSurvey(dto),
+    onSuccess: (data) => navigate(`/survey/${data.id}`),
   });
 
   const form = useForm<CreateSurveyDto>({
@@ -24,7 +28,11 @@ export function useCreateSurveyForm(): ReturnType {
   });
 
   const onSubmit = useCallback(async (dto: CreateSurveyDto) => {
-    mutation.mutate(dto);
+    try {
+      mutation.mutate(dto);
+    } catch (e) {
+      console.log(e);
+    }
   }, []);
 
   return {
