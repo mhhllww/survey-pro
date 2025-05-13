@@ -1,16 +1,16 @@
 @use '../../../scss/base/variables' as var;
+@use '@/scss/base/mixins' as mixins;
 
 .input {
   display: flex;
   height: 2.25rem;
   width: 100%;
   border-radius: var.$radius-md;
-  border: 1px solid var.$muted-foreground;
+  border: 1px solid var.$border;
   background-color: transparent;
   padding: 0.25rem 0.75rem;
   font-size: var.$text-sm;
   box-shadow: var.$shadow;
-  transition: all ease-in-out 0.2s;
 
   &::file-selector-button {
     border: 0;
@@ -26,7 +26,7 @@
 
   &:focus-visible {
     outline: none;
-    box-shadow: var.$shadow;
+    @include mixins.ring(1, var.$muted-foreground)
   }
 
   &:disabled {
