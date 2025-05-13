@@ -15,10 +15,36 @@ import {
 import { useState } from 'react';
 import { AnalyticsCard } from '@/components/ui/analytics-card/analytics-card';
 
+import {
+  UiTabs,
+  UiTabsContent,
+  UiTabsList,
+  UiTabsTrigger,
+} from '@/shared/ui/tabs/tabs.tsx';
+import {
+  AnalyticsChartCard,
+  ChartDataItem,
+} from '@/components/ui/analytics-chart-card/analytics-chart-card.tsx';
+
 const surveys = [
   'Customer Satisfaction Survey',
   'Product Feedback Survey',
   'Employee Engagement Survey',
+];
+
+const surveyData: ChartDataItem[] = [
+  { month: 'Jan', people: 143 },
+  { month: 'Feb', people: 120 },
+  { month: 'Mar', people: 160 },
+  { month: 'Apr', people: 180 },
+  { month: 'May', people: 200 },
+  { month: 'Jun', people: 170 },
+  { month: 'Jul', people: 150 },
+  { month: 'Aug', people: 190 },
+  { month: 'Sep', people: 20 },
+  { month: 'Oct', people: 130 },
+  { month: 'Nov', people: 120 },
+  { month: 'Dec', people: 210 },
 ];
 
 export const Analytics = () => {
@@ -27,7 +53,7 @@ export const Analytics = () => {
   return (
     <div className={'analytics'}>
       <div className={'analytics-content'}>
-        <div className={'analytics-content__header'}>
+        <header className={'analytics-content__header'}>
           <div className={'analytics-content__header-text'}>
             <h2>Analytics</h2>
             <span className={'analytics-content__subtitle'}>
@@ -63,7 +89,7 @@ export const Analytics = () => {
               ))}
             </UiDropdownMenuContent>
           </UiDropdownMenu>
-        </div>
+        </header>
         <section className={'analytics-content__cards'}>
           <AnalyticsCard
             title={'Total Responses'}
@@ -106,6 +132,22 @@ export const Analytics = () => {
             }}
           />
         </section>
+        <div>
+          <UiTabs defaultValue='overview'>
+            <UiTabsList aria-label='Пример вкладок'>
+              <UiTabsTrigger value='overview'>Overview</UiTabsTrigger>
+              <UiTabsTrigger value='questions'>Questions</UiTabsTrigger>
+            </UiTabsList>
+
+            <UiTabsContent value='overview'>
+              <AnalyticsChartCard data={surveyData} />
+            </UiTabsContent>
+
+            <UiTabsContent value='questions'>
+              <span>Содержимое вкладки 2</span>
+            </UiTabsContent>
+          </UiTabs>
+        </div>
       </div>
     </div>
   );

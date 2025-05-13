@@ -1,7 +1,5 @@
 @use '@/scss/base/variables' as var;
 @use '@/scss/base/mixins' as mixins;
-@use '@/scss/base/typography' as typography;
-@use '@/scss/base/animation' as animation;
 @use "sass:map";
 
 .analytics {
@@ -12,6 +10,10 @@
   font-family: var.$font-segoe-ui;
   width: 1400px;
   margin: 40px 16px;
+
+  @media (max-width: map.get(var.$screens, sm)) {
+    margin: 20px 16px;
+  }
 }
 
 .analytics-content__header {
@@ -63,6 +65,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
+  margin-bottom: 32px;
 
   @media (max-width: map.get(var.$screens, lg)) {
     grid-template-columns: repeat(2, 1fr);
