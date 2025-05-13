@@ -1,0 +1,37 @@
+@use '@/scss/base/variables' as var;
+@use '@/scss/base/mixins' as mixins;
+
+.textarea {
+  resize: vertical;
+
+  display: flex;
+  min-height: 60px;
+  width: 100%;
+  padding: 8px 12px;
+
+  font-size: var.$text-md;
+
+  border-radius: var.$radius-md;
+  border: 1px solid var.$input;
+  background-color: transparent;
+
+  box-shadow: var.$shadow;
+
+  &::placeholder {
+    color: var.$muted-foreground;
+  }
+
+  &:focus-visible {
+    outline: none;
+    @include mixins.ring(1, var.$muted-foreground)
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  @media (min-width: 768px) {
+    font-size: var.$text-sm;
+  }
+}
