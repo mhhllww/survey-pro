@@ -2,7 +2,6 @@ import {
   UiSheet,
   UiSheetContent,
   UiSheetDescription,
-  UiSheetFooter,
   UiSheetHeader,
   UiSheetTitle,
   UiSheetTrigger,
@@ -11,46 +10,47 @@ import { UiButton } from '@/shared/ui/button/button.tsx';
 import { LockIcon, LogOutIcon, SettingsIcon } from 'lucide-react';
 import { UiLabel } from '@/shared/ui/label/label.tsx';
 import { UiInput } from '@/shared/ui/input/input.tsx';
+import '../settings/settings.scss';
 
 export const Settings = () => {
   return (
     <UiSheet>
       <UiSheetTrigger asChild>
         <UiButton design='outline'>
-          <a href='/'>
-            <SettingsIcon /> Settings
-          </a>
+          <SettingsIcon /> Settings
         </UiButton>
       </UiSheetTrigger>
       <UiSheetContent>
-        <UiSheetHeader>
-          <UiSheetTitle>Account Settings</UiSheetTitle>
-          <UiSheetDescription>Manage your account security.</UiSheetDescription>
-          <UiSheetTitle>
-            <LockIcon />
+        <div className='sheet-content'>
+          <UiSheetHeader>
+            <UiSheetTitle>Account Settings</UiSheetTitle>
+            <UiSheetDescription>
+              Manage your account security.
+            </UiSheetDescription>
+          </UiSheetHeader>
+          <div className='sheet-subtitle'>
+            <LockIcon className='sheet-icon' />
             Change Password
-          </UiSheetTitle>
-        </UiSheetHeader>
-        <div>
-          <div>
-            <UiLabel htmlFor='password'>Current Password</UiLabel>
-            <UiInput type='password' required />
           </div>
-          <div>
-            <UiLabel htmlFor='password'>New Password</UiLabel>
-            <UiInput type='password' required />
+          <div className='sheet-container'>
+            <div className='sheet-fields'>
+              <UiLabel htmlFor='password'>Current Password</UiLabel>
+              <UiInput type='password' required />
+            </div>
+            <div className='sheet-fields'>
+              <UiLabel htmlFor='password'>New Password</UiLabel>
+              <UiInput type='password' required />
+            </div>
+            <div className='sheet-fields'>
+              <UiLabel htmlFor='password'>Confirm New Password</UiLabel>
+              <UiInput type='password' required />
+            </div>
           </div>
-          <div>
-            <UiLabel htmlFor='password'>Confirm New Password</UiLabel>
-            <UiInput type='password' required />
-          </div>
-          <UiButton>Update Password</UiButton>
-        </div>
-        <UiSheetFooter>
-          <UiButton>
+          <UiButton size='lg'>Update Password</UiButton>
+          <UiButton design='outline' size='lg'>
             <LogOutIcon /> Sign Out
           </UiButton>
-        </UiSheetFooter>
+        </div>
       </UiSheetContent>
     </UiSheet>
   );

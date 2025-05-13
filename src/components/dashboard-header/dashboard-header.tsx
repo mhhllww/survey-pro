@@ -8,50 +8,64 @@ import {
   UiSheetTrigger,
   UiSheetContent,
 } from '@/shared/ui/sheet/sheet.tsx';
+import { Link } from 'react-router-dom';
 
 export const DashBoardHeader = () => {
   return (
-    <div className='header'>
-      <div className='header-logo'>
-        <div className='header-logo__bg-logo'>
-          <ChartColumnIcon color='white' />
+    <header className='header'>
+      <div className='header-content'>
+        <div className='header-logo'>
+          <div className='header-logo__bg-logo'>
+            <ChartColumnIcon color='white' />
+          </div>
+          <span className='header-logo__text'>SurveyPro</span>
         </div>
-        <span className='header-logo__text'>SurveyPro</span>
-      </div>
-      <nav className='header-nav'>
-        <ul className='header-nav__list'>
-          <UiButton design='link' className='header-nav__link'>
-            <li className='header-nav__item'>Dashboard</li>
-          </UiButton>
-          <UiButton design='link' className='header-nav__link'>
-            <li className='header-nav__item'>Surveys</li>
-          </UiButton>
-          <UiButton design='link' className='header-nav__link'>
-            <li className='header-nav__item'>Analytics</li>
-          </UiButton>
-        </ul>
-      </nav>
+        <nav className='header-nav'>
+          <ul className='header-nav__list'>
+            <UiButton design='link' asChild>
+              <Link to='/dashboard'>Dashboard</Link>
+            </UiButton>
+            <UiButton design='link' asChild>
+              <Link to='/surveys'>Surveys</Link>
+            </UiButton>
+            <UiButton design='link' asChild>
+              <Link to='/analytics'>Analytics</Link>
+            </UiButton>
+          </ul>
+        </nav>
 
-      <div className='header-actions'>
-        <div className='desktop-only'>
-          <Settings />
-          <NewSurvey />
-        </div>
+        <div className='header-actions'>
+          <div className='desktop-only'>
+            <Settings />
+            <NewSurvey />
+          </div>
 
-        <div className='mobile-only'>
-          <UiSheet>
-            <UiSheetTrigger asChild>
-              <UiButton design='link'>
-                <AlignRightIcon />
-              </UiButton>
-            </UiSheetTrigger>
-            <UiSheetContent>
-              <Settings />
-              <NewSurvey />
-            </UiSheetContent>
-          </UiSheet>
+          <div className='mobile-only'>
+            <UiSheet>
+              <UiSheetTrigger asChild>
+                <UiButton design='link'>
+                  <AlignRightIcon />
+                </UiButton>
+              </UiSheetTrigger>
+              <UiSheetContent>
+                <ul className='header-nav__list'>
+                  <UiButton design='link' asChild>
+                    <Link to='/dashboard'>Dashboard</Link>
+                  </UiButton>
+                  <UiButton design='link' asChild>
+                    <Link to='/surveys'>Surveys</Link>
+                  </UiButton>
+                  <UiButton design='link' asChild>
+                    <Link to='/analytics'>Analytics</Link>
+                  </UiButton>
+                </ul>
+                <Settings />
+                <NewSurvey />
+              </UiSheetContent>
+            </UiSheet>
+          </div>
         </div>
       </div>
-    </div>
+    </header>
   );
 };

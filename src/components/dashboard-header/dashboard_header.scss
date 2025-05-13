@@ -2,12 +2,9 @@
 @use '@/scss/base/mixins' as mixins;
 
 .header {
-  @include mixins.container;
   width: 100%;
   display: flex;
   position: sticky;
-  justify-content: space-between;
-  align-items: center;
   height: 60px;
   top: 0;
   border-bottom: var.$muted-foreground solid 0.1px;
@@ -15,10 +12,17 @@
   backdrop-filter: blur(7px);
 }
 
+.header-content {
+  @include mixins.container;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
 .header-logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 .header-logo__bg-logo {
@@ -40,18 +44,6 @@
 .header-nav__list {
   display: flex;
   gap: 30px;
-}
-
-.header-nav__link {
-  color: var.$muted-foreground;
-  transition: color 0.2s ease;
-  font-weight: var.$bold;
-  font-size: var.$text-sm;
-  letter-spacing: var.$tracking-wide;
-
-  &:hover {
-    color: var.$foreground;
-  }
 }
 
 .header-actions {
@@ -87,16 +79,16 @@
     gap: 20px;
   }
 
+  .header-nav{
+    display: none;
+  }
+
   .header-nav__link {
     font-size: var.$text-sm;
   }
 }
 
 @media (max-width: map-get(var.$screens, sm)) {
-  .header {
-    width: 400px;
-    padding: 0 1rem;
-  }
 
   .header-logo__bg-logo {
     width: 20px;
@@ -109,6 +101,11 @@
 
   .header-nav {
     display: none;
+  }
+
+  .header-nav__list{
+    display: flex;
+    flex-direction: column;
   }
 }
 

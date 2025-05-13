@@ -2,10 +2,15 @@
 @use '@/scss/base/mixins' as mixins;
 
 .main-section {
+  width: 100%;
+  padding: 40px 0;
+}
+
+.main-section__content{
   @include mixins.container;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 40px 32px;
 }
 
 .main-section__header{
@@ -40,4 +45,24 @@
   display: grid;
   gap: 16px;
   width: 100%;
+}
+
+@media (max-width: map-get(var.$screens, md)) {
+  .main-section__container{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: map-get(var.$screens, sm)) {
+  .main-section__container{
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .main-section__header{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    gap: 16px;
+  }
 }
