@@ -126,7 +126,7 @@
   }
 
   .features__list {
-    width: 450px;
+    width: 100%;
   }
 
   .features__image-container {
@@ -156,9 +156,9 @@
     font-size: var.$text-sm;
   }
 
-  .features__list {
-    width: 370px
-  }
+  //.features__list {
+  //  width: 370px
+  //}
 
   .features__item {
     gap: 12px;
@@ -173,13 +173,14 @@
   }
 }
 
-@media (max-width: map-get(var.$screens, xs)) {
+@media (max-width: map-get(var.$screens, md)) {
 
   .features__heading{
     width: 200px;
   }
   .features__subtitle{
-    width: 400px;
+    width: 100%;
+    padding: 0;
   }
   .features__image-container{
     width: 320px;

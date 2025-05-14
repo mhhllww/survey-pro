@@ -120,7 +120,7 @@
   }
 }
 
-@media (max-width: map-get(var.$screens, xs)) {
+@media (max-width: map-get(var.$screens, md)) {
   .capabilities__heading{
     width: 250px;
     text-align: center;

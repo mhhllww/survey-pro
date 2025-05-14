@@ -8,8 +8,11 @@ import {
   UiSheetContent,
 } from '@/shared/ui/sheet/sheet.tsx';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 export const Header = () => {
+  const [sheetOpened, setSheetOpened] = useState(false);
+
   return (
     <header className='header'>
       <div className='header__content'>
@@ -46,7 +49,7 @@ export const Header = () => {
 
         <div className='header-actions'>
           <div className='mobile-only'>
-            <UiSheet>
+            <UiSheet open={sheetOpened} onOpenChange={setSheetOpened}>
               <UiSheetTrigger asChild>
                 <UiButton design='link'>
                   <AlignRightIcon />
@@ -57,24 +60,30 @@ export const Header = () => {
                   <ul className='header-nav__list'>
                     <UiButton
                       design='link'
-                      onClick={() => scrollToBlock('features')}
-                      asChild
-                      className='header-nav__link'>
-                      <li className='header-nav__item'>Features</li>
+                      onClick={() => {
+                        scrollToBlock('features');
+                        setSheetOpened(false);
+                      }}
+                      asChild>
+                      <li>Features</li>
                     </UiButton>
                     <UiButton
                       design='link'
-                      onClick={() => scrollToBlock('capabilities')}
-                      asChild
-                      className='header-nav__link'>
-                      <li className='header-nav__item'>Capabilities</li>
+                      onClick={() => {
+                        scrollToBlock('capabilities');
+                        setSheetOpened(false);
+                      }}
+                      asChild>
+                      <li>Capabilities</li>
                     </UiButton>
                     <UiButton
                       design='link'
-                      onClick={() => scrollToBlock('contact')}
-                      asChild
-                      className='header-nav__link'>
-                      <li className='header-nav__item'>Contact</li>
+                      onClick={() => {
+                        scrollToBlock('contact');
+                        setSheetOpened(false);
+                      }}
+                      asChild>
+                      <li>Contact</li>
                     </UiButton>
                   </ul>
                   <UiButton design='outline' asChild>

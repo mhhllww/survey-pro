@@ -2,6 +2,7 @@
 @use '@/scss/base/mixins' as mixins;
 
 .header {
+  @include mixins.container;
   width: 100%;
   display: flex;
   position: sticky;
@@ -13,7 +14,6 @@
 }
 
 .header__content{
-  @include mixins.container;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -98,9 +98,6 @@
 }
 
 @media (max-width: map-get(var.$screens, sm)) {
-  .header {
-    padding: 0 16px;
-  }
 
   .header-nav__content{
     width: 100%;
@@ -129,10 +126,6 @@
 }
 
 @media (max-width: map-get(var.$screens, xs)) {
-  .header {
-    padding: 0 24px;
-  }
-
   .header-logo__bg-logo {
     width: 20px;
     height: 20px;

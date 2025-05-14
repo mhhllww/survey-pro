@@ -34,6 +34,10 @@
   justify-content: center;
 }
 
+.cta__title {
+  text-align: center;
+}
+
 @media (max-width: map-get(var.$screens, lg)) {
   .cta__content {
     gap: 18px;

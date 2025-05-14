@@ -107,7 +107,7 @@
   }
 }
 
-@media (max-width: map-get(var.$screens, xs)) {
+@media (max-width: map-get(var.$screens, md)) {
   .hero {
     padding: 60px 0;
     gap: 20px;
