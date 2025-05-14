@@ -1,0 +1,105 @@
+@use '@/scss/base/variables' as var;
+@use '@/components/hero-section/hero_section.scss';
+
+.cta {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 130px 0 150px;
+  border-bottom: var.$border 1px solid;
+}
+
+.cta__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cta__text {
+  font-size: var.$text-md;
+  color: var.$muted-foreground;
+  text-align: center;
+  width: 100%;
+  max-width: 550px;
+}
+
+.cta__buttons {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.cta__title {
+  text-align: center;
+}
+
+@media (max-width: map-get(var.$screens, lg)) {
+  .cta__content {
+    gap: 18px;
+  }
+
+  .cta__text {
+    font-size: var.$text-md;
+    max-width: 500px;
+  }
+
+  .cta__buttons {
+    gap: 18px;
+  }
+}
+
+@media (max-width: map-get(var.$screens, md)) {
+  .cta__content {
+    gap: 16px;
+  }
+
+  .cta__text {
+    font-size: var.$text-md;
+    max-width: 450px;
+  }
+
+  .cta__buttons {
+    gap: 15px;
+  }
+}
+
+@media (max-width: map-get(var.$screens, sm)) {
+  .cta__content {
+    gap: 14px;
+  }
+
+  .cta__title {
+    font-size: var.$text-lg;
+    width: 300px;
+    text-align: center;
+  }
+
+  .cta__text {
+    font-size: var.$text-sm;
+    width: 350px;
+  }
+
+  .cta__buttons {
+    flex-direction: column;
+    width: 100%;
+    max-width: 280px;
+    gap: 12px;
+  }
+}
+
+@media (max-width: map-get(var.$screens, xs)) {
+  .cta__title {
+    width: 250px;
+    text-align: center;
+  }
+
+  .cta__text {
+    font-size: var.$text-sm;
+    width: 300px;
+  }
+}

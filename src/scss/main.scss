@@ -1,8 +1,15 @@
-@use 'base/variables';
-@use 'base/mixins';
+@use 'base/variables' as var;
+@use 'base/mixins' as mixins;
 @use 'base/reset';
 @use 'base/typography';
 
 body {
-  font-family: variables.$font-segoe-ui;
+  font-family: var.$font-geist;
+  width: 100%;
+}
+
+.container{
+  @include mixins.container;
+  display: flex;
+  flex-direction: column;
 }

@@ -47,3 +47,19 @@
     margin-top: $space;
   }
 }
+
+@mixin ring(
+  $ring-size,
+  $ring-color,
+  $offset-size: 0,
+  $offset-color: transparent,
+  $inset: false
+) {
+  $r: if(unit($ring-size) == "", $ring-size * 1px, $ring-size);
+  $o: if(unit($offset-size) == "", $offset-size * 1px, $offset-size);
+  $in: if($inset, inset, null);
+
+  box-shadow:
+          #{$in} 0 0 0 $o $offset-color,
+          #{$in} 0 0 0 ($o + $r) $ring-color;
+}

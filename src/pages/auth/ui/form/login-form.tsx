@@ -9,9 +9,10 @@ import { FirebaseError } from 'firebase/app';
 
 import {
   loginUser,
+  loginWithGithub,
   loginWithGoogle,
   registerUser,
-} from '@/api/auth/firebase-auth.ts';
+} from '@/shared/api/auth/firebase-auth.ts';
 
 import {
   UiForm,
@@ -25,7 +26,7 @@ import {
 import { UiInput } from '@/shared/ui/input/input';
 import { UiButton } from '@/shared/ui/button/button';
 import {
-  AppleIcon,
+  GithubIcon,
   GoogleIcon,
   LogoIcon,
   HidePasswordIcon,
@@ -96,9 +97,9 @@ export function LoginForm({ action }: LoginFormProps) {
         </div>
 
         <div className='login-form-card__oauth'>
-          <UiButton design={'outline'} size={'md'}>
-            <AppleIcon />
-            <span>Login With Apple</span>
+          <UiButton design={'outline'} size={'md'} onClick={loginWithGithub}>
+            <GithubIcon />
+            <span>Login With Github</span>
           </UiButton>
           <UiButton onClick={loginWithGoogle} design='outline' size='md'>
             <GoogleIcon />
