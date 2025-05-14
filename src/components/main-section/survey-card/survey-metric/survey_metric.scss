@@ -19,3 +19,9 @@
 .survey-metrics__value{
   font-weight: var.$semibold;
 }
+
+@media (max-width: map-get(var.$screens, xs)) {
+  .survey-metrics{
+    gap: 10px;
+  }
+}

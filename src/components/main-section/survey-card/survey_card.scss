@@ -8,24 +8,30 @@
   border-radius: var.$radius-md;
 }
 
-.survey-card__header{
+.survey-card__header {
   display: flex;
   flex-direction: column;
   padding: 24px;
 }
 
-.survey-card__date{
+.survey-card__date {
   color: var.$muted-foreground;
 }
 
-.survey-card__title{
+.survey-card__title {
   letter-spacing: var.$tracking-wider;
 }
 
-.survey-card__actions{
+.survey-card__actions {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 24px 24px;
 }
+
+//@media (max-width: map-get(var.$screens, sm)) {
+//  .survey-card__title{
+//
+//  }
+//}
