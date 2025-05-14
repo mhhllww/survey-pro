@@ -34,9 +34,21 @@ import {
 import { UiButton } from '@/shared/ui/button/button';
 
 import './design-section.scss';
+import { useSurvey } from '@/pages/create-survey/model/use-survey.ts';
+import { useParams } from 'react-router-dom';
+import { useCreateQuestion } from '@/pages/create-survey/model/use-create-question.ts';
 
 export const DesignSection = () => {
   const form = useForm();
+  const { surveyId } = useParams();
+
+  if (!surveyId) return;
+
+  const { data } = useSurvey(surveyId);
+
+  const { createQuestionMutation } = useCreateQuestion(surveyId);
+
+  console.log('data', data);
 
   return (
     <section className={'design-section'}>
@@ -83,6 +95,17 @@ export const DesignSection = () => {
           <Dropdown />
         </div>
       </article>
+      <UiButton
+        onClick={() => {
+          createQuestionMutation({
+            title: 'test q from client 5',
+            description: 'desc',
+            type: 'text',
+            surveyId,
+          });
+        }}>
+        create question
+      </UiButton>
     </section>
   );
 };
