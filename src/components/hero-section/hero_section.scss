@@ -1,0 +1,121 @@
+@use '@/scss/base/variables' as var;
+
+.hero {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 130px 0;
+  gap: 10px;
+}
+
+.hero-content {
+  width: 100%;
+  //max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+.hero-content__headline {
+  max-width: 600px;
+}
+
+.hero-content__text {
+  font-size: var.$text-md;
+  color: var.$muted-foreground;
+  max-width: 550px;
+}
+
+.hero-image {
+  display: flex;
+}
+
+.hero-image__image {
+  max-height: 500px;
+  min-height: 400px;
+  object-fit: cover;
+  border-radius: var.$radius-lg;
+}
+
+.hero-black_button {
+  max-width: 150px;
+}
+
+.hero-content__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+@media (max-width: map-get(var.$screens, lg)) {
+  .hero-content__headline {
+    font-size: var.$text-2xl;
+  }
+
+  .hero-content__text {
+    font-size: var.$text-md;
+  }
+}
+
+@media (max-width: map-get(var.$screens, md)) {
+  .hero {
+    flex-direction: column;
+    padding: 100px 0;
+    gap: 40px;
+  }
+
+  .hero-content {
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-content__headline,
+  .hero-content__text {
+    max-width: 600px;
+  }
+
+  .hero-image {
+    justify-content: center;
+    align-items: center;
+    order: 1;
+  }
+}
+
+@media (max-width: map-get(var.$screens, sm)) {
+  .hero {
+    padding: 80px 0;
+    gap: 30px;
+  }
+
+  .hero-content {
+    width: 100%;
+    max-width: 600px;
+  }
+
+  .hero-content__headline {
+    font-size: var.$text-lg;
+    width: 300px;
+    max-width: 100%;
+  }
+
+  .hero-content__text {
+    font-size: var.$text-sm;
+    width: 350px;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: map-get(var.$screens, md)) {
+  .hero {
+    padding: 60px 0;
+    gap: 20px;
+  }
+
+  .hero-image__image {
+    width: 100%;
+    max-width: 350px;
+    min-height: 300px;
+  }
+}

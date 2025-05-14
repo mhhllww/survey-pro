@@ -7,6 +7,7 @@ $padding-breakpoints: (
 );
 
 $screens: (
+  xs: 375px,
   sm: 480px,
   md: 768px,
   lg: 1024px,
@@ -22,11 +23,12 @@ $radius-sm: 4px;
 // font-family
 $font-code: 'JetBrains Mono', monospace;
 $font-segoe-ui: 'Segoe UI', 'Roboto';
+$font-geist: 'Geist', sans-serif;
 
 // font-size
 $text-xs: 0.75rem;
 $text-sm: 0.875rem;
-$text-md: 1.25rem;
+$text-md: 1rem;
 $text-lg: 1.5rem;
 $text-xl: 2rem;
 $text-2xl: 2.5rem;
