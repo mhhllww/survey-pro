@@ -20,9 +20,7 @@ export interface ChartData {
 
 export const AnalyticsChartCard = ({ data }: ChartData) => {
   if (data.length === 0) {
-    return (
-      <span className={'chart-card-warning'}>Нет данных для отображения</span>
-    );
+    return <span className={'chart-card-warning'}>No data to display</span>;
   }
 
   return (

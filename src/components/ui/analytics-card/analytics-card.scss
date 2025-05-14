@@ -43,11 +43,14 @@
 }
 
 .analytics-card__change-content {
+  display: flex;
+  align-items: center;
+  gap: 4px;
   color: var.$ring;
 }
 
 .analytics-card__percent {
-  margin-left: 4px;
+  margin-left: -4px;
 }
 
 .analytics-card__caption {
