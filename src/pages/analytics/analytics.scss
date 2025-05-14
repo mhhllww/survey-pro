@@ -9,10 +9,10 @@
 .analytics-content {
   font-family: var.$font-segoe-ui;
   width: 1400px;
-  margin: 40px 16px;
+  margin: 20px 16px;
 
-  @media (max-width: map.get(var.$screens, sm)) {
-    margin: 20px 16px;
+  @media (min-width: map.get(var.$screens, sm)) {
+    margin: 40px 16px;
   }
 }
 

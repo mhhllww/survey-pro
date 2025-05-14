@@ -32,10 +32,8 @@
 }
 
 .chart-card__content {
+  height: 250px;
 
-  @media (max-width: map.get(var.$screens, sm)) {
-    height: 250px;
-  }
 
   @media (min-width: map.get(var.$screens, md)) {
     height: 300px;
@@ -51,10 +49,10 @@
 }
 
 .chart-card__xaxis {
-  font-size: var.$text-xs;
+  font-size: 8px;
 
-  @media (max-width: map.get(var.$screens, sm)) {
-    font-size: 8px;
+  @media (min-width: map.get(var.$screens, sm)) {
+    font-size: var.$text-xs;
   }
 }
 
