@@ -49,3 +49,12 @@
     height: 400px;
   }
 }
+
+.chart-card__xaxis {
+  font-size: var.$text-xs;
+
+  @media (max-width: map.get(var.$screens, sm)) {
+    font-size: 8px;
+  }
+}
+

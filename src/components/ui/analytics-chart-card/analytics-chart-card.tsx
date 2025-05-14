@@ -33,9 +33,13 @@ export const AnalyticsChartCard = ({ data }: ChartData) => {
       </header>
       <div className={'chart-card__content'}>
         <ResponsiveContainer width='100%' height='100%'>
-          <BarChart data={data}>
+          <BarChart data={data} margin={{ left: -20 }}>
             <CartesianGrid vertical={false} strokeOpacity={0.5} />
-            <XAxis dataKey='month' fontSize={8} interval={0} angle={-45} />
+            <XAxis
+              dataKey='month'
+              interval={0}
+              className={'chart-card__xaxis'}
+            />
             <YAxis />
             <Tooltip />
             <Bar
