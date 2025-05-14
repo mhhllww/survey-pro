@@ -20,7 +20,7 @@ export function useCreateSurveyForm(): ReturnType {
 
   const mutation = useMutation({
     mutationFn: (dto: CreateSurveyDto) => createSurvey(dto),
-    onSuccess: (data) => navigate(`/survey/${data.id}`),
+    onSuccess: (data) => navigate(`/dashboard/survey/create/${data.id}`),
   });
 
   const form = useForm<CreateSurveyDto>({
