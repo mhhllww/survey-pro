@@ -1,3 +1,5 @@
+@use '@/scss/base/variables' as var;
+
 .contact-dialog__content {
   max-width: 90vw;
   width: 100%;
@@ -23,7 +25,7 @@
   align-self: flex-end;
 }
 
-@media (min-width: 768px) {
+@media (min-width: map-get(var.$screens, md)) {
   .contact-dialog__content {
     max-width: 500px;
   }

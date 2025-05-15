@@ -27,7 +27,7 @@
   object-fit: cover;
 }
 
-@media (min-width: 768px) {
+@media (min-width: map-get(var.$screens, md)) {
   .hero {
     padding-top: 96px;
     padding-bottom: 96px;
@@ -46,7 +46,7 @@
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: map-get(var.$screens, lg)) {
   .hero {
     flex-direction: row;
     gap: 40px;
@@ -59,7 +59,7 @@
   }
 }
 
-@media (min-width: 1440px) {
+@media (min-width: map-get(var.$screens, xl)) {
   .hero {
     padding-top: 192px;
     padding-bottom: 192px;

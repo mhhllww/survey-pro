@@ -65,7 +65,7 @@ h6 {
   letter-spacing: var.$tracking-wide;
 }
 
-@media (min-width: 640px) {
+@media (min-width: map-get(var.$screens, sm)) {
   h1 {
     font-size: var.$text-6xl;
     line-height: var.$leading-base;

@@ -79,7 +79,7 @@
   gap: 8px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: map-get(var.$screens, md)) {
   .header-nav__list {
     display: flex;
   }

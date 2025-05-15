@@ -81,7 +81,7 @@
   object-fit: cover;
 }
 
-@media (min-width: 768px) {
+@media (min-width: map-get(var.$screens, md)) {
   .features-container {
     padding-top: 96px;
     padding-bottom: 96px;
@@ -101,7 +101,7 @@
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: map-get(var.$screens, lg)) {
   .features-container {
     padding-top: 128px;
     padding-bottom: 128px;
@@ -113,7 +113,7 @@
   }
 }
 
-@media (min-width: 1440px) {
+@media (min-width: map-get(var.$screens, xl)) {
   .features-container {
     padding-top: 192px;
     padding-bottom: 192px;

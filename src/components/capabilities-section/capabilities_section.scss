@@ -55,7 +55,7 @@
   color: var.$muted-foreground;
 }
 
-@media (min-width: 768px) {
+@media (min-width: map-get(var.$screens, md)) {
   .capabilities {
     padding-top: 96px;
     padding-bottom: 96px;
@@ -70,7 +70,7 @@
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: map-get(var.$screens, lg)) {
   .capabilities {
     padding-top: 128px;
     padding-bottom: 128px;
@@ -81,93 +81,9 @@
   }
 }
 
-@media (min-width: 1440px) {
+@media (min-width: map-get(var.$screens, xl)) {
   .capabilities {
     padding-top: 192px;
     padding-bottom: 192px;
   }
 }
-
-//
-//.capability-card__text {
-//  font-size: var.$text-md;
-//  color: var.$muted-foreground;
-//  text-wrap: wrap;
-//  width: 100%;
-//  max-width: 260px;
-//  line-height: var.$leading-tight;
-//  margin: 8px 0;
-//}
-//
-//@media (max-width: map-get(var.$screens, md)) {
-//  .capabilities__subtitle {
-//    font-size: var.$text-md;
-//    display: flex;
-//    text-align: center;
-//  }
-//
-//  .capabilities__container {
-//    flex-direction: column;
-//  }
-//
-//  .capability-card {
-//    max-width: 400px;
-//    padding: 16px;
-//  }
-//
-//  .capability-card__icon {
-//    width: 40px;
-//    height: 40px;
-//  }
-//
-//  .capability-card__text {
-//    font-size: var.$text-sm;
-//    max-width: 100%;
-//  }
-//}
-//
-//@media (max-width: map-get(var.$screens, sm)) {
-//  .capabilities__subtitle {
-//    width: 400px;
-//  }
-//
-//  .capability-card {
-//    max-width: 350px;
-//    padding: 8px;
-//  }
-//
-//  .capability-card__icon {
-//    width: 20px;
-//    height: 20px;
-//  }
-//
-//  .capability-card__text {
-//    font-size: var.$text-sm;
-//    max-width: 100%;
-//  }
-//}
-//
-//@media (max-width: map-get(var.$screens, md)) {
-//  .capabilities__heading{
-//    width: 250px;
-//    text-align: center;
-//  }
-//  .capabilities__subtitle {
-//    width: 300px;
-//  }
-//
-//  .capability-card {
-//    max-width: 350px;
-//    padding: 8px;
-//  }
-//
-//  .capability-card__icon {
-//    width: 20px;
-//    height: 20px;
-//  }
-//
-//  .capability-card__text {
-//    font-size: var.$text-sm;
-//    max-width: 100%;
-//  }
-//}
