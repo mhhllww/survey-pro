@@ -3,8 +3,13 @@ import { ArrowRightIcon } from 'lucide-react';
 import '../contact-section/contact_section.scss';
 import { Link } from 'react-router-dom';
 import { RouterPaths } from '@/app/consts/RouterPaths.ts';
+import { useAppDispatch } from '@/shared/lib/redux/hooks.ts';
+import { systemSlice } from '@/store/system-slice.ts';
+import { CONTACT_DIALOG_KEY } from '@/components/dialog-contact/consts/key.ts';
 
 export const ContactSection = () => {
+  const dispatch = useAppDispatch();
+
   return (
     <section id='contact' className='cta-container'>
       <div className='cta'>
@@ -23,7 +28,14 @@ export const ContactSection = () => {
               <ArrowRightIcon />
             </Link>
           </UiButton>
-          <UiButton design='outline' size='lg'>
+          <UiButton
+            design='outline'
+            size='lg'
+            onClick={() =>
+              dispatch(
+                systemSlice.actions.openModal({ key: CONTACT_DIALOG_KEY })
+              )
+            }>
             Contact Sales
           </UiButton>
         </div>
