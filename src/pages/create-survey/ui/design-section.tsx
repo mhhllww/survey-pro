@@ -37,6 +37,8 @@ import './design-section.scss';
 import { useSurvey } from '@/pages/create-survey/model/use-survey.ts';
 import { useParams } from 'react-router-dom';
 import { useCreateQuestion } from '@/pages/create-survey/model/use-create-question.ts';
+import { QuestionResponse } from '@/api/question/question-schema';
+import { useCreateAnswer } from '@/pages/create-survey/model/use-create-answer.ts';
 
 export const DesignSection = () => {
   const form = useForm();
@@ -47,8 +49,6 @@ export const DesignSection = () => {
   const { data } = useSurvey(surveyId);
 
   const { createQuestionMutation } = useCreateQuestion(surveyId);
-
-  console.log('data', data);
 
   return (
     <section className={'design-section'}>
@@ -92,49 +92,172 @@ export const DesignSection = () => {
       <article className={'design-section__questions'}>
         <div className={'questions__header'}>
           <h3>Questions</h3>
-          <Dropdown />
+          <UiDropdownMenu>
+            <UiDropdownMenuTrigger asChild>
+              <UiButton design={'outline'} size={'md'}>
+                <ChevronDown />
+                Add Question
+              </UiButton>
+            </UiDropdownMenuTrigger>
+            <UiDropdownMenuContent>
+              <UiDropdownMenuGroup>
+                <UiDropdownMenuItem
+                  onClick={() => {
+                    createQuestionMutation({
+                      title: 'New question',
+                      description: 'Your Description here',
+                      type: 'radio',
+                      surveyId,
+                    });
+                  }}>
+                  <CheckSquare /> One Choice
+                </UiDropdownMenuItem>
+
+                <UiDropdownMenuItem
+                  onClick={() => {
+                    createQuestionMutation({
+                      title: 'New question',
+                      description: 'Your Description here',
+                      type: 'checkbox',
+                      surveyId,
+                    });
+                  }}>
+                  <ListChecks /> Multiple Choice
+                </UiDropdownMenuItem>
+
+                <UiDropdownMenuItem
+                  onClick={() => {
+                    createQuestionMutation({
+                      title: 'New question',
+                      description: 'Your Description here',
+                      type: 'text',
+                      surveyId,
+                    });
+                  }}>
+                  <Type /> Text
+                </UiDropdownMenuItem>
+
+                <UiDropdownMenuItem
+                  onClick={() => {
+                    createQuestionMutation({
+                      title: 'New question',
+                      description: 'Your Description here',
+                      type: 'paragraph',
+                      surveyId,
+                    });
+                  }}>
+                  <AlignLeft /> Paragraph
+                </UiDropdownMenuItem>
+              </UiDropdownMenuGroup>
+            </UiDropdownMenuContent>
+          </UiDropdownMenu>
         </div>
+        <ul className={'questions__list'}>
+          {!data?.questions.length && <span>Create your first question</span>}
+          {data?.questions.map((question, index) => (
+            <QuestionBody
+              key={index}
+              type={question.type}
+              title={question.title}
+              description={question.description}
+              answers={question.answers}
+            />
+          ))}
+        </ul>
       </article>
-      <UiButton
-        onClick={() => {
-          createQuestionMutation({
-            title: 'test q from client 5',
-            description: 'desc',
-            type: 'text',
-            surveyId,
-          });
-        }}>
-        create question
-      </UiButton>
     </section>
   );
 };
 
-const Dropdown = () => {
+const QuestionBody = ({
+  title,
+  description,
+  answers,
+  type,
+}: QuestionResponse) => {
+  const { surveyId } = useParams();
+
+  if (!surveyId) return;
+
+  // FIXME: ID
+  const { createAnswerMutation } = useCreateAnswer(surveyId, 0);
+
   return (
-    <UiDropdownMenu>
-      <UiDropdownMenuTrigger asChild>
-        <UiButton design={'outline'} size={'md'}>
-          <ChevronDown />
-          Add Question
-        </UiButton>
-      </UiDropdownMenuTrigger>
-      <UiDropdownMenuContent>
-        <UiDropdownMenuGroup>
-          <UiDropdownMenuItem>
-            <ListChecks /> Multiple Choice
-          </UiDropdownMenuItem>
-          <UiDropdownMenuItem>
-            <CheckSquare /> Checkbox
-          </UiDropdownMenuItem>
-          <UiDropdownMenuItem>
-            <Type /> Text
-          </UiDropdownMenuItem>
-          <UiDropdownMenuItem>
-            <AlignLeft /> Paragraph
-          </UiDropdownMenuItem>
-        </UiDropdownMenuGroup>
-      </UiDropdownMenuContent>
-    </UiDropdownMenu>
+    <li>
+      {type}
+      <h4>{title}</h4>
+      <p>{description}</p>
+      {type === 'text' && (
+        <div>
+          {answers.map((answer, index) => (
+            <div key={index}>
+              {answer.title}
+              <UiInput placeholder={'Enter your answer'} />
+            </div>
+          ))}
+          {/*FIXME: ID*/}
+          <UiButton
+            design={'outline'}
+            onClick={() => {
+              createAnswerMutation({
+                title: 'New Text answer',
+                respondents: [],
+                questionId: 0,
+                surveyId,
+              });
+            }}>
+            Add Answer
+          </UiButton>
+        </div>
+      )}
+      {type === 'paragraph' && (
+        <div>
+          <UiButton
+            design={'outline'}
+            onClick={() => {
+              createAnswerMutation({
+                title: 'New Paragraph Answer',
+                respondents: [],
+                questionId: 0,
+                surveyId,
+              });
+            }}>
+            Add Answer
+          </UiButton>
+        </div>
+      )}
+      {type === 'radio' && (
+        <div>
+          <UiButton
+            design={'outline'}
+            onClick={() => {
+              createAnswerMutation({
+                title: 'New Radio Answer',
+                respondents: [],
+                questionId: 0,
+                surveyId,
+              });
+            }}>
+            Add Answer
+          </UiButton>
+        </div>
+      )}
+      {type === 'checkbox' && (
+        <div>
+          <UiButton
+            design={'outline'}
+            onClick={() => {
+              createAnswerMutation({
+                title: 'New Checkbox Answer',
+                respondents: [],
+                questionId: 0,
+                surveyId,
+              });
+            }}>
+            Add Answer
+          </UiButton>
+        </div>
+      )}
+    </li>
   );
 };
