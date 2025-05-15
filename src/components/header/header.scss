@@ -2,19 +2,21 @@
 @use '@/scss/base/mixins' as mixins;
 
 .header {
-  @include mixins.container;
-  width: 100%;
-  display: flex;
   position: sticky;
-  height: 60px;
   top: 0;
-  border-bottom: rgba(var.$muted-foreground, 0.4) 1px solid;
-  background-color: rgba(255, 255, 255, 0.5);
+  left: 0;
+
+  width: 100%;
+  height: 60px;
+
+  border-bottom: 1px solid var.$border;
   backdrop-filter: blur(7px);
 }
 
-.header__content{
+.header__content {
+  @include mixins.container;
   width: 100%;
+  height: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -27,111 +29,70 @@
 }
 
 .header-logo__bg-logo {
-  width: 30px;
-  height: 30px;
+  padding: 5px;
   border-radius: 50%;
   background-color: var.$foreground;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  svg {
+    min-width: 20px;
+    min-height: 20px;
+  }
 }
 
 .header-logo__text {
   font-weight: var.$bold;
-  font-size: var.$text-sm;
   letter-spacing: var.$tracking-wider;
 }
 
 .header-nav__list {
-  display: flex;
+  display: none;
   gap: 30px;
 }
 
-.header-nav__link {
-  color: var.$muted-foreground;
-  transition: color 0.2s ease;
-  font-weight: var.$bold;
-  font-size: var.$text-sm;
-  letter-spacing: var.$tracking-wide;
+.header-nav__list_sheet {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
 
-  &:hover {
-    color: var.$foreground;
-  }
+.header-nav__content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .header-actions {
-  display: flex;
+  display: none;
   gap: 10px;
 }
 
-.mobile-only {
+.header-sheet {
   display: block;
 }
 
-.desktop-only {
+.header-btns {
   display: none;
+  gap: 8px;
 }
 
-@media (min-width: map-get(var.$screens, md)) {
-  .mobile-only {
-    display: none;
-  }
-
-  .desktop-only {
+@media (min-width: 768px) {
+  .header-nav__list {
     display: flex;
-    gap: 16px;
-  }
-}
-
-@media (max-width: map-get(var.$screens, md)) {
-  .header-logo__text {
-    font-size: var.$text-xs;
   }
 
-  .header-nav {
-    display: none;
+  .header-nav__content {
+    flex-direction: row;
   }
 
-  .header-nav__link {
-    font-size: var.$text-sm;
-  }
-}
-
-@media (max-width: map-get(var.$screens, sm)) {
-
-  .header-nav__content{
-    width: 100%;
+  .header-btns {
     display: flex;
-    flex-direction: column;
-    gap: 16px;
   }
 
-  .header-logo__bg-logo {
-    width: 20px;
-    height: 20px;
-  }
-
-  .header-logo__text {
-    font-size: var.$text-xs;
-  }
-
-  .header-nav {
+  .header-sheet {
     display: none;
-  }
-
-  .header-nav__list{
-    display: flex;
-    flex-direction: column;
-  }
-}
-
-@media (max-width: map-get(var.$screens, xs)) {
-  .header-logo__bg-logo {
-    width: 20px;
-    height: 20px;
-  }
-
-  .header-logo__text {
-    font-size: var.$text-xs;
   }
 }

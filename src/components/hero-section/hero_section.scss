@@ -1,121 +1,71 @@
 @use '@/scss/base/variables' as var;
+@use '@/scss/base/mixins' as mixins;
 
 .hero {
+  @include mixins.container;
   width: 100%;
+  padding-top: 60px;
+  padding-bottom: 60px;
   display: flex;
-  justify-content: center;
-  padding: 130px 0;
-  gap: 10px;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .hero-content {
-  width: 100%;
-  //max-width: 700px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 20px;
-}
-
-.hero-content__headline {
-  max-width: 600px;
 }
 
 .hero-content__text {
-  font-size: var.$text-md;
+  margin: 8px 0 16px 0;
   color: var.$muted-foreground;
-  max-width: 550px;
 }
 
 .hero-image {
-  display: flex;
-}
-
-.hero-image__image {
-  max-height: 500px;
-  min-height: 400px;
+  width: 100%;
+  border-radius: var.$radius-md;
   object-fit: cover;
-  border-radius: var.$radius-lg;
 }
 
-.hero-black_button {
-  max-width: 150px;
-}
-
-.hero-content__button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-}
-
-@media (max-width: map-get(var.$screens, lg)) {
-  .hero-content__headline {
-    font-size: var.$text-2xl;
-  }
-
-  .hero-content__text {
-    font-size: var.$text-md;
-  }
-}
-
-@media (max-width: map-get(var.$screens, md)) {
+@media (min-width: 768px) {
   .hero {
-    flex-direction: column;
-    padding: 100px 0;
-    gap: 40px;
+    padding-top: 96px;
+    padding-bottom: 96px;
   }
 
-  .hero-content {
-    align-items: center;
-    text-align: center;
-  }
-
-  .hero-content__headline,
   .hero-content__text {
-    max-width: 600px;
+    font-size: var.$text-xl;
+  }
+
+  .hero-content__btn {
+    width: fit-content;
   }
 
   .hero-image {
-    justify-content: center;
-    align-items: center;
-    order: 1;
+    max-width: 500px;
   }
 }
 
-@media (max-width: map-get(var.$screens, sm)) {
+@media (min-width: 1024px) {
   .hero {
-    padding: 80px 0;
-    gap: 30px;
+    flex-direction: row;
+    gap: 40px;
+    padding-top: 128px;
+    padding-bottom: 128px;
   }
 
-  .hero-content {
-    width: 100%;
-    max-width: 600px;
-  }
-
-  .hero-content__headline {
-    font-size: var.$text-lg;
-    width: 300px;
-    max-width: 100%;
-  }
-
-  .hero-content__text {
-    font-size: var.$text-sm;
-    width: 350px;
-    max-width: 100%;
+  .hero-image {
+    max-width: 400px;
   }
 }
 
-@media (max-width: map-get(var.$screens, md)) {
+@media (min-width: 1440px) {
   .hero {
-    padding: 60px 0;
-    gap: 20px;
+    padding-top: 192px;
+    padding-bottom: 192px;
   }
 
-  .hero-image__image {
-    width: 100%;
-    max-width: 350px;
-    min-height: 300px;
+  .hero-image {
+    max-width: 550px;
   }
 }
