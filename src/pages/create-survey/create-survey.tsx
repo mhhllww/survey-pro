@@ -1,5 +1,5 @@
 // import * as React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import {
   ChevronLeft,
@@ -23,12 +23,17 @@ import {
 
 import { UiButton } from '@/shared/ui/button/button';
 import './create-survey.scss';
+import { SurveyContextProvider } from '@/pages/create-survey/model/use-survey-context.tsx';
 
 export const CreateSurvey = () => {
   const navigate = useNavigate();
 
+  const { surveyId } = useParams();
+
+  if (!surveyId) return null;
+
   return (
-    <>
+    <SurveyContextProvider surveyId={surveyId}>
       <header className={'header-create-survey'}>
         <UiButton design={'link'} onClick={() => navigate('/')}>
           <ChevronLeft />
@@ -48,6 +53,6 @@ export const CreateSurvey = () => {
           <UiTabsContent value='preview'></UiTabsContent>
         </UiTabs>
       </main>
-    </>
+    </SurveyContextProvider>
   );
 };

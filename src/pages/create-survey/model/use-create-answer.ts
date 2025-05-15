@@ -10,27 +10,26 @@ import { useCallback } from 'react';
 export function useCreateAnswer(surveyId: string, questionId: number) {
   const mutation = useMutation({
     mutationFn: (dto: CreateAnswerDto) => createAnswer(dto),
-    onSuccess: (result) => {
+  });
+
+  const createAnswerMutation = useCallback(
+    (dto: CreateAnswerDto) => {
+      mutation.mutate(dto);
+
       queryClient.setQueryData(getItemOptions(surveyId).queryKey, (data) => {
-        if (!data || !result) return data;
+        if (!data || !dto) return data;
 
         const questions = data.questions;
         const question = questions[questionId];
         const answers = question.answers;
 
-        answers.push(result);
+        answers.push({ title: dto.title, respondents: [] });
 
         return {
           ...data,
           questions,
         };
       });
-    },
-  });
-
-  const createAnswerMutation = useCallback(
-    (dto: CreateAnswerDto) => {
-      mutation.mutate(dto);
     },
     [mutation]
   );

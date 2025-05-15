@@ -21,7 +21,6 @@ async function createAnswer(dto: CreateAnswerDto) {
   const updatedQuestions = [...survey.questions];
   const question = updatedQuestions[questionId];
 
-  // TODO: Проверка на добавление ответов
   switch (question.type) {
     case 'text':
       if (question.answers.length > 0) return;

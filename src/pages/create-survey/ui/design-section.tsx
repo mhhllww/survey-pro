@@ -36,7 +36,6 @@ import { UiButton } from '@/shared/ui/button/button';
 
 import './design-section.scss';
 import { useSurvey } from '@/pages/create-survey/model/use-survey.ts';
-import { useParams } from 'react-router-dom';
 import { useCreateQuestion } from '@/pages/create-survey/model/use-create-question.ts';
 import { QuestionResponse } from '@/api/question/question-schema';
 import { useCreateAnswer } from '@/pages/create-survey/model/use-create-answer.ts';
@@ -46,10 +45,13 @@ import {
 } from '@/shared/ui/radio/radio-group.tsx';
 import { UiLabel } from '@/shared/ui/label/label.tsx';
 import { UiCheckbox } from '@/shared/ui/checkbox/checkbox';
+import { SurveyContext } from '@/pages/create-survey/model/use-survey-context.tsx';
+import { useContext } from 'react';
 
 export const DesignSection = () => {
   const form = useForm();
-  const { surveyId } = useParams();
+
+  const { surveyId } = useContext(SurveyContext);
 
   if (!surveyId) return;
 
@@ -188,9 +190,7 @@ const QuestionBody = ({
   type,
   index,
 }: QuestionBodyProps) => {
-  const { surveyId } = useParams();
-
-  if (!surveyId) return;
+  const { surveyId } = useContext(SurveyContext);
 
   // FIXME: ID
   const { createAnswerMutation } = useCreateAnswer(surveyId, index);
