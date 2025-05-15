@@ -22,20 +22,20 @@ async function createAnswer(dto: CreateAnswerDto) {
   const question = updatedQuestions[questionId];
 
   // TODO: Проверка на добавление ответов
-  // switch (question.type) {
-  //   case 'text':
-  //     if (question.answers.length > 0) return;
-  //     break;
-  //   case 'paragraph':
-  //     if (question.answers.length > 0) return;
-  //     break;
-  //   case 'radio':
-  //     if (question.answers.length > 7) return;
-  //     break;
-  //   case 'checkbox':
-  //     if (question.answers.length > 7) return;
-  //     break;
-  // }
+  switch (question.type) {
+    case 'text':
+      if (question.answers.length > 0) return;
+      break;
+    case 'paragraph':
+      if (question.answers.length > 0) return;
+      break;
+    case 'radio':
+      if (question.answers.length > 7) return;
+      break;
+    case 'checkbox':
+      if (question.answers.length > 7) return;
+      break;
+  }
 
   updatedQuestions[questionId] = {
     ...question,
