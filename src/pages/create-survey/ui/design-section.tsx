@@ -10,7 +10,6 @@ import {
   CheckSquare,
   AlignLeft,
   ChevronDown,
-  Plus,
 } from 'lucide-react';
 
 import {
@@ -37,16 +36,10 @@ import { UiButton } from '@/shared/ui/button/button';
 import './design-section.scss';
 import { useSurvey } from '@/pages/create-survey/model/use-survey.ts';
 import { useCreateQuestion } from '@/pages/create-survey/model/use-create-question.ts';
-import { QuestionResponse } from '@/api/question/question-schema';
-import { useCreateAnswer } from '@/pages/create-survey/model/use-create-answer.ts';
-import {
-  UiRadioGroup,
-  UiRadioGroupItem,
-} from '@/shared/ui/radio/radio-group.tsx';
-import { UiLabel } from '@/shared/ui/label/label.tsx';
-import { UiCheckbox } from '@/shared/ui/checkbox/checkbox';
+
 import { SurveyContext } from '@/pages/create-survey/model/use-survey-context.tsx';
 import { useContext } from 'react';
+import { QuestionBody } from './design-question';
 
 export const DesignSection = () => {
   const form = useForm();
@@ -176,127 +169,5 @@ export const DesignSection = () => {
         </ul>
       </article>
     </section>
-  );
-};
-
-interface QuestionBodyProps extends QuestionResponse {
-  index: number;
-}
-
-const QuestionBody = ({
-  title,
-  description,
-  answers,
-  type,
-  index,
-}: QuestionBodyProps) => {
-  const { surveyId } = useContext(SurveyContext);
-
-  // FIXME: ID
-  const { createAnswerMutation } = useCreateAnswer(surveyId, index);
-
-  return (
-    <li className={'questions__item'}>
-      <div className={'question-number'}>{index + 1}</div>
-      <h4>{title}</h4>
-      <p>{description}</p>
-      {type === 'text' && (
-        <div>
-          {answers.map((answer, index) => (
-            <div key={index}>
-              {answer.title}
-              <UiInput placeholder={'Enter your answer'} />
-            </div>
-          ))}
-          {/*FIXME: ID*/}
-          <UiButton
-            className={'add-button'}
-            design={'outline'}
-            size={'sm'}
-            onClick={() => {
-              createAnswerMutation({
-                title: '',
-                respondents: [],
-                questionId: index,
-                surveyId,
-              });
-            }}>
-            <Plus />
-            Add Option
-          </UiButton>
-        </div>
-      )}
-      {type === 'paragraph' && (
-        <div>
-          {answers.map((answer, index) => (
-            <div key={index}>
-              {answer.title}
-              <UiTextarea placeholder={'Enter your answer'} />
-            </div>
-          ))}
-          <UiButton
-            className={'add-button'}
-            design={'outline'}
-            onClick={() => {
-              createAnswerMutation({
-                title: '',
-                respondents: [],
-                questionId: index,
-                surveyId,
-              });
-            }}>
-            Add Option
-          </UiButton>
-        </div>
-      )}
-      {type === 'radio' && (
-        <div>
-          <UiRadioGroup className={'radio-group-question'}>
-            {answers.map((answer, index) => (
-              <div key={index} className={'radio-answer'}>
-                <UiRadioGroupItem value={`value-${index}`} />
-                <UiLabel htmlFor={`value-${index}`}>{answer.title}</UiLabel>
-              </div>
-            ))}
-          </UiRadioGroup>
-          <UiButton
-            className={'add-button'}
-            design={'outline'}
-            onClick={() => {
-              createAnswerMutation({
-                title: 'New Radio Answer',
-                respondents: [],
-                questionId: index,
-                surveyId,
-              });
-            }}>
-            Add Option
-          </UiButton>
-        </div>
-      )}
-      {type === 'checkbox' && (
-        <div>
-          {answers.map((answer, index) => (
-            <div key={index} className={'radio-answer'}>
-              <UiCheckbox value={`value-${index}`} />
-              <UiLabel htmlFor={`value-${index}`}>{answer.title}</UiLabel>
-            </div>
-          ))}
-          <UiButton
-            className={'add-button'}
-            design={'outline'}
-            onClick={() => {
-              createAnswerMutation({
-                title: 'New Checkbox Answer',
-                respondents: [],
-                questionId: index,
-                surveyId,
-              });
-            }}>
-            Add Option
-          </UiButton>
-        </div>
-      )}
-    </li>
   );
 };

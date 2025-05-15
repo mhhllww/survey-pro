@@ -1,16 +1,6 @@
-// import * as React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import {
-  ChevronLeft,
-  // Plus,
-  // Trash2,
-  // GripVertical,
-  // Type,
-  // ListChecks,
-  // CheckSquare,
-  // AlignLeft,
-} from 'lucide-react';
+import { ChevronLeft } from 'lucide-react';
 
 import { DesignSection } from './ui/design-section';
 
@@ -24,6 +14,7 @@ import {
 import { UiButton } from '@/shared/ui/button/button';
 import './create-survey.scss';
 import { SurveyContextProvider } from '@/pages/create-survey/model/use-survey-context.tsx';
+import { PreviewSection } from '@/pages/create-survey/ui/preview-section.tsx';
 
 export const CreateSurvey = () => {
   const navigate = useNavigate();
@@ -50,7 +41,9 @@ export const CreateSurvey = () => {
           <UiTabsContent value='design'>
             <DesignSection />
           </UiTabsContent>
-          <UiTabsContent value='preview'></UiTabsContent>
+          <UiTabsContent value='preview'>
+            <PreviewSection />
+          </UiTabsContent>
         </UiTabs>
       </main>
     </SurveyContextProvider>

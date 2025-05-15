@@ -4,6 +4,8 @@
 .header-create-survey {
   @include mix.container;
 
+  z-index: 10;
+
   height: 64px;
 
   position: sticky;

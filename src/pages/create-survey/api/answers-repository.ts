@@ -8,7 +8,6 @@ export interface CreateAnswerDto extends AnswerResponse {
   questionId: number;
 }
 
-// FIXME: Придумать, что сделать с ID у ответа и вопросов
 async function createAnswer(dto: CreateAnswerDto) {
   const { surveyId, questionId, ...answerData } = dto;
 
@@ -20,21 +19,6 @@ async function createAnswer(dto: CreateAnswerDto) {
 
   const updatedQuestions = [...survey.questions];
   const question = updatedQuestions[questionId];
-
-  switch (question.type) {
-    case 'text':
-      if (question.answers.length > 0) return;
-      break;
-    case 'paragraph':
-      if (question.answers.length > 0) return;
-      break;
-    case 'radio':
-      if (question.answers.length > 7) return;
-      break;
-    case 'checkbox':
-      if (question.answers.length > 7) return;
-      break;
-  }
 
   updatedQuestions[questionId] = {
     ...question,
