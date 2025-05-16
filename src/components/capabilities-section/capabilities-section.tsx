@@ -15,9 +15,9 @@ export const CapabilitiesSection = () => {
       <div className='capabilities__container'>
         <div className='capability-card'>
           <div className='capability-card__icon'>
-            <UsersIcon />
+            <UsersIcon size={24} />
           </div>
-          <h3 className='capability-card__title'>Customer Feedback</h3>
+          <h3>Customer Feedback</h3>
           <p className='capability-card__text'>
             Collect valuable insights from your customers to improve products
             and services
@@ -26,9 +26,9 @@ export const CapabilitiesSection = () => {
 
         <div className='capability-card'>
           <div className='capability-card__icon'>
-            <CircleCheckBigIcon />
+            <CircleCheckBigIcon size={24} />
           </div>
-          <h3 className='capability-card__title'>Market Research</h3>
+          <h3>Market Research</h3>
           <p className='capability-card__text'>
             Understand market trends and consumer preferences to guide your
             business strategy
@@ -37,9 +37,9 @@ export const CapabilitiesSection = () => {
 
         <div className='capability-card'>
           <div className='capability-card__icon'>
-            <ChartColumnIcon />
+            <ChartColumnIcon size={24} />
           </div>
-          <h3 className='capability-card__title'>Employee Engagement</h3>
+          <h3>Employee Engagement</h3>
           <p className='capability-card__text'>
             Measure and improve workplace satisfaction and organizational
             culture

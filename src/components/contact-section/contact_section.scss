@@ -1,105 +1,70 @@
 @use '@/scss/base/variables' as var;
-@use '@/components/hero-section/hero_section.scss';
+@use '@/scss/base/mixins' as mixins;
+
+.cta-container {
+  width: 100%;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  border-bottom: var.$border 1px solid;
+  border-top: var.$border 1px solid;
+}
 
 .cta {
-  width: 100%;
-  display: flex;
+  @include mixins.container;
   flex-direction: column;
-  padding: 130px 0 150px;
-  border-bottom: var.$border 1px solid;
-}
-
-.cta__content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 25px;
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.cta__text {
-  font-size: var.$text-md;
-  color: var.$muted-foreground;
-  text-align: center;
-  width: 100%;
-  max-width: 550px;
-}
-
-.cta__buttons {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
 }
 
 .cta__title {
   text-align: center;
 }
 
-@media (max-width: map-get(var.$screens, lg)) {
-  .cta__content {
-    gap: 18px;
-  }
-
-  .cta__text {
-    font-size: var.$text-md;
-    max-width: 500px;
-  }
-
-  .cta__buttons {
-    gap: 18px;
-  }
+.cta__text {
+  margin-top: 8px;
+  color: var.$muted-foreground;
+  text-align: center;
+  max-width: 600px;
 }
 
-@media (max-width: map-get(var.$screens, md)) {
-  .cta__content {
-    gap: 16px;
-  }
+.cta__buttons {
+  width: fit-content;
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: center;
 
-  .cta__text {
-    font-size: var.$text-md;
-    max-width: 450px;
-  }
-
-  .cta__buttons {
-    gap: 15px;
-  }
-}
-
-@media (max-width: map-get(var.$screens, sm)) {
-  .cta__content {
-    gap: 14px;
-  }
-
-  .cta__title {
-    font-size: var.$text-lg;
-    width: 300px;
-    text-align: center;
-  }
-
-  .cta__text {
-    font-size: var.$text-sm;
-    width: 350px;
-  }
-
-  .cta__buttons {
-    flex-direction: column;
+  button {
     width: 100%;
-    max-width: 280px;
-    gap: 12px;
   }
 }
 
-@media (max-width: map-get(var.$screens, xs)) {
-  .cta__title {
-    width: 250px;
-    text-align: center;
+@media (min-width: map-get(var.$screens, md)) {
+  .cta-container {
+    padding-top: 96px;
+    padding-bottom: 96px;
+  }
+
+  .cta__buttons {
+    flex-direction: row;
   }
 
   .cta__text {
-    font-size: var.$text-sm;
-    width: 300px;
+    font-size: var.$text-xl;
+    letter-spacing: var.$tracking-wide;
+  }
+}
+
+@media (min-width: map-get(var.$screens, lg)) {
+  .cta-container {
+    padding-top: 128px;
+    padding-bottom: 128px;
+  }
+}
+
+@media (min-width: map-get(var.$screens, xl)) {
+  .cta-container {
+    padding-top: 192px;
+    padding-bottom: 192px;
   }
 }

@@ -11,7 +11,7 @@ export const Home = () => {
     <>
       <Header />
       <main>
-        <div className='container'>
+        <div>
           <HeroSection />
           <FeaturesSection />
           <CapabilitiesSection />
