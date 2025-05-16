@@ -1,0 +1,98 @@
+@use '@/scss/base/variables' as var;
+@use '@/scss/base/mixins' as mixins;
+
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 60px;
+
+  border-bottom: 1px solid var.$border;
+  backdrop-filter: blur(7px);
+}
+
+.header__content {
+  @include mixins.container;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-logo__bg-logo {
+  padding: 5px;
+  border-radius: 50%;
+  background-color: var.$foreground;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    min-width: 20px;
+    min-height: 20px;
+  }
+}
+
+.header-logo__text {
+  font-weight: var.$bold;
+  letter-spacing: var.$tracking-wider;
+}
+
+.header-nav__list {
+  display: none;
+  gap: 30px;
+}
+
+.header-nav__list_sheet {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.header-nav__content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.header-actions {
+  display: none;
+  gap: 10px;
+}
+
+.header-sheet {
+  display: block;
+}
+
+.header-btns {
+  display: none;
+  gap: 8px;
+}
+
+@media (min-width: map-get(var.$screens, md)) {
+  .header-nav__list {
+    display: flex;
+  }
+
+  .header-nav__content {
+    flex-direction: row;
+  }
+
+  .header-btns {
+    display: flex;
+  }
+
+  .header-sheet {
+    display: none;
+  }
+}

@@ -1,0 +1,128 @@
+@use '@/scss/base/variables' as var;
+@use '@/scss/base/animation' as animation;
+@use '@/scss/base/mixins' as mixins;
+
+.sheet-overlay {
+  position: fixed;
+  inset: 0;
+
+  z-index: 50;
+
+  background-color: rgba(var.$foreground, 0.8);
+
+  &[data-state=open] {
+    @include animation.fade-in;
+  }
+
+  &[data-state=closed] {
+    @include animation.fade-out;
+  }
+}
+
+.sheet-content {
+  position: fixed;
+  top: 0;
+  right: 0;
+
+  display: flex;
+  height: 100%;
+  width: 75%;
+  gap: 16px;
+  z-index: 50;
+  padding: 24px;
+
+  border-left: 1px solid var.$border;
+  background-color: var.$background;
+
+  box-sizing: var.$shadow-lg;
+  transition: all .1s ease-in-out;
+
+  &[data-state=closed] {
+    @include animation.slide-out-to-right;
+  }
+
+  &[data-state=open] {
+    @include animation.slide-in-from-right;
+  }
+
+  @media (min-width: map-get(var.$screens, sm)) {
+    max-width: 384px;
+  }
+}
+
+.sheet-content__close {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+
+  border-radius: var.$radius-sm;
+  opacity: 0.7;
+
+  transition: opacity 0.1s ease-in-out;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:disabled {
+    pointer-events: none;
+  }
+
+  svg {
+    height: 16px;
+    width: 16px;
+  }
+
+  span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+}
+
+.sheet-header {
+  display: flex;
+  flex-direction: column;
+
+  @include mixins.space-y(2);
+
+  text-align: center;
+
+  @media (min-width: map-get(var.$screens, sm)) {
+    text-align: left;
+  }
+}
+
+.sheet-footer {
+  display: flex;
+  flex-direction: column-reverse;
+
+  @media (min-width: map-get(var.$screens, sm)) {
+    flex-direction: row;
+    justify-content: flex-end;
+
+    @include mixins.space-x(2)
+  }
+}
+
+.sheet-description {
+  font-size: var.$text-sm;
+  color: var.$muted-foreground;
+}
+
+.sheet-title {
+  font-size: var.$text-lg;
+  font-weight: var.$semibold;
+  color: var.$foreground;
+}
+

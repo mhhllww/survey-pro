@@ -1,6 +1,6 @@
-@use "../../../scss/base/variables" as var;
-@use "../../../scss/base/mixins" as mixins;
-@use "../../../scss/base/reset";
+@use '../../../scss/base/variables' as var;
+@use '../../../scss/base/mixins' as mixins;
+@use '../../../scss/base/reset';
 
 /* === Base style === */
 
@@ -49,10 +49,9 @@
 }
 
 .outline {
-  border: 1px solid var.$foreground;
+  border: 1px solid var.$muted;
   background-color: var.$background;
   box-shadow: var.$shadow;
-
 
   &:hover {
     background-color: var.$accent;

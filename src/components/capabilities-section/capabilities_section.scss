@@ -1,0 +1,89 @@
+@use '@/scss/base/variables' as var;
+@use '@/scss/base/mixins' as mixins;
+@use '@/components/header/header.scss';
+
+.capabilities {
+  @include mixins.container;
+  flex-direction: column;
+  width: 100%;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.capabilities__heading {
+  text-align: center;
+}
+
+.capabilities__subtitle {
+  margin-top: 8px;
+  color: var.$muted-foreground;
+  text-align: center;
+}
+
+.capabilities__container {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0px, 1fr));
+  gap: 24px;
+  max-width: 1024px;
+  padding-top: 48px;
+  padding-bottom: 48px;
+  margin: 0 auto;
+}
+
+.capability-card {
+  @include mixins.center;
+  flex-direction: column;
+  width: 100%;
+  padding: 24px;
+  text-align: center;
+  gap: 8px;
+
+  border: 1px solid var.$border;
+  box-shadow: var.$shadow;
+  border-radius: var.$radius-lg;
+}
+
+.capability-card__icon {
+  @include mixins.center;
+  padding: 10px;
+  border-radius: 50%;
+  background-color: var.$muted;
+}
+
+.capability-card__text {
+  margin-top: 8px;
+  color: var.$muted-foreground;
+}
+
+@media (min-width: map-get(var.$screens, md)) {
+  .capabilities {
+    padding-top: 96px;
+    padding-bottom: 96px;
+  }
+
+  .capabilities__subtitle {
+    font-size: var.$text-xl;
+  }
+
+  .capabilities__container {
+    grid-template-columns: repeat(2, minmax(0px, 1fr));
+  }
+}
+
+@media (min-width: map-get(var.$screens, lg)) {
+  .capabilities {
+    padding-top: 128px;
+    padding-bottom: 128px;
+  }
+
+  .capabilities__container {
+    grid-template-columns: repeat(3, minmax(0px, 1fr));
+  }
+}
+
+@media (min-width: map-get(var.$screens, xl)) {
+  .capabilities {
+    padding-top: 192px;
+    padding-bottom: 192px;
+  }
+}

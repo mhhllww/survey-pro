@@ -1,15 +1,17 @@
-import { RouteProvider } from './route-provider';
+import { RouteProvider } from './providers/route-provider.tsx';
 import { Toaster } from '@/shared/ui/toast/toast';
 import { Provider } from 'react-redux';
 import { store } from '@/shared/lib/redux/store.ts';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from '@/shared/api/query-client.ts';
+import { ContactDialog } from '@/components/dialog-contact/dialog-contact.tsx';
 
 function App() {
   return (
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>
         <Toaster />
+        <ContactDialog />
         <RouteProvider />
       </QueryClientProvider>
     </Provider>
