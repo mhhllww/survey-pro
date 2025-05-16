@@ -1,8 +1,16 @@
 @use 'base/variables' as var;
-@use 'base/mixins';
+@use 'base/mixins' as mixins;
 @use 'base/reset';
 @use 'base/typography';
 
 body {
   font-family: var.$font-geist;
+  width: 100%;
+  overflow: hidden;
+}
+
+.container{
+  @include mixins.container;
+  display: flex;
+  flex-direction: column;
 }

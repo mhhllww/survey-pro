@@ -1,0 +1,70 @@
+@use '@/scss/base/variables' as var;
+@use '@/scss/base/mixins' as mixins;
+
+.cta-container {
+  width: 100%;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  border-bottom: var.$border 1px solid;
+  border-top: var.$border 1px solid;
+}
+
+.cta {
+  @include mixins.container;
+  flex-direction: column;
+  width: 100%;
+}
+
+.cta__title {
+  text-align: center;
+}
+
+.cta__text {
+  margin-top: 8px;
+  color: var.$muted-foreground;
+  text-align: center;
+  max-width: 600px;
+}
+
+.cta__buttons {
+  width: fit-content;
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: center;
+
+  button {
+    width: 100%;
+  }
+}
+
+@media (min-width: map-get(var.$screens, md)) {
+  .cta-container {
+    padding-top: 96px;
+    padding-bottom: 96px;
+  }
+
+  .cta__buttons {
+    flex-direction: row;
+  }
+
+  .cta__text {
+    font-size: var.$text-xl;
+    letter-spacing: var.$tracking-wide;
+  }
+}
+
+@media (min-width: map-get(var.$screens, lg)) {
+  .cta-container {
+    padding-top: 128px;
+    padding-bottom: 128px;
+  }
+}
+
+@media (min-width: map-get(var.$screens, xl)) {
+  .cta-container {
+    padding-top: 192px;
+    padding-bottom: 192px;
+  }
+}
