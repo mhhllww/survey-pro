@@ -22,7 +22,7 @@
 }
 
 .chart-card__title {
-  font-size: var.$text-lg;
+  font-size: var.$text-2xl;
   font-weight: var.$semibold;
 }
 
@@ -51,7 +51,7 @@
 .chart-card__xaxis {
   font-size: 8px;
 
-  @media (min-width: map.get(var.$screens, sm)) {
+  @media (min-width: map.get(var.$screens, xs)) {
     font-size: var.$text-xs;
   }
 }

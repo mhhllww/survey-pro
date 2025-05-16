@@ -11,7 +11,7 @@
   width: 1400px;
   margin: 20px 16px;
 
-  @media (min-width: map.get(var.$screens, sm)) {
+  @media (min-width: map.get(var.$screens, xs)) {
     margin: 40px 16px;
   }
 }
