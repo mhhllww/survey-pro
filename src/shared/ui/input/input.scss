@@ -34,7 +34,7 @@
     opacity: 0.5;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: map-get(var.$screens, md)) {
     font-size: var.$text-xs;
   }
 }

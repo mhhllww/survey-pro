@@ -38,6 +38,7 @@ ol {
 
 h1,
 h2 {
+  font-size: 1.875rem;
   line-height: 1.2;
   font-weight: 700;
   letter-spacing: -0.01em;
@@ -57,16 +58,8 @@ h6 {
   letter-spacing: 0;
 }
 
-h1 {
-  font-size: 3.5rem;
-}
-
-h2 {
-  font-size: 2rem;
-}
-
 h3 {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 }
 
 h4 {
@@ -107,9 +100,19 @@ h6 {
   letter-spacing: 0.01em;
 }
 
+@media (min-width: 640px) {
+  h1 {
+    font-size: 3.75rem;
+    line-height: 1;
+  }
+  h2 {
+    font-size: 2.25rem;
+  }
+}
 body {
   font-family: "Geist", sans-serif;
   width: 100%;
+  overflow: hidden;
 }
 
 .container {
@@ -124,24 +127,28 @@ body {
 }
 @media (min-width: 640px) {
   .container {
+    max-width: 640px;
     padding-left: 2rem;
     padding-right: 2rem;
   }
 }
 @media (min-width: 768px) {
   .container {
+    max-width: 768px;
     padding-left: 3rem;
     padding-right: 3rem;
   }
 }
 @media (min-width: 1024px) {
   .container {
+    max-width: 1024px;
     padding-left: 4rem;
     padding-right: 4rem;
   }
 }
 @media (min-width: 1440px) {
   .container {
+    max-width: 1440px;
     padding-left: 6rem;
     padding-right: 6rem;
   }

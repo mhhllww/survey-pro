@@ -3,144 +3,87 @@
 @use '@/components/header/header.scss';
 
 .capabilities {
-  width: 100%;
-  display: flex;
+  @include mixins.container;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-top: 160px;
-  padding-bottom: 160px;
-  border-bottom: var.$muted 1px solid;
+  width: 100%;
+  padding-top: 60px;
+  padding-bottom: 60px;
 }
 
 .capabilities__heading {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
+  text-align: center;
 }
 
 .capabilities__subtitle {
-  font-size: var.$text-lg;
+  margin-top: 8px;
   color: var.$muted-foreground;
+  text-align: center;
 }
 
 .capabilities__container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 30px;
-  margin-top: 55px;
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0px, 1fr));
+  gap: 24px;
+  max-width: 1024px;
+  padding-top: 48px;
+  padding-bottom: 48px;
+  margin: 0 auto;
 }
 
 .capability-card {
+  @include mixins.center;
+  flex-direction: column;
+  width: 100%;
   padding: 24px;
+  text-align: center;
+  gap: 8px;
+
   border: 1px solid var.$border;
   box-shadow: var.$shadow;
   border-radius: var.$radius-lg;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  width: 100%;
 }
 
 .capability-card__icon {
-  width: 45px;
-  height: 45px;
+  @include mixins.center;
+  padding: 10px;
   border-radius: 50%;
   background-color: var.$muted;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.capability-card__title {
-  margin-top: 8px;
-  font-size: var.$text-lg;
 }
 
 .capability-card__text {
-  font-size: var.$text-md;
+  margin-top: 8px;
   color: var.$muted-foreground;
-  text-wrap: wrap;
-  width: 100%;
-  max-width: 260px;
-  line-height: var.$leading-tight;
-  margin: 8px 0;
 }
 
-@media (max-width: map-get(var.$screens, md)) {
+@media (min-width: map-get(var.$screens, md)) {
+  .capabilities {
+    padding-top: 96px;
+    padding-bottom: 96px;
+  }
+
   .capabilities__subtitle {
-    font-size: var.$text-md;
-    display: flex;
-    text-align: center;
+    font-size: var.$text-xl;
   }
 
   .capabilities__container {
-    flex-direction: column;
-  }
-
-  .capability-card {
-    max-width: 400px;
-    padding: 16px;
-  }
-
-  .capability-card__icon {
-    width: 40px;
-    height: 40px;
-  }
-
-  .capability-card__text {
-    font-size: var.$text-sm;
-    max-width: 100%;
+    grid-template-columns: repeat(2, minmax(0px, 1fr));
   }
 }
 
-@media (max-width: map-get(var.$screens, sm)) {
-  .capabilities__subtitle {
-    width: 400px;
+@media (min-width: map-get(var.$screens, lg)) {
+  .capabilities {
+    padding-top: 128px;
+    padding-bottom: 128px;
   }
 
-  .capability-card {
-    max-width: 350px;
-    padding: 8px;
-  }
-
-  .capability-card__icon {
-    width: 20px;
-    height: 20px;
-  }
-
-  .capability-card__text {
-    font-size: var.$text-sm;
-    max-width: 100%;
+  .capabilities__container {
+    grid-template-columns: repeat(3, minmax(0px, 1fr));
   }
 }
 
-@media (max-width: map-get(var.$screens, md)) {
-  .capabilities__heading{
-    width: 250px;
-    text-align: center;
-  }
-  .capabilities__subtitle {
-    width: 300px;
-  }
-
-  .capability-card {
-    max-width: 350px;
-    padding: 8px;
-  }
-
-  .capability-card__icon {
-    width: 20px;
-    height: 20px;
-  }
-
-  .capability-card__text {
-    font-size: var.$text-sm;
-    max-width: 100%;
+@media (min-width: map-get(var.$screens, xl)) {
+  .capabilities {
+    padding-top: 192px;
+    padding-bottom: 192px;
   }
 }

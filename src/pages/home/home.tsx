@@ -5,13 +5,14 @@ import { CapabilitiesSection } from '@/components/capabilities-section/capabilit
 import { ContactSection } from '@/components/contact-section/contact-section.tsx';
 import { Footer } from '@/components/footer/footer.tsx';
 import '@/scss/main.scss';
+import { UiScrollArea } from '@/shared/ui/scroll-area/scroll-area.tsx';
 
 export const Home = () => {
   return (
-    <>
+    <UiScrollArea>
       <Header />
       <main>
-        <div className='container'>
+        <div>
           <HeroSection />
           <FeaturesSection />
           <CapabilitiesSection />
@@ -19,6 +20,6 @@ export const Home = () => {
         </div>
       </main>
       <Footer />
-    </>
+    </UiScrollArea>
   );
 };

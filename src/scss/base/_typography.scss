@@ -2,6 +2,8 @@
 
 h1,
 h2 {
+  font-size: var.$text-3xl;
+
   line-height: var.$leading-tighter;
   font-weight: var.$bold;
   letter-spacing: var.$tracking-tight;
@@ -21,16 +23,8 @@ h6 {
   letter-spacing: var.$tracking-regular;
 }
 
-h1 {
-  font-size: var.$text-3xl;
-}
-
-h2 {
-  font-size: var.$text-xl;
-}
-
 h3 {
-  font-size: var.$text-lg;
+  font-size: var.$text-xl;
 }
 
 h4 {
@@ -69,4 +63,15 @@ h6 {
   line-height: var.$leading-tight;
   font-weight: var.$regular;
   letter-spacing: var.$tracking-wide;
+}
+
+@media (min-width: map-get(var.$screens, sm)) {
+  h1 {
+    font-size: var.$text-6xl;
+    line-height: var.$leading-base;
+  }
+
+  h2 {
+    font-size: var.$text-4xl;
+  }
 }

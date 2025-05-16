@@ -1,204 +1,121 @@
 @use '@/scss/base/variables' as var;
+@use '@/scss/base/mixins' as mixins;
+
+.features-container {
+  width: 100%;
+  padding-top: 48px;
+  padding-bottom: 48px;
+
+  background-color: var.$accent;
+}
 
 .features {
+  @include mixins.container;
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: var.$muted;
-  gap: 40px;
-  padding-bottom: 100px;
+  gap: 24px;
 }
 
 .features__heading {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 100px;
-  gap: 12px;
-  text-align: center;
 }
 
 .features__label {
-  width: 80px;
-  height: 30px;
-  background-color: var.$foreground;
-  border-radius: var.$radius-lg;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: var.$input;
+  display: inline-block;
+  padding: 4px 12px;
+  margin-bottom: 8px;
+
   font-size: var.$text-sm;
-  font-weight: var.$semibold;
+  color: var.$input;
+
+  border-radius: var.$radius-lg;
+  background-color: var.$foreground;
+}
+
+.features__title {
+  text-align: center;
+  letter-spacing: var.$tracking-tighter;
 }
 
 .features__subtitle {
-  font-size: var.$text-lg;
+  margin-top: 8px;
   color: var.$muted-foreground;
+  text-align: center;
 }
 
 .features__body {
+  padding-top: 48px;
   display: flex;
-  align-items: flex-start;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
 }
 
 .features__list {
-  width: 550px;
   display: flex;
   flex-direction: column;
-  margin-top: 70px;
-  gap: 25px;
+  gap: 24px;
 }
 
 .features__item {
   display: flex;
-  gap: 15px;
-}
-
-.features__item-content {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.features__item-title {
-  font-size: var.$text-lg;
-}
-
-.features__item-text {
-  font-size: var.$text-md;
-  color: var.$muted-foreground;
-  max-width: 450px;
+  gap: 16px;
 }
 
 .features__icon {
-  height: 35px;
-  display: flex;
-  justify-content: start;
-  border-radius: var.$radius-lg;
-  align-items: center;
-  flex-shrink: 0;
+  min-width: 20px;
+  min-height: 20px;
 }
 
-.features__image-container {
-  width: 500px;
-  min-height: 400px;
-  border-radius: var.$radius-lg;
-  overflow: hidden;
+.features__item-text {
+  margin-top: 4px;
+  color: var.$muted-foreground;
 }
 
 .features__image {
   width: 100%;
-  height: 100%;
+  border-radius: var.$radius-md;
   object-fit: cover;
-  object-position: center;
 }
 
-@media (max-width: map-get(var.$screens, lg)) {
-  .features__body {
-    max-width: 850px;
-  }
-
-  .features__list {
-    margin-top: 40px;
-  }
-}
-
-@media (max-width: map-get(var.$screens, md)) {
-  .features {
-    gap: 35px;
-    padding-bottom: 30px;
+@media (min-width: map-get(var.$screens, md)) {
+  .features-container {
+    padding-top: 96px;
+    padding-bottom: 96px;
   }
 
   .features__title {
-    font-size: var.$text-lg;
+    letter-spacing: var.$tracking-tight;
   }
 
   .features__subtitle {
-    font-size: var.$text-md;
-    padding: 0 80px;
+    font-size: var.$text-xl;
+    letter-spacing: var.$tracking-wide;
+  }
+
+  .features__image {
+    max-width: 500px;
+  }
+}
+
+@media (min-width: map-get(var.$screens, lg)) {
+  .features-container {
+    padding-top: 128px;
+    padding-bottom: 128px;
   }
 
   .features__body {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .features__list {
-    width: 100%;
-  }
-
-  .features__image-container {
-    order: -1;
+    flex-direction: row;
+    gap: 96px;
   }
 }
 
-@media (max-width: map-get(var.$screens, sm)) {
-  .features {
-    gap: 30px;
-  }
-
-  .features__heading {
-    gap: 10px;
-  }
-
-  .features__label {
-    width: 70px;
-    height: 26px;
-  }
-
-  .features__title {
-    font-size: var.$text-lg;
-  }
-
-  .features__subtitle {
-    font-size: var.$text-sm;
-  }
-
-  //.features__list {
-  //  width: 370px
-  //}
-
-  .features__item {
-    gap: 12px;
-  }
-
-  .features__item-title {
-    font-size: var.$text-md;
-  }
-
-  .features__image-container{
-    width: 375px;
-  }
-}
-
-@media (max-width: map-get(var.$screens, md)) {
-
-  .features__heading{
-    width: 200px;
-  }
-  .features__subtitle{
-    width: 100%;
-    padding: 0;
-  }
-  .features__image-container{
-    width: 320px;
-    height: 200px;
-  }
-
-  .features__list{
-    display: flex;
-    justify-content: start;
-    align-items: center;
-  }
-
-  .features__item{
-    width: 325px;
-  }
-
-  .features__icon {
-    width: 18px;
-    height: 20px;
+@media (min-width: map-get(var.$screens, xl)) {
+  .features-container {
+    padding-top: 192px;
+    padding-bottom: 192px;
   }
 }
