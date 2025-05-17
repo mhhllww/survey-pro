@@ -1,37 +1,13 @@
 import './questions-table.scss';
-import { fullSurveyData } from '@/pages/analytics/full-survey-data.ts';
+import { formatQuestions } from '@/components/ui/questions-table/modal/format-questions.ts';
 
-type Props = {
-  surveyName: string;
-};
+export const QuestionTable = ({ surveyName }: { surveyName: string }) => {
+  const questionsList = formatQuestions(surveyName);
 
-export const QuestionTable = ({ surveyName }: Props) => {
-  const survey = fullSurveyData[surveyName];
-  if (!survey)
+  if (!questionsList)
     return (
       <span className={'question-table-warning'}>No survey data available</span>
     );
-
-  const totals: { [question: string]: { [answer: string]: number } } = {};
-
-  Object.values(survey).forEach((monthlyData) => {
-    Object.entries(monthlyData).forEach(([question, answers]) => {
-      if (!totals[question]) totals[question] = {};
-      Object.entries(answers).forEach(([answer, count]) => {
-        totals[question][answer] = (totals[question][answer] || 0) + count;
-      });
-    });
-  });
-
-  const questionsList = Object.entries(totals).map(([question, answers]) => {
-    const total = Object.values(answers).reduce((sum, val) => sum + val, 0);
-    const items = Object.entries(answers).map(([answer, count]) => ({
-      answer,
-      count,
-      pct: total > 0 ? Math.round((count / total) * 100) : 0,
-    }));
-    return { question, items };
-  });
 
   return (
     <div className={'question-table'}>
@@ -42,12 +18,24 @@ export const QuestionTable = ({ surveyName }: Props) => {
         </span>
       </header>
       <div className={'question-table__content'}>
-        {questionsList.map(({ question, items }) => (
-          <div key={question} className={'question-table__question'}>
-            <h4>{question}</h4>
+        {questionsList.map(({ question, description, items }, index) => (
+          <div
+            key={`${question}-${index}`}
+            className={'question-table__question'}>
+            <div className={'question-table__questions-container'}>
+              <h3>{question}</h3>
+              {description && (
+                <span className={'question-table__description'}>
+                  {description}
+                </span>
+              )}
+            </div>
+
             <div className={'question-table__answers-container'}>
-              {items.map(({ answer, pct }) => (
-                <div key={answer} className={'question-table__answer'}>
+              {items.map(({ answer, pct }, index) => (
+                <div
+                  key={`${answer}-${index}`}
+                  className={'question-table__answer'}>
                   <div className={'question-table__answer-label'}>
                     <span className={'question-table__answer-text'}>
                       {answer}

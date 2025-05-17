@@ -31,6 +31,15 @@
   font-size: var.$text-sm;
 }
 
+.question-table__questions-container {
+  margin-bottom: 10px;
+}
+
+.question-table__description {
+  color: var.$muted-foreground;
+  font-size: var.$text-sm;
+}
+
 .question-table__content {
   display: flex;
   flex-direction: column;
