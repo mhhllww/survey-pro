@@ -21,19 +21,19 @@ export const MainSection = () => {
         <div className='main-section__container'>
           <AnalyticCard
             title='Total Surveys'
-            icon={ChartColumnIcon}
+            icon={<ChartColumnIcon size={16} />}
             value={12}
             text='+2 from last month'
           />
           <AnalyticCard
             title='Total Responses'
-            icon={UsersIcon}
+            icon={<UsersIcon size={16} />}
             value={1.284}
             text='+10% from last month'
           />
           <AnalyticCard
             title='Active Surveys'
-            icon={ClockIcon}
+            icon={<ClockIcon size={16} />}
             value={5}
             text='3 ending this week'
           />

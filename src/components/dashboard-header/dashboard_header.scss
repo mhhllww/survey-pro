@@ -26,8 +26,8 @@
 }
 
 .header-logo__bg-logo {
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
   background-color: var.$foreground;
   display: flex;
@@ -41,9 +41,13 @@
   letter-spacing: var.$tracking-wider;
 }
 
+.header-nav{
+  display: none;
+}
+
 .header-nav__list {
   display: flex;
-  gap: 30px;
+  flex-direction: column;
 }
 
 .header-actions {
@@ -68,54 +72,20 @@
     display: flex;
     gap: 8px;
   }
-}
 
-@media (max-width: map-get(var.$screens, md)) {
   .header-logo__text {
     font-size: var.$text-xs;
   }
-
-  .header-nav__list {
-    gap: 20px;
+  .header-nav{
+    display: flex;
   }
 
-  .header-nav{
-    display: none;
+  .header-nav__list {
+    flex-direction: row;
+    gap: 20px;
   }
 
   .header-nav__link {
     font-size: var.$text-sm;
-  }
-}
-
-@media (max-width: map-get(var.$screens, sm)) {
-
-  .header-logo__bg-logo {
-    width: 20px;
-    height: 20px;
-  }
-
-  .header-logo__text {
-    font-size: var.$text-xs;
-  }
-
-  .header-nav {
-    display: none;
-  }
-
-  .header-nav__list{
-    display: flex;
-    flex-direction: column;
-  }
-}
-
-@media (max-width: map-get(var.$screens, xs)) {
-  .header-logo__bg-logo {
-    width: 20px;
-    height: 20px;
-  }
-
-  .header-logo__text {
-    font-size: var.$text-xs;
   }
 }

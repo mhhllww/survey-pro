@@ -2,7 +2,7 @@ import { SurveyMetrics } from '@/components/main-section/survey-card/survey-metr
 import { UiButton } from '@/shared/ui/button/button.tsx';
 import '../survey-card/survey_card.scss';
 
-interface SurveyCardProps {
+type SurveyCardProps = {
   title: string;
   date: string;
   metrics: {
@@ -10,7 +10,7 @@ interface SurveyCardProps {
     completionRate: number;
     status: string;
   };
-}
+};
 
 export const SurveyCard = ({ title, date, metrics }: SurveyCardProps) => {
   return (

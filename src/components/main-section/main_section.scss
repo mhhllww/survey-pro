@@ -6,23 +6,24 @@
   padding: 40px 0;
 }
 
-.main-section__content{
+.main-section__content {
   @include mixins.container;
   width: 100%;
   display: flex;
   flex-direction: column;
 }
 
-.main-section__header{
+.main-section__header {
   width: 100%;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  gap: 16px;
   margin-bottom: 32px;
 }
 
-.main-section__subtitle{
+.main-section__subtitle {
   font-size: var.$text-md;
   color: var.$muted-foreground;
 }
@@ -30,39 +31,30 @@
 .main-section__container {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-column-gap: 8px;
+  gap: 16px;
 }
 
-.main-section__recent-title{
+.main-section__recent-title {
   width: 100%;
   font-size: var.$text-lg;
   margin-top: 40px;
   margin-bottom: 16px;
 }
 
-.main-section__surveys{
+.main-section__surveys {
   display: grid;
   gap: 16px;
   width: 100%;
 }
 
-@media (max-width: map-get(var.$screens, md)) {
+@media (min-width: map-get(var.$screens, sm)) {
   .main-section__container{
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: map-get(var.$screens, sm)) {
-  .main-section__container{
-    grid-template-columns: repeat(1, 1fr);
-  }
-
-  .main-section__header{
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: start;
-    gap: 16px;
+@media (min-width: map-get(var.$screens, lg)) {
+  .main-section__container {
+    grid-template-columns: repeat(3, 1fr);
   }
 }

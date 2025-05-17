@@ -1,9 +1,9 @@
 import '../survey-metric/survey_metric.scss';
-interface SurveyMetricsProps {
+type SurveyMetricsProps = {
   responses: number;
   completionRate: number;
   status: string;
-}
+};
 
 export const SurveyMetrics = ({
   responses,

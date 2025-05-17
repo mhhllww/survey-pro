@@ -1,16 +1,15 @@
-import { LucideIcon } from 'lucide-react';
 import '../analytics-card/analytics_card.scss';
 
-interface AnalyticsCardProps {
+type AnalyticsCardProps = {
   title: string;
-  icon: LucideIcon;
+  icon: React.ReactNode;
   value: number;
   text: string;
-}
+};
 
 export const AnalyticCard = ({
   title,
-  icon: Icon,
+  icon,
   value,
   text,
 }: AnalyticsCardProps) => {
@@ -18,7 +17,7 @@ export const AnalyticCard = ({
     <div className='analytic-card'>
       <div className='analytic-card__header'>
         <h5 className='analytic-card__title'>{title}</h5>
-        <Icon size={16} />
+        {icon}
       </div>
       <div className='analytic-card__content'>
         <div className='analytic-card__value'>{value}</div>

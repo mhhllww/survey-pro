@@ -5,6 +5,7 @@
   padding: 0 24px 24px;
   display: flex;
   justify-content: space-between;
+  gap: 16px;
 }
 
 .survey-metrics__item{
@@ -18,10 +19,4 @@
 
 .survey-metrics__value{
   font-weight: var.$semibold;
-}
-
-@media (max-width: map-get(var.$screens, xs)) {
-  .survey-metrics{
-    gap: 10px;
-  }
 }
