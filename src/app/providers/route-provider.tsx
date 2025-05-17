@@ -3,12 +3,14 @@ import { Home } from '@/pages/home/home.tsx';
 import { Login } from '@/pages/auth/ui/login.tsx';
 import { Register } from '@/pages/auth/ui/register.tsx';
 import { RouterPaths } from '@/app/consts/RouterPaths.ts';
+import { Analytics } from '@/pages/analytics/analytics.tsx';
 
 export const RouteProvider = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route path={RouterPaths.HOME} element={<Home />} />
+        <Route path={RouterPaths.ANALYTICS} element={<Analytics />} />
         <Route path={RouterPaths.LOGIN} element={<Login />} />
         <Route path={RouterPaths.REGISTER} element={<Register />} />
       </Routes>
