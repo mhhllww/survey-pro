@@ -3,7 +3,8 @@
 
 .main-section {
   width: 100%;
-  padding: 40px 0;
+  padding-top: 80px;
+  padding-bottom: 40px;
 }
 
 .main-section__content {
@@ -50,6 +51,14 @@
 @media (min-width: map-get(var.$screens, sm)) {
   .main-section__container{
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: map-get(var.$screens, md)) {
+  .main-section__header{
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
   }
 }
 
