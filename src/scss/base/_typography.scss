@@ -1,4 +1,5 @@
 @use 'variables' as var;
+@use 'sass:map';
 
 h1,
 h2 {
@@ -65,7 +66,7 @@ h6 {
   letter-spacing: var.$tracking-wide;
 }
 
-@media (min-width: map-get(var.$screens, sm)) {
+@media (min-width: map.get(var.$screens, sm)) {
   h1 {
     font-size: var.$text-6xl;
     line-height: var.$leading-base;
