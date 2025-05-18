@@ -1,4 +1,5 @@
 @use '@/scss/base/variables' as var;
+@use 'sass:map';
 
 .contact-dialog__content {
   max-width: 90vw;
@@ -25,7 +26,7 @@
   align-self: flex-end;
 }
 
-@media (min-width: map-get(var.$screens, md)) {
+@media (min-width: map.get(var.$screens, md)) {
   .contact-dialog__content {
     max-width: 500px;
   }

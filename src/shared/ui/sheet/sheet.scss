@@ -1,6 +1,7 @@
 @use '@/scss/base/variables' as var;
 @use '@/scss/base/animation' as animation;
 @use '@/scss/base/mixins' as mixins;
+@use 'sass:map';
 
 .sheet-overlay {
   position: fixed;
@@ -45,7 +46,7 @@
     @include animation.slide-in-from-right;
   }
 
-  @media (min-width: map-get(var.$screens, sm)) {
+  @media (min-width: map.get(var.$screens, sm)) {
     max-width: 384px;
   }
 }
@@ -98,7 +99,7 @@
 
   text-align: center;
 
-  @media (min-width: map-get(var.$screens, sm)) {
+  @media (min-width: map.get(var.$screens, sm)) {
     text-align: left;
   }
 }
@@ -107,7 +108,7 @@
   display: flex;
   flex-direction: column-reverse;
 
-  @media (min-width: map-get(var.$screens, sm)) {
+  @media (min-width: map.get(var.$screens, sm)) {
     flex-direction: row;
     justify-content: flex-end;
 

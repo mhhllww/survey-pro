@@ -1,5 +1,6 @@
 @use '@/scss/base/variables' as var;
 @use '@/scss/base/mixins' as mixins;
+@use 'sass:map';
 
 .header {
   position: sticky;
@@ -79,7 +80,7 @@
   gap: 8px;
 }
 
-@media (min-width: map-get(var.$screens, md)) {
+@media (min-width: map.get(var.$screens, md)) {
   .header-nav__list {
     display: flex;
   }
