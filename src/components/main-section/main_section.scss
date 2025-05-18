@@ -3,8 +3,8 @@
 
 .main-section {
   width: 100%;
-  padding-top: 80px;
-  padding-bottom: 40px;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 .main-section__content {
@@ -49,12 +49,20 @@
 }
 
 @media (min-width: map-get(var.$screens, sm)) {
+  .main-section{
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
   .main-section__container{
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (min-width: map-get(var.$screens, md)) {
+  .main-section{
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
   .main-section__header{
     flex-direction: row;
     align-items: center;
