@@ -1,0 +1,83 @@
+@use '@/scss/base/variables' as var;
+@use '@/scss/base/mixins' as mixins;
+@use "sass:map";
+
+.analytics {
+  display: flex;
+  justify-content: center;
+  @include mixins.container;
+}
+
+.analytics__container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 20px 0;
+
+  @media (min-width: map.get(var.$screens, xs)) {
+    margin: 40px 0;
+  }
+}
+
+.analytics-content {
+  font-family: var.$font-segoe-ui;
+}
+
+.analytics-content__header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 32px;
+  
+  @media (min-width: map.get(var.$screens, md)) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+  }
+
+}
+
+.analytics-content__subtitle {
+  color: var.$muted-foreground;
+  line-height: var.$leading-normal;
+}
+
+.analytics-content__header-dropdown-trigger {
+  @include mixins.center;
+  line-height: var.$leading-tighter;
+  gap: 5px
+}
+
+.analytics-content__ui-dropdown-menu-trigger {
+  font-size: var.$text-sm;
+  border: 1px solid var.$border;
+  border-radius: var.$radius-md;
+  width: 240px;
+  height: 40px;
+}
+
+.analytics-content__ui-dropdown-menu-content {
+  font-size: var.$text-sm;
+  width: 240px;
+}
+
+.analytics-content__ui-dropdown-menu-checkbox-item {
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 32px !important;
+}
+
+.analytics-content__cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+
+  @media (max-width: map.get(var.$screens, lg)) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: map.get(var.$screens, md)) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
