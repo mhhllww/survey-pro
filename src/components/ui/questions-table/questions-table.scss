@@ -1,0 +1,78 @@
+@use '@/scss/base/variables' as var;
+@use "sass:map";
+
+.question-table-warning {
+  font-weight: var.$medium;
+}
+
+.question-table {
+  background-color: var.$background;
+  border: 1px solid var.$border;
+  box-shadow: var.$shadow;
+  border-radius: var.$radius-md;
+  width: 100%;
+  padding: 24px;
+}
+
+.question-table__header {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 24px;
+}
+
+.question-table__title {
+  font-size: var.$text-2xl;
+  font-weight: var.$semibold;
+}
+
+.question-table__subtitle {
+  color: var.$muted-foreground;
+  font-size: var.$text-sm;
+}
+
+.question-table__questions-container {
+  margin-bottom: 10px;
+}
+
+.question-table__description {
+  color: var.$muted-foreground;
+  font-size: var.$text-sm;
+}
+
+.question-table__content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.question-table__answers-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.question-table__answer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.question-table__answer-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: var.$text-sm;
+}
+
+.question-table__bar-container {
+  background-color: var.$muted;
+  border-radius: var.$radius-lg;
+  height: 8px;
+  width: 100%;
+}
+
+.question-table__bar-fill {
+  background-color: #3366FF;
+  border-radius: var.$radius-lg;
+  height: 100%;
+}
