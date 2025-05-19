@@ -1,0 +1,28 @@
+@use '@/scss/base/variables' as var;
+
+.survey-metrics {
+  width: 100%;
+  padding: 0 16px 16px;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.survey-metrics__item{
+  display: flex;
+  flex-direction: column;
+}
+
+.survey-metrics__label{
+  color: var.$muted-foreground;
+}
+
+.survey-metrics__value{
+  font-weight: var.$semibold;
+}
+
+@media (min-width: map-get(var.$screens, md)) {
+  .survey-metrics{
+    padding: 0 24px 24px;
+  }
+}
