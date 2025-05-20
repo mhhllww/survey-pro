@@ -22,6 +22,14 @@ export const fullSurveyData: FullSurveyData = {
         description: 'Sample question description',
         answers: { a: 30, b: 20, c: 10 },
       },
+      Question3: {
+        description: 'Sample question description',
+        answers: { yes: 30, no: 20 },
+      },
+      Question4: {
+        description: 'Sample question description',
+        answers: { answer1: 30, answer2: 20, answer3: 10 },
+      },
     },
     Feb: {
       Question1: {
