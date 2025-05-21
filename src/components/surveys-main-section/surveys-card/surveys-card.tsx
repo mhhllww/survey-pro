@@ -2,6 +2,12 @@ import '@/components/surveys-main-section/surveys-card/surveys-card.scss';
 import { SurveysCardMetrics } from '@/components/surveys-main-section/surveys-card/surveys-card-metrics/surveys-card-metrics.tsx';
 import { UiButton } from '@/shared/ui/button/button.tsx';
 import { useNavigate } from 'react-router-dom';
+import {
+  ChartColumnIcon,
+  EyeIcon,
+  Trash2Icon,
+  SquarePenIcon,
+} from 'lucide-react';
 
 interface Card {
   id: number;
@@ -36,15 +42,13 @@ export const SurveysCard = ({ cards }: CardProps) => {
       {cards.map((card) => (
         <div key={card.id} className='surveys-card'>
           <div className='surveys-card-header'>
-            <div>
-              <h3>{card.title}</h3>
-              <p>{card.description}</p>
+            <div className='survey-card-title_group'>
+              <h3 className='survey-card__title'>{card.title}</h3>
+              <p className='survey-card__description'>{card.description}</p>
             </div>
-            <div>
-              <span
-                className={`status-badge ${card.status.toLowerCase().replace(' ', '-')}`}>
-                {card.status}
-              </span>
+            <div
+              className={`surveys-card__status surveys-card__status--${card.status.toLowerCase().replace(' ', '-')}`}>
+              <span>{card.status}</span>
             </div>
           </div>
           <SurveysCardMetrics
@@ -55,16 +59,19 @@ export const SurveysCard = ({ cards }: CardProps) => {
             <UiButton
               design='outline'
               onClick={() => handleButtonClick(card.id, 'preview')}>
+              <EyeIcon />
               Preview
             </UiButton>
             <UiButton
               design='outline'
               onClick={() => handleButtonClick(card.id, 'edit')}>
+              <SquarePenIcon />
               Edit
             </UiButton>
             <UiButton
               design='outline'
               onClick={() => handleButtonClick(card.id, 'results')}>
+              <ChartColumnIcon />
               Results
             </UiButton>
             <UiButton
@@ -72,7 +79,8 @@ export const SurveysCard = ({ cards }: CardProps) => {
               onClick={() => {
                 <div>Coming soon Delete modal</div>;
               }}>
-              Delete
+              <Trash2Icon color='red' />
+              <span className='red-btn-delete'>Delete</span>
             </UiButton>
           </div>
         </div>

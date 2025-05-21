@@ -1,4 +1,4 @@
-import '../../../dashboard-main-section/survey-card/survey-metric/survey_metric.scss';
+import '../surveys-card-metrics/surveys-card-metrics.scss';
 type CardMetrics = {
   responses: number;
   date: string;
@@ -6,14 +6,14 @@ type CardMetrics = {
 
 export const SurveysCardMetrics = ({ responses, date }: CardMetrics) => {
   return (
-    <div className='survey-metrics'>
-      <div className='survey-metrics__item'>
-        <span className='survey-metrics__label'>Responses</span>
-        <span className='survey-metrics__value'>{responses}</span>
+    <div className='surveys-metrics'>
+      <div className='surveys-metrics__item'>
+        <span className='surveys-metrics__label'>Responses</span>
+        <span className='surveys-metrics__value'>{responses}</span>
       </div>
-      <div className='survey-metrics__item'>
-        <span className='survey-metrics__label'>Created</span>
-        <span className='survey-metrics__value'>{date}</span>
+      <div className='surveys-metrics__item'>
+        <span className='surveys-metrics__label'>Created</span>
+        <span className='surveys-metrics__value'>{date}</span>
       </div>
     </div>
   );

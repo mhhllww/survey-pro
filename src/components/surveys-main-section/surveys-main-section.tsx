@@ -70,9 +70,9 @@ export const SurveysMainSection = () => {
       <div className='main-section__content'>
         <div className='main-section__header'>
           <div className='main-section__title-group'>
-            <h2 className='main-section__title'>Dashboard</h2>
+            <h2 className='main-section__title'>Surveys</h2>
             <p className='main-section__subtitle'>
-              Manage your surveys and view analytics
+              Create, manage, and analyze your surveys
             </p>
           </div>
           <NewSurvey buttonText='Create New Survey' />
