@@ -37,11 +37,12 @@
 
 .surveys-card__status--in-process{
   background-color: rgba(var.$warning, 0.3);
+  color: var.$error;
 }
 
 .surveys-card__status--completed{
   background-color: var.$muted-primary;
-  color: var.$primary-foreground;
+  color: var.$success;
 }
 
 .surveys-card-actions{
