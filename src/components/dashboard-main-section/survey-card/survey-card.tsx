@@ -1,4 +1,4 @@
-import { SurveyMetrics } from '@/components/main-section/survey-card/survey-metric/survey-metric.tsx';
+import { SurveyMetrics } from '@/components/dashboard-main-section/survey-card/survey-metric/survey-metric.tsx';
 import { UiButton } from '@/shared/ui/button/button.tsx';
 import '../survey-card/survey_card.scss';
 

@@ -1,0 +1,113 @@
+@use '@/scss/base/variables' as var;
+@use '@/scss/base/mixins' as mixins;
+
+.main-section {
+  width: 100%;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.main-section__content {
+  @include mixins.container;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-section__header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.main-section__subtitle {
+  font-size: var.$text-md;
+  color: var.$muted-foreground;
+}
+
+.main-section__controls{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.main-section__search{
+  position: relative;
+}
+
+.main-section__search-icon{
+  position: absolute;
+  left: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.main-section__search-input{
+  padding-left: 24px;
+}
+
+.main-section__actions{
+  width: 100%;
+}
+
+.main-section__actions-container{
+  display: inline-flex;
+  border: var.$border 1px solid;
+  border-radius: var.$radius-lg;
+  background-color: var.$muted;
+}
+
+
+//.main-section__container {
+//  width: 100%;
+//  display: grid;
+//  gap: 16px;
+//}
+//
+//.main-section__recent-title {
+//  width: 100%;
+//  font-size: var.$text-lg;
+//  margin-top: 40px;
+//  margin-bottom: 16px;
+//}
+//
+//.main-section__surveys {
+//  display: grid;
+//  gap: 16px;
+//  width: 100%;
+//}
+
+@media (min-width: map-get(var.$screens, sm)) {
+  .main-section{
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+  //.main-section__container{
+  //  grid-template-columns: repeat(2, 1fr);
+  //}
+}
+
+@media (min-width: map-get(var.$screens, md)) {
+  .main-section{
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  .main-section__header{
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: map-get(var.$screens, lg)) {
+  //.main-section__container {
+  //  grid-template-columns: repeat(3, 1fr);
+  //}
+}

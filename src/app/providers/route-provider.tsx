@@ -5,6 +5,7 @@ import { Register } from '@/pages/auth/ui/register.tsx';
 import { RouterPaths } from '@/app/consts/RouterPaths.ts';
 import { Dashboard } from '@/pages/dashboard/dashboard.tsx';
 import { Analytics } from '@/pages/analytics/analytics.tsx';
+import { Surveys } from '@/pages/surveys/surveys.tsx';
 
 export const RouteProvider = () => {
   return (
@@ -15,6 +16,9 @@ export const RouteProvider = () => {
         <Route path={RouterPaths.LOGIN} element={<Login />} />
         <Route path={RouterPaths.REGISTER} element={<Register />} />
         <Route path={RouterPaths.DASHBOARD} element={<Dashboard />} />
+        <Route path={RouterPaths.SURVEYS} element={<Surveys />} />
+        <Route path={RouterPaths.SURVEY} element={<div>Waiting page</div>} />
+        <Route path={RouterPaths.RESULT} element={<div>Waiting page</div>} />
       </Routes>
     </BrowserRouter>
   );

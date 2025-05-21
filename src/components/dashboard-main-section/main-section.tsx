@@ -1,8 +1,8 @@
 import { NewSurvey } from '@/components/dashboard-header/new-survey/new-survey.tsx';
-import { AnalyticCard } from '@/components/main-section/analytics-card/analytics-card.tsx';
+import { AnalyticCard } from '@/components/dashboard-main-section/analytics-card/analytics-card.tsx';
 import { ChartColumnIcon, UsersIcon, ClockIcon } from 'lucide-react';
-import { SurveyCard } from '@/components/main-section/survey-card/survey-card.tsx';
-import '../main-section/main_section.scss';
+import { SurveyCard } from '@/components/dashboard-main-section/survey-card/survey-card.tsx';
+import '@/components/dashboard-main-section/main_section.scss';
 
 export const MainSection = () => {
   return (

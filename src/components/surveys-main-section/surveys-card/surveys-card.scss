@@ -1,0 +1,21 @@
+@use '@/scss/base/variables' as var;
+
+.surveys-card-list{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.surveys-card{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: var.$muted 1px solid;
+  border-radius: var.$radius-md;
+}
+
+.surveys-card__header {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+}

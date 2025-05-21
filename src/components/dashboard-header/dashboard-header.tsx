@@ -26,10 +26,10 @@ export const DashBoardHeader = () => {
               <Link to='/dashboard'>Dashboard</Link>
             </UiButton>
             <UiButton design='link' asChild>
-              <Link to='/surveys'>Surveys</Link>
+              <Link to='/dashboard/surveys'>Surveys</Link>
             </UiButton>
             <UiButton design='link' asChild>
-              <Link to='/analytics'>Analytics</Link>
+              <Link to='/dashboard/analytics'>Analytics</Link>
             </UiButton>
           </ul>
         </nav>
