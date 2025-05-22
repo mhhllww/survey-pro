@@ -91,6 +91,7 @@
 
 .survey-question__option-inner {
   accent-color: var.$foreground;
+  box-shadow: none;
   height: 16px;
   width: 16px;
   margin-right: 6px;
@@ -104,4 +105,17 @@
 .survey-question__buttons {
   display: flex;
   justify-content: space-between;
+}
+
+.survey-question__textarea {
+  background-color: var.$background;
+  border: 1px solid var.$border;
+  box-shadow: var.$shadow;
+  border-radius: var.$radius-md;
+  font-size: var.$text-sm;
+  padding: 7px;
+}
+
+.survey-question__option-inner-text {
+  font-size: var.$text-sm;
 }
