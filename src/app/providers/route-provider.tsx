@@ -5,6 +5,7 @@ import { Register } from '@/pages/auth/ui/register.tsx';
 import { RouterPaths } from '@/app/consts/RouterPaths.ts';
 import { Dashboard } from '@/pages/dashboard/dashboard.tsx';
 import { Analytics } from '@/pages/analytics/analytics.tsx';
+import { SurveyPage } from '@/pages/survey/survey-page.tsx';
 
 export const RouteProvider = () => {
   return (
@@ -15,6 +16,7 @@ export const RouteProvider = () => {
         <Route path={RouterPaths.LOGIN} element={<Login />} />
         <Route path={RouterPaths.REGISTER} element={<Register />} />
         <Route path={RouterPaths.DASHBOARD} element={<Dashboard />} />
+        <Route path={RouterPaths.SURVEY} element={<SurveyPage />} />
       </Routes>
     </BrowserRouter>
   );
