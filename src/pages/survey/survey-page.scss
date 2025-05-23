@@ -1,5 +1,6 @@
 @use '@/scss/base/variables' as var;
 @use '@/scss/base/mixins' as mixins;
+@use "sass:map";
 
 .survey {
   display: flex;
@@ -104,7 +105,21 @@
 
 .survey-question__buttons {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 12px;
+
+
+  @media (min-width: map.get(var.$screens, xs)) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.survey-question__buttons-arrow {
+  display: none;
+  @media (min-width: map.get(var.$screens, xs)) {
+    display: flex;
+  }
 }
 
 .survey-question__textarea {
@@ -114,6 +129,7 @@
   border-radius: var.$radius-md;
   font-size: var.$text-sm;
   padding: 7px;
+  resize: none;
 }
 
 .survey-question__option-inner-text {

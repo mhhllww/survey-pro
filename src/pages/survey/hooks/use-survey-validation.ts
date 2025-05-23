@@ -37,6 +37,10 @@ export const useSurveyValidation = () => {
       const arr = answers[questionKey];
       return Array.isArray(arr) && arr.length > 0;
     }
+    if (type === 'text' || type === 'textArea') {
+      const value = answers[questionKey];
+      return typeof value === 'string' && value.trim().length > 0;
+    }
 
     return true;
   };

@@ -4,5 +4,5 @@ export enum RouterPaths {
   LOGIN = '/login',
   REGISTER = '/register',
   DASHBOARD = '/dashboard',
-  SURVEY = '/survey/:surveyName',
+  SURVEY = '/survey/:surveyId',
 }

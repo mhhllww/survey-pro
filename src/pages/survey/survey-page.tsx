@@ -1,9 +1,9 @@
 import './survey-page.scss';
 import { fullSurveyData } from '@/pages/analytics/full-survey-data.ts';
 import { UiScrollArea } from '@/shared/ui/scroll-area/scroll-area.tsx';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { UiButton } from '@/shared/ui/button/button.tsx';
-import { formatQuestions } from '@/components/ui/questions-table/modal/format-questions.ts';
+import { formatQuestions } from '@/components/ui/questions-table/model/format-questions.ts';
 import { UiInput } from '@/shared/ui/input/input.tsx';
 import { useState } from 'react';
 import {
@@ -12,12 +12,16 @@ import {
 } from '@/pages/survey/hooks/use-survey-validation.ts';
 import { ChevronRightIcon } from 'lucide-react';
 import { ChevronLeftIcon } from 'lucide-react';
+import { useToast } from '@/shared/ui/toast/toast.tsx';
 
 export const SurveyPage = () => {
-  const { surveyName } = useParams();
-  const decodedName = decodeURIComponent(surveyName || '');
-  const survey = fullSurveyData[decodedName];
-  const questions = formatQuestions(decodedName);
+  const { surveyId } = useParams<{ surveyId: string }>();
+  console.log(surveyId);
+  const surveyIndex = surveyId ? parseInt(surveyId, 10) - 1 : NaN;
+  const surveyNames = Object.keys(fullSurveyData);
+  const surveyName = surveyNames[surveyIndex];
+  const survey = fullSurveyData[surveyName];
+  const questions = formatQuestions(surveyName);
 
   if (!questions || questions.length === 0 || !survey) {
     return <span>Survey not found</span>;
@@ -30,13 +34,15 @@ export const SurveyPage = () => {
 
   const { answers, handleInputChange, validateAnswer } = useSurveyValidation();
 
+  const navigate = useNavigate();
+
   return (
     <UiScrollArea>
       <div className={'survey'}>
         <div className={'survey__container'}>
           <div className={'survey__survey-name survey-name'}>
             <header className={'survey-name__header'}>
-              <span className={'survey-name__header-title'}>{decodedName}</span>
+              <span className={'survey-name__header-title'}>{surveyName}</span>
               <span className={'survey-name__header-subtitle'}>
                 Survey Temporary Description
               </span>
@@ -76,6 +82,7 @@ export const SurveyPage = () => {
                   rows={8}
                   className={'survey-question__textarea'}
                   value={(answers[currentQuestion.question] as string) || ''}
+                  placeholder={'Enter your answer...'}
                   onChange={(e) =>
                     handleInputChange(
                       currentQuestion.question,
@@ -88,6 +95,7 @@ export const SurveyPage = () => {
               ) : currentQuestion.type === 'text' ? (
                 <UiInput
                   type='text'
+                  placeholder={'Enter your answer...'}
                   className={'survey-question__option-inner-text'}
                   value={(answers[currentQuestion.question] as string) || ''}
                   onChange={(e) =>
@@ -142,30 +150,91 @@ export const SurveyPage = () => {
                     setSelectedQuestion(selectedQuestion - 1);
                   }
                 }}>
-                <ChevronLeftIcon />
+                <ChevronLeftIcon className={'survey-question__buttons-arrow'} />
                 <span>Previous</span>
               </UiButton>
-              <UiButton
-                design='foreground'
-                size='lg'
-                disabled={selectedQuestion === questions.length - 1}
-                onClick={() => {
-                  if (
-                    validateAnswer(
-                      currentQuestion.question,
-                      currentQuestion.type as QuestionType
-                    )
-                  ) {
-                    setSelectedQuestion(selectedQuestion + 1);
-                  } else {
-                    alert(
-                      'Please select at least one answer before continuing'
-                    );
-                  }
-                }}>
-                <span>Next</span>
-                <ChevronRightIcon />
-              </UiButton>
+              {selectedQuestion === questions.length - 1 ? (
+                <UiButton
+                  design='foreground'
+                  size='lg'
+                  onClick={() => {
+                    if (
+                      validateAnswer(
+                        currentQuestion.question,
+                        currentQuestion.type as QuestionType
+                      )
+                    ) {
+                      setSelectedQuestion(selectedQuestion + 1);
+                      navigate('/');
+                    } else {
+                      if (currentQuestion.type === 'radio') {
+                        useToast({
+                          type: 'warning',
+                          title: 'Warning!',
+                          description:
+                            'Please select one of the suggested answers.',
+                        });
+                      } else if (currentQuestion.type === 'checkbox') {
+                        useToast({
+                          type: 'warning',
+                          title: 'Warning!',
+                          description:
+                            'Please select at least one of the suggested answers.',
+                        });
+                      } else {
+                        useToast({
+                          type: 'warning',
+                          title: 'Warning!',
+                          description: 'Please write your answer.',
+                        });
+                      }
+                    }
+                  }}>
+                  <span>Submit</span>
+                </UiButton>
+              ) : (
+                <UiButton
+                  design='foreground'
+                  size='lg'
+                  disabled={selectedQuestion === questions.length - 1}
+                  onClick={() => {
+                    if (
+                      validateAnswer(
+                        currentQuestion.question,
+                        currentQuestion.type as QuestionType
+                      )
+                    ) {
+                      setSelectedQuestion(selectedQuestion + 1);
+                    } else {
+                      if (currentQuestion.type === 'radio') {
+                        useToast({
+                          type: 'warning',
+                          title: 'Warning!',
+                          description:
+                            'Please select one of the suggested answers.',
+                        });
+                      } else if (currentQuestion.type === 'checkbox') {
+                        useToast({
+                          type: 'warning',
+                          title: 'Warning!',
+                          description:
+                            'Please select at least one of the suggested answers.',
+                        });
+                      } else {
+                        useToast({
+                          type: 'warning',
+                          title: 'Warning!',
+                          description: 'Please write your answer.',
+                        });
+                      }
+                    }
+                  }}>
+                  <span>Next</span>
+                  <ChevronRightIcon
+                    className={'survey-question__buttons-arrow'}
+                  />
+                </UiButton>
+              )}
             </div>
           </div>
         </div>
