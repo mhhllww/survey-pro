@@ -1,0 +1,122 @@
+@use '@/scss/base/variables' as var;
+@use '@/scss/base/mixins' as mixins;
+@use 'sass:map';
+
+.features-container {
+  width: 100%;
+  padding-top: 48px;
+  padding-bottom: 48px;
+
+  background-color: var.$accent;
+}
+
+.features {
+  @include mixins.container;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.features__heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.features__label {
+  display: inline-block;
+  padding: 4px 12px;
+  margin-bottom: 8px;
+
+  font-size: var.$text-sm;
+  color: var.$input;
+
+  border-radius: var.$radius-lg;
+  background-color: var.$foreground;
+}
+
+.features__title {
+  text-align: center;
+  letter-spacing: var.$tracking-tighter;
+}
+
+.features__subtitle {
+  margin-top: 8px;
+  color: var.$muted-foreground;
+  text-align: center;
+}
+
+.features__body {
+  padding-top: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+}
+
+.features__list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.features__item {
+  display: flex;
+  gap: 16px;
+}
+
+.features__icon {
+  min-width: 20px;
+  min-height: 20px;
+}
+
+.features__item-text {
+  margin-top: 4px;
+  color: var.$muted-foreground;
+}
+
+.features__image {
+  width: 100%;
+  border-radius: var.$radius-md;
+  object-fit: cover;
+}
+
+@media (min-width: map.get(var.$screens, md)) {
+  .features-container {
+    padding-top: 96px;
+    padding-bottom: 96px;
+  }
+
+  .features__title {
+    letter-spacing: var.$tracking-tight;
+  }
+
+  .features__subtitle {
+    font-size: var.$text-xl;
+    letter-spacing: var.$tracking-wide;
+  }
+
+  .features__image {
+    max-width: 500px;
+  }
+}
+
+@media (min-width: map.get(var.$screens, lg)) {
+  .features-container {
+    padding-top: 128px;
+    padding-bottom: 128px;
+  }
+
+  .features__body {
+    flex-direction: row;
+    gap: 96px;
+  }
+}
+
+@media (min-width: map.get(var.$screens, xl)) {
+  .features-container {
+    padding-top: 192px;
+    padding-bottom: 192px;
+  }
+}

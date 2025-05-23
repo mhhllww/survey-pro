@@ -1,5 +1,6 @@
 @use '@/scss/base/variables' as var;
 @use '@/scss/base/mixins' as mixins;
+@use 'sass:map';
 
 .textarea {
   resize: vertical;
@@ -39,7 +40,7 @@
     }
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: map.get(var.$screens, md)) {
     font-size: var.$text-sm;
   }
 }

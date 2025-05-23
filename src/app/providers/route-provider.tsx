@@ -3,9 +3,9 @@ import { Home } from '@/pages/home/home.tsx';
 import { Login } from '@/pages/auth/ui/login.tsx';
 import { Register } from '@/pages/auth/ui/register.tsx';
 import { RouterPaths } from '@/app/consts/RouterPaths.ts';
-import { UiButton } from '@/shared/ui/button/button.tsx';
-import { CreateSurveyFormDialog } from '@/components/create-survey-form-dialog/create-survey-form-dialog.tsx';
-import { useState } from 'react';
+import { Dashboard } from '@/pages/dashboard/dashboard.tsx';
+import { GuardForAuthentication } from '@/components/guard-for-authentication.tsx';
+import { Analytics } from '@/pages/analytics/analytics.tsx';
 
 export const RouteProvider = () => {
   return (
@@ -14,23 +14,13 @@ export const RouteProvider = () => {
         <Route path={RouterPaths.HOME} element={<Home />} />
         <Route path={RouterPaths.LOGIN} element={<Login />} />
         <Route path={RouterPaths.REGISTER} element={<Register />} />
-        {/* TODO: временная заглушка */}
-        <Route path='/dashboard' element={<Page />} />
+        <Route
+          element={<GuardForAuthentication fallbackUrl={RouterPaths.LOGIN} />}>
+          <Route path={RouterPaths.DASHBOARD} element={<Dashboard />} />
+          <Route path={RouterPaths.ANALYTICS} element={<Analytics />} />
+        </Route>
       </Routes>
     </BrowserRouter>
-  );
-};
-
-const Page = () => {
-  const [open, setOpen] = useState(false);
-
-  return (
-    <>
-      <UiButton onClick={() => setOpen(true)}>create survey</UiButton>
-      {open && (
-        <CreateSurveyFormDialog onClose={() => setOpen(false)} open={open} />
-      )}
-    </>
   );
 };
 
