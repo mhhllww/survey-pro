@@ -1,5 +1,6 @@
 @use 'base/variables' as var;
 @use 'base/mixins' as mixins;
+@use 'base/animation' as animation;
 @use 'base/reset';
 @use 'base/typography';
 
@@ -13,4 +14,19 @@ body {
   @include mixins.container;
   display: flex;
   flex-direction: column;
+}
+
+.load-full-page {
+  width: 100vw;
+  height: 100vh;
+
+  @include mixins.center;
+
+  svg {
+    color: var.$foreground;
+    width: 40px;
+    height: 40px;
+
+    @include animation.spin;
+  }
 }
