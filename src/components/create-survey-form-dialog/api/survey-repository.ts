@@ -2,7 +2,7 @@ import { z } from 'zod';
 
 import { addDoc, collection, getDoc } from 'firebase/firestore';
 import { db } from '@/shared/lib/firebase/firebase.ts';
-import { BaseSurveySchema } from '@/api/survey/survey-schema.ts';
+import { SurveySchema } from '@/api/survey/survey-schema.ts';
 
 export const CreateSurveySchema = z.object({
   title: z.string().min(1, { message: 'Title is required!' }),
@@ -16,7 +16,13 @@ async function createSurvey(dto: CreateSurveyDto) {
 
   const doc = await getDoc(res);
 
-  return BaseSurveySchema.parseAsync({ id: res.id, ...doc.data() });
+  return SurveySchema.parseAsync({
+    id: res.id,
+    status: 'in_progress',
+    questions: [],
+    respondents: [],
+    ...doc.data(),
+  });
 }
 
 export { createSurvey };
