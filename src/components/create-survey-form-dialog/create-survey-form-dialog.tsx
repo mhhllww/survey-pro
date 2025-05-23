@@ -17,7 +17,7 @@ import { useCreateSurveyForm } from '@/components/create-survey-form-dialog/mode
 import { UiInput } from '@/shared/ui/input/input.tsx';
 import { UiTextarea } from '@/shared/ui/textarea/textarea.tsx';
 import { UiButton } from '@/shared/ui/button/button.tsx';
-import { CirclePlusIcon, Loader2Icon } from 'lucide-react';
+import { CirclePlusIcon } from 'lucide-react';
 import { useCallback, useState } from 'react';
 
 export function CreateSurveyFormDialog() {
@@ -45,14 +45,7 @@ export function CreateSurveyFormDialog() {
 }
 
 function CreateSurveyForm({ onClose }: { onClose: () => void }) {
-  const { form, onSubmit, isLoading } = useCreateSurveyForm();
-
-  if (isLoading)
-    return (
-      <main>
-        <Loader2Icon />
-      </main>
-    );
+  const { form, onSubmit } = useCreateSurveyForm();
 
   return (
     <UiForm {...form}>

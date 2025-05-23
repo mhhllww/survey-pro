@@ -14,7 +14,6 @@ import { toast } from 'sonner';
 type ReturnType = {
   form: UseFormReturn<CreateSurveyDto>;
   onSubmit: (dto: CreateSurveyDto) => Promise<void>;
-  isLoading: boolean;
 };
 
 export function useCreateSurveyForm(): ReturnType {
@@ -41,6 +40,5 @@ export function useCreateSurveyForm(): ReturnType {
   return {
     form,
     onSubmit,
-    isLoading: mutation.isPending,
   };
 }
