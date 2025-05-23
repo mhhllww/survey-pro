@@ -9,6 +9,7 @@ import { useCallback } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/hooks/use-auth.ts';
+import { toast } from 'sonner';
 
 type ReturnType = {
   form: UseFormReturn<CreateSurveyDto>;
@@ -19,13 +20,14 @@ type ReturnType = {
 export function useCreateSurveyForm(): ReturnType {
   const navigate = useNavigate();
 
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
 
-  if (!user) throw new Error('Unauthorized!');
+  if (!user && !loading) throw new Error('Unauthorized!');
 
   const mutation = useMutation({
-    mutationFn: (dto: CreateSurveyDto) => createSurvey(dto, user.uid),
+    mutationFn: (dto: CreateSurveyDto) => createSurvey(dto, user!.uid),
     onSuccess: (data) => navigate(`/dashboard/survey/create/${data.id}`),
+    onError: (err) => toast.error(err.message),
   });
 
   const form = useForm<CreateSurveyDto>({
@@ -33,11 +35,7 @@ export function useCreateSurveyForm(): ReturnType {
   });
 
   const onSubmit = useCallback(async (dto: CreateSurveyDto) => {
-    try {
-      mutation.mutate(dto);
-    } catch (e) {
-      console.log(e);
-    }
+    mutation.mutate(dto);
   }, []);
 
   return {

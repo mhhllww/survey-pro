@@ -17,30 +17,42 @@ import { useCreateSurveyForm } from '@/components/create-survey-form-dialog/mode
 import { UiInput } from '@/shared/ui/input/input.tsx';
 import { UiTextarea } from '@/shared/ui/textarea/textarea.tsx';
 import { UiButton } from '@/shared/ui/button/button.tsx';
+import { CirclePlusIcon, Loader2Icon } from 'lucide-react';
+import { useCallback, useState } from 'react';
 
-export function CreateSurveyFormDialog({
-  onClose,
-  open,
-}: {
-  onClose: () => void;
-  open: boolean;
-}) {
+export function CreateSurveyFormDialog() {
+  const [isDialogOpened, setIsDialogOpened] = useState(false);
+
+  const onDialogClose = useCallback(() => {
+    setIsDialogOpened(false);
+  }, [setIsDialogOpened]);
+
   return (
-    <UiDialog onOpenChange={onClose} open={open}>
+    <UiDialog open={isDialogOpened} onOpenChange={setIsDialogOpened}>
+      <UiButton onClick={() => setIsDialogOpened(true)}>
+        <CirclePlusIcon /> Create new survey
+      </UiButton>
       <UiDialogContent className='survey-form-dialog'>
         <UiDialogTitle>Create new survey</UiDialogTitle>
         <UiDialogDescription>
           Enter the basic information for your survey. You can add questions in
           the next step.
         </UiDialogDescription>
-        <CreateSurveyForm onClose={onClose} />
+        <CreateSurveyForm onClose={onDialogClose} />
       </UiDialogContent>
     </UiDialog>
   );
 }
 
 function CreateSurveyForm({ onClose }: { onClose: () => void }) {
-  const { form, onSubmit } = useCreateSurveyForm();
+  const { form, onSubmit, isLoading } = useCreateSurveyForm();
+
+  if (isLoading)
+    return (
+      <main>
+        <Loader2Icon />
+      </main>
+    );
 
   return (
     <UiForm {...form}>

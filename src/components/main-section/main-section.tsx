@@ -1,8 +1,8 @@
-import { NewSurvey } from '@/components/dashboard-header/new-survey/new-survey.tsx';
 import { AnalyticCard } from '@/components/main-section/analytics-card/analytics-card.tsx';
 import { ChartColumnIcon, UsersIcon, ClockIcon } from 'lucide-react';
 import { SurveyCard } from '@/components/main-section/survey-card/survey-card.tsx';
 import '../main-section/main_section.scss';
+import { CreateSurveyFormDialog } from '@/components/create-survey-form-dialog/create-survey-form-dialog.tsx';
 
 export const MainSection = () => {
   return (
@@ -15,7 +15,7 @@ export const MainSection = () => {
               Manage your surveys and view analytics
             </p>
           </div>
-          <NewSurvey buttonText='Create New Survey' />
+          <CreateSurveyFormDialog />
         </div>
 
         <div className='main-section__container'>
