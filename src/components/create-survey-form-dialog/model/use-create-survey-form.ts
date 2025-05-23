@@ -8,6 +8,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useCallback } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '@/hooks/use-auth.ts';
 
 type ReturnType = {
   form: UseFormReturn<CreateSurveyDto>;
@@ -18,8 +19,12 @@ type ReturnType = {
 export function useCreateSurveyForm(): ReturnType {
   const navigate = useNavigate();
 
+  const { user } = useAuth();
+
+  if (!user) throw new Error('Unauthorized!');
+
   const mutation = useMutation({
-    mutationFn: (dto: CreateSurveyDto) => createSurvey(dto),
+    mutationFn: (dto: CreateSurveyDto) => createSurvey(dto, user.uid),
     onSuccess: (data) => navigate(`/dashboard/survey/create/${data.id}`),
   });
 
