@@ -4,6 +4,7 @@ import { Login } from '@/pages/auth/ui/login.tsx';
 import { Register } from '@/pages/auth/ui/register.tsx';
 import { RouterPaths } from '@/app/consts/RouterPaths.ts';
 import { Dashboard } from '@/pages/dashboard/dashboard.tsx';
+import { GuardForAuthentication } from '@/components/guard-for-authentication.tsx';
 import { Analytics } from '@/pages/analytics/analytics.tsx';
 
 export const RouteProvider = () => {
@@ -11,10 +12,13 @@ export const RouteProvider = () => {
     <BrowserRouter>
       <Routes>
         <Route path={RouterPaths.HOME} element={<Home />} />
-        <Route path={RouterPaths.ANALYTICS} element={<Analytics />} />
         <Route path={RouterPaths.LOGIN} element={<Login />} />
         <Route path={RouterPaths.REGISTER} element={<Register />} />
-        <Route path={RouterPaths.DASHBOARD} element={<Dashboard />} />
+        <Route
+          element={<GuardForAuthentication fallbackUrl={RouterPaths.LOGIN} />}>
+          <Route path={RouterPaths.DASHBOARD} element={<Dashboard />} />
+          <Route path={RouterPaths.ANALYTICS} element={<Analytics />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
