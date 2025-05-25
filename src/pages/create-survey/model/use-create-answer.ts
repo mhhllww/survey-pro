@@ -8,7 +8,7 @@ import { getItemOptions } from '@/api/survey/get.ts';
 import { useCallback } from 'react';
 import { surveyApi } from '@/api/survey';
 
-export function useCreateAnswer(surveyId: string, questionId: number) {
+export function useCreateAnswer(surveyId: string, questionId: string) {
   const mutation = useMutation({
     mutationFn: (dto: CreateAnswerDto) => createAnswer(dto),
   });
@@ -19,7 +19,9 @@ export function useCreateAnswer(surveyId: string, questionId: number) {
         surveyApi.getItemOptions(surveyId).queryKey
       );
 
-      const question = data?.questions[questionId];
+      const question = data?.questions.find(
+        (question) => question.id === questionId
+      );
 
       switch (question?.type) {
         case 'text':
@@ -42,10 +44,12 @@ export function useCreateAnswer(surveyId: string, questionId: number) {
         if (!data || !dto) return data;
 
         const questions = data.questions;
-        const question = questions[questionId];
-        const answers = question.answers;
+        const question = questions.find(
+          (question) => question.id === questionId
+        );
+        const answers = question?.answers;
 
-        answers.push({ title: dto.title, respondents: [] });
+        answers?.push({ id: dto.id, title: dto.title, respondents: [] });
 
         return {
           ...data,

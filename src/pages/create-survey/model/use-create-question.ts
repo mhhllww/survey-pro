@@ -10,24 +10,29 @@ import { useCallback } from 'react';
 export function useCreateQuestion(surveyId: string) {
   const mutation = useMutation({
     mutationFn: (dto: CreateQuestionDto) => createQuestion(dto),
-    onSuccess: (result) => {
+  });
+
+  const createQuestionMutation = useCallback(
+    (dto: CreateQuestionDto) => {
+      mutation.mutate(dto);
+
       queryClient.setQueryData(getItemOptions(surveyId).queryKey, (data) => {
-        if (!data || !result) return data;
+        if (!data || !dto) return data;
 
         const questions = data.questions;
-        questions.push(result);
+        questions.push({
+          id: dto.id,
+          title: dto.title,
+          description: dto.description,
+          type: dto.type,
+          answers: [],
+        });
 
         return {
           ...data,
           questions,
         };
       });
-    },
-  });
-
-  const createQuestionMutation = useCallback(
-    (dto: CreateQuestionDto) => {
-      mutation.mutate(dto);
     },
     [mutation]
   );

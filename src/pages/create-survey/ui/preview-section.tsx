@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { SurveyContext } from '@/pages/create-survey/model/use-survey-context.tsx';
 import { PreviewQuestion } from '@/pages/create-survey/ui/preview-question.tsx';
 
-import './design-section.scss';
+import './editor-section.scss';
 
 export const PreviewSection = () => {
   const { surveyId } = useContext(SurveyContext);

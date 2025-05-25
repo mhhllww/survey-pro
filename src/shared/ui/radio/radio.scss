@@ -11,9 +11,8 @@
   height: 16px;
   width: 16px;
   border-radius: 100%;
-  border: 1px solid var.$muted-foreground;
-  color: var.$foreground;
-  box-shadow: var.$shadow-lg;
+  border: 1px solid var.$border;
+  color: var.$muted-foreground;
   outline: none;
 
   &:focus {
@@ -27,18 +26,17 @@
 
   &:disabled {
     cursor: not-allowed;
-    opacity: 0.5;
   }
 }
 
 .group-indicator {
-  @include  mix.center;
+  @include mix.center;
 }
 
 .icon {
   height: 12px;
   width: 12px;
-  fill: var.$foreground;
+  fill: var.$muted-foreground;
 }
 
 

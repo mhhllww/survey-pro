@@ -10,6 +10,18 @@ export type CreateQuestionDto = Omit<QuestionResponse, 'answers'> & {
   surveyId: string;
 };
 
+export type DeleteQuestionDto = {
+  surveyId: string;
+  questionId: string;
+};
+
+export type ChangeQuestionDto = {
+  surveyId: string;
+  questionId: string;
+  title: string;
+  description: string;
+};
+
 async function createQuestion(dto: CreateQuestionDto) {
   const { surveyId, ...questionData } = dto;
 
@@ -34,4 +46,56 @@ async function createQuestion(dto: CreateQuestionDto) {
   return await QuestionSchema.parseAsync(newQuestion);
 }
 
-export { createQuestion };
+async function deleteQuestion(dto: DeleteQuestionDto) {
+  const { surveyId, questionId } = dto;
+
+  const surveyRef = doc(db, 'surveys', surveyId);
+  const snap = await getDoc(surveyRef);
+
+  const survey = snap.data() as SurveyResponse | undefined;
+  if (!survey) return undefined;
+
+  const updatedQuestions = survey.questions.filter(
+    (question) => question.id !== questionId
+  );
+
+  await updateDoc(surveyRef, { questions: updatedQuestions });
+
+  const updatedSnap = await getDoc(surveyRef);
+  const updatedSurvey = updatedSnap.data() as SurveyResponse;
+
+  if (!updatedSurvey) return undefined;
+
+  return updatedSurvey.questions;
+}
+
+async function changeQuestion(dto: ChangeQuestionDto) {
+  const { surveyId, ...questionData } = dto;
+
+  const surveyRef = doc(db, 'surveys', surveyId);
+  const snap = await getDoc(surveyRef);
+
+  const survey = snap.data() as SurveyResponse | undefined;
+  if (!survey) return undefined;
+
+  const questions = survey.questions;
+  const question = questions.find(
+    (question) => question.id === questionData.questionId
+  );
+
+  if (!question) return undefined;
+
+  question.title = questionData.title;
+  question.description = questionData.description;
+
+  await updateDoc(surveyRef, { questions: questions });
+
+  const updatedSnap = await getDoc(surveyRef);
+  const updatedSurvey = updatedSnap.data() as SurveyResponse;
+
+  if (!updatedSurvey) return undefined;
+
+  return updatedSurvey;
+}
+
+export { createQuestion, deleteQuestion, changeQuestion };

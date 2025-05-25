@@ -11,6 +11,7 @@ export const QuestionTypeSchema = z.enum([
 export type QuestionType = z.infer<typeof QuestionTypeSchema>;
 
 export const QuestionSchema = z.object({
+  id: z.string(),
   title: z.string(),
   description: z.string(),
   answers: z.array(AnswerSchema),

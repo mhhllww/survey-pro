@@ -1,6 +1,7 @@
 import { z } from 'zod';
 
 export const AnswerSchema = z.object({
+  id: z.string(),
   title: z.string(),
   respondents: z.array(z.string()),
 });

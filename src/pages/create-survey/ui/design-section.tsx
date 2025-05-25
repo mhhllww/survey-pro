@@ -1,29 +1,17 @@
-import { useForm } from 'react-hook-form';
+import { useContext, useEffect, useState } from 'react';
+import { v4 as uuid } from 'uuid';
 
 import {
-  // ChevronLeft,
-  // Plus,
-  // Trash2,
-  // GripVertical,
   Type,
   ListChecks,
   CheckSquare,
   AlignLeft,
   ChevronDown,
+  Check,
+  Edit,
 } from 'lucide-react';
-
-import {
-  UiForm,
-  UiFormControl,
-  UiFormField,
-  UiFormItem,
-  UiFormLabel,
-  UiFormMessage,
-} from '@/shared/ui/form/form';
 import { UiInput } from '@/shared/ui/input/input';
-
 import { UiTextarea } from '@/shared/ui/textarea/textarea';
-
 import {
   UiDropdownMenu,
   UiDropdownMenuContent,
@@ -31,67 +19,93 @@ import {
   UiDropdownMenuItem,
   UiDropdownMenuTrigger,
 } from '@/shared/ui/dropdown-menu/dropdown-menu.tsx';
+
 import { UiButton } from '@/shared/ui/button/button';
-
-import './design-section.scss';
 import { useSurvey } from '@/pages/create-survey/model/use-survey.ts';
-import { useCreateQuestion } from '@/pages/create-survey/model/use-create-question.ts';
 
+import { useCreateQuestion } from '@/pages/create-survey/model/use-create-question.ts';
 import { SurveyContext } from '@/pages/create-survey/model/use-survey-context.tsx';
-import { useContext } from 'react';
 import { QuestionBody } from './design-question';
 
+import './editor-section.scss';
+import { useChangeSurvey } from '@/pages/create-survey/model/use-change-survey.ts';
+import { showToast } from '@/shared/ui/toast/toast.tsx';
+
 export const DesignSection = () => {
-  const form = useForm();
-
   const { surveyId } = useContext(SurveyContext);
-
   if (!surveyId) return;
 
   const { data } = useSurvey(surveyId);
 
+  const [isEditing, setIsEditing] = useState(false);
+
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+
+  const { changeSurveyMutation } = useChangeSurvey(surveyId);
+
+  useEffect(() => {
+    if (data) {
+      setTitle(data.title);
+      setDescription(data.description);
+    }
+  }, [data]);
+
+  const onSubmit = () => {
+    if (title.trim() && description.trim()) {
+      changeSurveyMutation({
+        title: title,
+        description: description,
+        surveyId,
+      });
+      setIsEditing(false);
+      showToast({
+        type: 'success',
+        title: 'Survey Information was changed!',
+        description: 'Title and Description was changed successfully!',
+      });
+    } else {
+      showToast({
+        type: 'warning',
+        title: 'Title and Description is required!',
+        description: 'Please enter Title and Description and try again!',
+      });
+    }
+  };
+
   const { createQuestionMutation } = useCreateQuestion(surveyId);
 
   return (
-    <section className={'design-section'}>
+    <section>
       <article className={'design-section__details'}>
         <div>
           <h3>Survey Details</h3>
           <p>Set the basic information for your survey</p>
         </div>
-        <UiForm {...form}>
-          <form className={'details__form'}>
-            <UiFormField
-              name='survey-title'
-              render={({ field }) => (
-                <UiFormItem>
-                  <UiFormLabel>Survey Title</UiFormLabel>
-                  <UiFormControl>
-                    <UiInput placeholder='Enter survey title' {...field} />
-                  </UiFormControl>
-                  <UiFormMessage />
-                </UiFormItem>
-              )}
-            />
-            <UiFormField
-              name='survey-decription'
-              render={({ field }) => (
-                <UiFormItem>
-                  <UiFormLabel>Description</UiFormLabel>
-                  <UiFormControl>
-                    <UiTextarea
-                      placeholder='Enter survey description'
-                      {...field}
-                    />
-                  </UiFormControl>
-                  <UiFormMessage />
-                </UiFormItem>
-              )}
-            />
-          </form>
-        </UiForm>
+
+        <UiInput
+          placeholder='Enter survey title'
+          disabled={!isEditing}
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <UiTextarea
+          placeholder='Enter survey description'
+          disabled={!isEditing}
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+
+        <UiButton
+          className={'edit-button'}
+          design={'outline'}
+          size={'icon'}
+          onClick={isEditing ? () => onSubmit() : () => setIsEditing(true)}>
+          {isEditing ? <Check /> : <Edit />}
+        </UiButton>
       </article>
-      <article className={'design-section__questions'}>
+
+      <article>
         <div className={'questions__header'}>
           <h3>Questions</h3>
           <UiDropdownMenu>
@@ -106,6 +120,7 @@ export const DesignSection = () => {
                 <UiDropdownMenuItem
                   onClick={() => {
                     createQuestionMutation({
+                      id: uuid(),
                       title: 'New Radio Question',
                       description: 'Your Description here',
                       type: 'radio',
@@ -118,6 +133,7 @@ export const DesignSection = () => {
                 <UiDropdownMenuItem
                   onClick={() => {
                     createQuestionMutation({
+                      id: uuid(),
                       title: 'New Checkbox Question',
                       description: 'Your Description here',
                       type: 'checkbox',
@@ -130,6 +146,7 @@ export const DesignSection = () => {
                 <UiDropdownMenuItem
                   onClick={() => {
                     createQuestionMutation({
+                      id: uuid(),
                       title: 'New Text Question',
                       description: 'Your Description here',
                       type: 'text',
@@ -142,6 +159,7 @@ export const DesignSection = () => {
                 <UiDropdownMenuItem
                   onClick={() => {
                     createQuestionMutation({
+                      id: uuid(),
                       title: 'New Paragraph Question',
                       description: 'Your Description here',
                       type: 'paragraph',
@@ -154,17 +172,11 @@ export const DesignSection = () => {
             </UiDropdownMenuContent>
           </UiDropdownMenu>
         </div>
-        <ul className={'questions__list'}>
+        <ul>
           {!data?.questions.length && <span>Create your first question</span>}
+
           {data?.questions.map((question, index) => (
-            <QuestionBody
-              key={index}
-              index={index}
-              type={question.type}
-              title={question.title}
-              description={question.description}
-              answers={question.answers}
-            />
+            <QuestionBody key={question.id} index={index} {...question} />
           ))}
         </ul>
       </article>

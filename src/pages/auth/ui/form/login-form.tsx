@@ -2,7 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { useToast } from '@/shared/ui/toast/toast';
+import { showToast } from '@/shared/ui/toast/toast';
 import { z } from 'zod';
 import './login-form.scss';
 import { FirebaseError } from 'firebase/app';
@@ -66,13 +66,13 @@ export function LoginForm({ action }: LoginFormProps) {
     } catch (err: unknown) {
       if (err instanceof FirebaseError) {
         if (action === 'register' && err.code === 'auth/email-already-in-use') {
-          useToast({
+          showToast({
             type: 'error',
             title: 'Registration Failed',
             description: 'A user with this email already exists.',
           });
         } else {
-          useToast({
+          showToast({
             type: 'error',
             title: 'Authentication Failed',
             description: 'Incorrect login or password. Try again.',
