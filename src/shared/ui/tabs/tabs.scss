@@ -9,8 +9,8 @@
   justify-content: center;
 
   border-radius: var.$radius-md;
-  background-color: var.$muted;
-  padding: 0.25rem;
+  background-color: var.$border;
+  padding: 0 0.30rem;
   color: var.$muted-foreground;
 }
 
@@ -28,7 +28,7 @@
   font-weight: var.$medium;
 
   border-radius: var.$radius-sm;
-  background-color: var.$muted;
+  background-color: var.$border;
 
   transition: all 150ms ease-in-out;
 
