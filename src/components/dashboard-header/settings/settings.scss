@@ -1,0 +1,60 @@
+@use '@/scss/base/variables' as var;
+
+.sheet-content{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sheet-container{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sheet-form-actions{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sheet-subtitle{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: var.$semibold;
+  letter-spacing: var.$tracking-wider;
+}
+
+.sheet-icon{
+  width: 16px;
+  height: 16px;
+}
+
+.sheet-form{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sheet-form__password-toggle-button__currentPassword{
+  position: absolute;
+  right: 10%;
+  top: 19%;
+  z-index: 1;
+}
+
+.sheet-form__password-toggle-button__newPassword{
+  position: absolute;
+  right: 10%;
+  top: 28.2%;
+  z-index: 1;
+}
+
+.sheet-form__password-toggle-button__confirmPassword{
+  position: absolute;
+  right: 10%;
+  top: 37.4%;
+  z-index: 1;
+}

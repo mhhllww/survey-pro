@@ -1,0 +1,33 @@
+@use '@/scss/base/variables' as var;
+@use 'sass:map';
+
+.contact-dialog__content {
+  max-width: 90vw;
+  width: 100%;
+}
+
+.contact-dialog__form {
+  width: 100%;
+  padding-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact-dialog__form-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.contact-dialog__form-actions {
+  display: flex;
+  gap: 16px;
+  align-self: flex-end;
+}
+
+@media (min-width: map.get(var.$screens, md)) {
+  .contact-dialog__content {
+    max-width: 500px;
+  }
+}

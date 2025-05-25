@@ -1,0 +1,58 @@
+@use '@/scss/base/variables' as var;
+@use "sass:map";
+
+.chart-card-warning {
+  font-weight: var.$medium;
+}
+
+.chart-card {
+  background-color: var.$background;
+  border: 1px solid var.$border;
+  box-shadow: var.$shadow;
+  border-radius: var.$radius-md;
+  width: 100%;
+  padding: 24px;
+}
+
+.chart-card__header {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 24px;
+}
+
+.chart-card__title {
+  font-size: var.$text-2xl;
+  font-weight: var.$semibold;
+}
+
+.chart-card__subtitle {
+  color: var.$muted-foreground;
+  font-size: var.$text-sm;
+}
+
+.chart-card__content {
+  height: 250px;
+
+
+  @media (min-width: map.get(var.$screens, md)) {
+    height: 300px;
+  }
+
+  @media (min-width: map.get(var.$screens, lg)) {
+    height: 350px;
+  }
+
+  @media (min-width: map.get(var.$screens, xl)) {
+    height: 400px;
+  }
+}
+
+.chart-card__xaxis {
+  font-size: 8px;
+
+  @media (min-width: map.get(var.$screens, xs)) {
+    font-size: var.$text-xs;
+  }
+}
+

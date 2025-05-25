@@ -1,0 +1,39 @@
+@use '@/scss/base/variables' as var;
+
+.analytic-card {
+  display: flex;
+  flex-direction: column;
+  border: var.$muted 1px solid;
+  border-radius: var.$radius-lg;
+}
+
+.analytic-card__header{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 24px 8px;
+}
+
+.analytic-card__title{
+  font-size: var.$text-md;
+}
+
+.analytic-card__content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 24px 24px;
+}
+
+.analytic-card__value{
+  font-size: var.$text-lg;
+  line-height: var.$leading-tight;
+  font-weight: var.$bold;
+}
+
+.analytic-card__text{
+  font-size: var.$text-sm;
+  color: var.$muted-foreground;
+  letter-spacing: var.$tracking-wide;
+}
