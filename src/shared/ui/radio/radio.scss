@@ -1,0 +1,37 @@
+@use '@/scss/base/variables' as var;
+@use '@/scss/base/mixins' as mix;
+
+.radio-group {
+  display: grid;
+  gap: 8px;
+}
+
+.group-item {
+  aspect-ratio: 1 / 1;
+  height: 16px;
+  width: 16px;
+  border-radius: 100%;
+  border: 1px solid var.$border;
+  color: var.$muted-foreground;
+  outline: none;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.group-indicator {
+  @include mix.center;
+}
+
+.icon {
+  height: 12px;
+  width: 12px;
+  fill: var.$muted-foreground;
+}
+
+

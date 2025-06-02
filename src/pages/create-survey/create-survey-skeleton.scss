@@ -1,0 +1,74 @@
+@use '@/scss/base/variables' as var;
+@use '@/scss/base/mixins' as mix;
+
+.skeleton-header {
+  @include mix.container;
+
+  height: 64px;
+
+  display: flex;
+  align-items: center;
+  justify-content: start;
+
+  border-bottom: var.$border 1px solid;
+
+  .link {
+    width: 150px;
+    height: 24px;
+  }
+}
+
+.skeleton-main {
+  @include mix.container;
+
+  padding-top: 40px;
+
+  align-items: start;
+
+  flex-direction: column;
+
+  .title {
+    width: 280px;
+    height: 38px;
+
+    margin-bottom: 36px;
+  }
+
+  .tab-block {
+    width: 200px;
+    height: 40px;
+
+    margin-bottom: 8px;
+  }
+
+  .info-block {
+    width: 100%;
+    height: 230px;
+  }
+}
+
+.questions-header {
+  margin-top: 36px;
+  margin-bottom: 36px;
+
+  width: 100%;
+  height: 36px;
+
+  display: flex;
+  justify-content: space-between;
+
+  .text {
+    width: 107px;
+    height: 100%;
+  }
+
+  .dropdown {
+    width: 130px;
+    height: 100%;
+  }
+}
+
+.question-block {
+  width: 100%;
+  height: 300px;
+}

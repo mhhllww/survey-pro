@@ -1,0 +1,10 @@
+@use '@/scss/base/variables' as var;
+@use '@/scss/base/animation';
+
+.skeleton {
+  animation: pulse 1500ms cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+  background-color: var.$border;
+
+  border-radius: var.$radius-md;
+}

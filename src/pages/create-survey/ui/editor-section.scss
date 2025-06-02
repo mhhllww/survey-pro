@@ -1,0 +1,188 @@
+@use '@/scss/base/variables' as var;
+@use '@/scss/base/mixins' as mix;
+
+.design-section__details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  padding: 24px;
+
+  position: relative;
+
+  border: var.$border 1px solid;
+  border-radius: var.$radius-lg;
+
+  p {
+    color: var.$muted-foreground;
+
+    font-size: var.$text-sm;
+  }
+}
+
+.questions__header {
+  margin-top: 36px;
+
+  display: flex;
+
+  justify-content: space-between;
+}
+
+.questions__item {
+  position: relative;
+
+  padding: 55px 32px;
+  margin-top: 32px;
+
+  border: 1px solid var.$border;
+  border-radius: var.$radius-md;
+
+  box-shadow: var.$shadow-lg;
+
+  h4 {
+    font-size: var.$text-lg;
+
+    margin-bottom: 16px;
+  }
+
+  p {
+    font-size: var.$text-sm;
+
+    color: var.$muted-foreground;
+
+    margin-bottom: 16px;
+  }
+
+  .item-index {
+    @include mix.center;
+
+    width: 30px;
+    height: 30px;
+
+    font-size: var.$text-xs;
+
+    background-color: var.$border;
+
+    border-radius: 100%;
+
+    position: absolute;
+
+    top: 8px;
+    left: 8px;
+  }
+
+  .title-input {
+    padding: 8px;
+    margin-bottom: 10px;
+
+    color: var.$foreground;
+
+    border: none;
+    border-radius: 0;
+
+    box-shadow: 0 1px 0 0 var.$muted-foreground;
+
+    font-weight: var.$medium;
+    font-size: var.$text-md;
+
+    transition: ease-in-out 150ms;
+
+    &:disabled {
+      box-shadow: none;
+
+      opacity: 1;
+    }
+  }
+
+  .description-input {
+    padding: 8px;
+    margin-bottom: 10px;
+
+    color: var.$muted-foreground;
+
+    border: none;
+    border-radius: 0;
+
+    box-shadow: 0 1px 0 0 var.$muted-foreground;
+
+    font-weight: var.$regular;
+    font-size: var.$text-sm;
+
+    transition: ease-in-out 150ms;
+
+    &:disabled {
+      box-shadow: none;
+
+      opacity: 1;
+    }
+  }
+
+  .item-buttons {
+    display: flex;
+
+    gap: 5px;
+
+    position: absolute;
+
+    top: 8px;
+    right: 8px;
+  }
+
+  .answer-container {
+    display: flex;
+  }
+
+  .answers-group {
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+  }
+
+  .answer-buttons {
+    display: flex;
+
+    gap: 5px;
+  }
+
+  .add-button {
+    margin-top: 16px;
+  }
+}
+
+.radio-answer {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+}
+
+.checkbox-answer {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+}
+
+.checkbox-group-question {
+  display: flex;
+  flex-direction: column;
+
+  gap: 12px;
+}
+
+.edit-button {
+  position: absolute;
+
+  top: 8px;
+  right: 8px;
+}
+
+.survey-info {
+  margin-top: 32px;
+
+  p {
+    margin-top: 8px;
+    color: var.$muted-foreground;
+  }
+}
