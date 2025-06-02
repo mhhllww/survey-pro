@@ -1,16 +1,18 @@
 @use 'variables' as var;
+@use 'sass:map';
 
 @mixin container {
   @include center;
 
   margin-inline: auto;
 
-  padding-left: map-get(var.$padding-breakpoints, xs);
-  padding-right: map-get(var.$padding-breakpoints, xs);
+  padding-left: map.get(var.$padding-breakpoints, xs);
+  padding-right: map.get(var.$padding-breakpoints, xs);
 
   @each $key, $value in var.$padding-breakpoints {
     @if $key != xs {
-      @media (min-width: map-get(var.$screens, $key)) {
+      @media (min-width: map.get(var.$screens, $key)) {
+        max-width: map.get(var.$screens, $key);
         padding-left: $value;
         padding-right: $value;
       }

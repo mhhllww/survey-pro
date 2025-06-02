@@ -58,10 +58,10 @@ export function LoginForm({ action }: LoginFormProps) {
     try {
       if (action === 'login') {
         await loginUser(data.email, data.password);
-        navigate('/');
+        navigate('/dashboard');
       } else {
         await registerUser(data.email, data.password);
-        navigate('/');
+        navigate('/dashboard');
       }
     } catch (err: unknown) {
       if (err instanceof FirebaseError) {

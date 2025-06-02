@@ -5,6 +5,7 @@ import { store } from '@/shared/lib/redux/store.ts';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from '@/shared/api/query-client.ts';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { ContactDialog } from '@/components/dialog-contact/dialog-contact.tsx';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <QueryClientProvider client={queryClient}>
         {import.meta.env.DEV && <ReactQueryDevtools initialIsOpen={false} />}
         <Toaster />
+        <ContactDialog />
         <RouteProvider />
       </QueryClientProvider>
     </Provider>
