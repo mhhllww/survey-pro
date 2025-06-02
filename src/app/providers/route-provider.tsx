@@ -13,10 +13,6 @@ export const RouteProvider = () => {
         <Route path={RouterPaths.LOGIN} element={<Login />} />
         <Route path={RouterPaths.REGISTER} element={<Register />} />
         <Route path={RouterPaths.CREATE} element={<CreateSurvey />} />
-        <Route
-          path={'/dashboard/survey/create/:surveyId'}
-          element={<CreateSurvey />}
-        />
       </Routes>
     </BrowserRouter>
   );

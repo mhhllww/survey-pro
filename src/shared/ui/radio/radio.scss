@@ -19,11 +19,6 @@
     outline: none;
   }
 
-  &:focus-visible {
-    outline: none;
-    box-shadow: 0 0 0 1px var.$ring;
-  }
-
   &:disabled {
     cursor: not-allowed;
   }

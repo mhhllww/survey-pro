@@ -12,7 +12,6 @@ import { AnswerResponse } from '@/api/answer/answer-schema';
 
 import { useDeleteAnswer } from '@/pages/create-survey/model/use-delete-answer';
 import { useChangeAnswer } from '@/pages/create-survey/model/use-change-answer.ts';
-import { showToast } from '@/shared/ui/toast/toast.tsx';
 
 type DesignAnswerProps = {
   questionId: string;
@@ -40,26 +39,13 @@ export const DesignAnswer = ({
   );
 
   const onSubmit = () => {
-    if (title.trim()) {
-      changeAnswerMutation({
-        title: title,
-        questionId: questionId,
-        answerId: answer.id,
-        surveyId,
-      });
-      setIsEditing(false);
-      showToast({
-        type: 'success',
-        title: 'Answer was changed!',
-        description: 'Title was changed successfully!',
-      });
-    } else {
-      showToast({
-        type: 'warning',
-        title: 'Title is required!',
-        description: 'Please enter Title and try again!',
-      });
-    }
+    changeAnswerMutation({
+      title: title,
+      questionId: questionId,
+      answerId: answer.id,
+      surveyId,
+    });
+    if (title.length > 0) setIsEditing(false);
   };
 
   return (

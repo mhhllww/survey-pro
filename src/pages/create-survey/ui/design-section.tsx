@@ -29,7 +29,6 @@ import { QuestionBody } from './design-question';
 
 import './editor-section.scss';
 import { useChangeSurvey } from '@/pages/create-survey/model/use-change-survey.ts';
-import { showToast } from '@/shared/ui/toast/toast.tsx';
 
 export const DesignSection = () => {
   const { surveyId } = useContext(SurveyContext);
@@ -52,25 +51,12 @@ export const DesignSection = () => {
   }, [data]);
 
   const onSubmit = () => {
-    if (title.trim() && description.trim()) {
-      changeSurveyMutation({
-        title: title,
-        description: description,
-        surveyId,
-      });
-      setIsEditing(false);
-      showToast({
-        type: 'success',
-        title: 'Survey Information was changed!',
-        description: 'Title and Description was changed successfully!',
-      });
-    } else {
-      showToast({
-        type: 'warning',
-        title: 'Title and Description is required!',
-        description: 'Please enter Title and Description and try again!',
-      });
-    }
+    changeSurveyMutation({
+      title: title,
+      description: description,
+      surveyId,
+    });
+    if (title.length > 0 && description.length > 0) setIsEditing(false);
   };
 
   const { createQuestionMutation } = useCreateQuestion(surveyId);

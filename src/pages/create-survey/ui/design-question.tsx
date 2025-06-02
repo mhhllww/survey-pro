@@ -12,7 +12,6 @@ import { useDeleteQuestion } from '@/pages/create-survey/model/use-delete-questi
 import { DesignAnswer } from '@/pages/create-survey/ui/design-answer';
 import { useCreateAnswer } from '@/pages/create-survey/model/use-create-answer';
 import { useChangeQuestion } from '@/pages/create-survey/model/use-change-question.ts';
-import { showToast } from '@/shared/ui/toast/toast.tsx';
 
 type QuestionBodyProps = QuestionResponse & {
   index: number;
@@ -35,26 +34,13 @@ export const QuestionBody = ({ index, ...question }: QuestionBodyProps) => {
   const { changeQuestionMutation } = useChangeQuestion(surveyId);
 
   const onSubmit = () => {
-    if (title.trim() && description.trim()) {
-      changeQuestionMutation({
-        title: title,
-        description: description,
-        questionId: question.id,
-        surveyId,
-      });
-      setIsEditing(false);
-      showToast({
-        type: 'success',
-        title: 'Question was changed!',
-        description: 'Title and Description was changed successfully!',
-      });
-    } else {
-      showToast({
-        type: 'warning',
-        title: 'Title and Description is required!',
-        description: 'Please enter Title and Description and try again!',
-      });
-    }
+    changeQuestionMutation({
+      title: title,
+      description: description,
+      questionId: question.id,
+      surveyId,
+    });
+    if (title.length > 0 && description.length > 0) setIsEditing(false);
   };
 
   return (

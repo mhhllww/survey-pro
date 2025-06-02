@@ -44,3 +44,11 @@
 
   border: var.$border 1px solid;
 }
+
+.not-found-survey-main {
+  @include mix.container;
+
+  margin-top: 50px;
+
+  text-align: center;
+}

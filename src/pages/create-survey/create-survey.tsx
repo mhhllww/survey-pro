@@ -15,18 +15,27 @@ import { UiButton } from '@/shared/ui/button/button';
 import './create-survey.scss';
 import { SurveyContextProvider } from '@/pages/create-survey/model/use-survey-context.tsx';
 import { PreviewSection } from '@/pages/create-survey/ui/preview-section.tsx';
+import { NotFoundSurvey } from '@/pages/create-survey/not-found-survey.tsx';
+import { useSurvey } from '@/pages/create-survey/model/use-survey.ts';
+import { CreateSurveySkeleton } from '@/pages/create-survey/create-survey-skeleton.tsx';
 
 export const CreateSurvey = () => {
   const navigate = useNavigate();
 
   const { surveyId } = useParams();
 
-  if (!surveyId) return null;
+  if (!surveyId) return;
+
+  const { data, isLoading } = useSurvey(surveyId);
+
+  if (isLoading) return <CreateSurveySkeleton />;
+
+  if (surveyId !== data?.id) return <NotFoundSurvey />;
 
   return (
     <SurveyContextProvider surveyId={surveyId}>
       <header className={'header-create-survey'}>
-        <UiButton design={'link'} onClick={() => navigate('/')}>
+        <UiButton design={'link'} onClick={() => navigate('/dashboard')}>
           <ChevronLeft />
           Back to Dashboard
         </UiButton>

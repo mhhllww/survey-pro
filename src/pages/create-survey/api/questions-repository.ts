@@ -3,6 +3,7 @@ import { db } from '@/shared/lib/firebase/firebase.ts';
 import {
   QuestionResponse,
   QuestionSchema,
+  QuestionsSchema,
 } from '@/api/question/question-schema.ts';
 import { SurveyResponse } from '@/api/survey/survey-schema.ts';
 
@@ -66,7 +67,7 @@ async function deleteQuestion(dto: DeleteQuestionDto) {
 
   if (!updatedSurvey) return undefined;
 
-  return updatedSurvey.questions;
+  return await QuestionsSchema.parseAsync(updatedSurvey.questions);
 }
 
 async function changeQuestion(dto: ChangeQuestionDto) {
@@ -95,7 +96,11 @@ async function changeQuestion(dto: ChangeQuestionDto) {
 
   if (!updatedSurvey) return undefined;
 
-  return updatedSurvey;
+  const updatedQuestion = updatedSurvey.questions.find(
+    (q) => q.id === questionData.questionId
+  );
+
+  return QuestionSchema.parseAsync(updatedQuestion);
 }
 
 export { createQuestion, deleteQuestion, changeQuestion };

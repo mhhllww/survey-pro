@@ -19,3 +19,7 @@ export const QuestionSchema = z.object({
 });
 
 export type QuestionResponse = z.infer<typeof QuestionSchema>;
+
+export const QuestionsSchema = z.array(QuestionSchema);
+
+export type QuestionsResponse = z.infer<typeof QuestionsSchema>;

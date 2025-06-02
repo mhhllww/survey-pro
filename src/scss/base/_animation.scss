@@ -1,4 +1,5 @@
 /* === In animations === */
+@use './variables' as var;
 
 @mixin animate-in {
   animation-duration: 200ms;
@@ -166,4 +167,10 @@
 
 @mixin slide-in-from-right {
   animation: slide-in-from-right 0.3s ease-in-out forwards;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.5;
+  }
 }

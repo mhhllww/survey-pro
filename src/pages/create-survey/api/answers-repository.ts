@@ -2,6 +2,7 @@ import { AnswerResponse, AnswerSchema } from '@/api/answer/answer-schema.ts';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { db } from '@/shared/lib/firebase/firebase.ts';
 import { SurveyResponse } from '@/api/survey/survey-schema.ts';
+import { QuestionsSchema } from '@/api/question/question-schema.ts';
 
 export type CreateAnswerDto = AnswerResponse & {
   surveyId: string;
@@ -28,7 +29,7 @@ async function createAnswer(dto: CreateAnswerDto) {
   const snap = await getDoc(surveyRef);
 
   const survey = snap.data() as SurveyResponse | undefined;
-  if (!survey) return undefined;
+  if (!survey) throw new Error('Survey not found!');
 
   const updatedQuestions = [...survey.questions];
   const questionIndex = updatedQuestions.findIndex((q) => q.id === questionId);
@@ -45,12 +46,12 @@ async function createAnswer(dto: CreateAnswerDto) {
 
   const updateSnap = await getDoc(surveyRef);
   const updatedSurvey = updateSnap.data() as SurveyResponse;
-  if (!updatedSurvey) return undefined;
+  if (!updatedSurvey) throw new Error('Survey is not updated');
 
   const updatedQuestion = updatedSurvey.questions.find(
     (q) => q.id === questionId
   );
-  if (!updatedQuestion) return undefined;
+  if (!updatedQuestion) throw new Error('Question is not found');
 
   const newAnswer = updatedQuestion.answers.slice(-1)[0];
 
@@ -64,7 +65,7 @@ async function deleteAnswer(dto: DeleteAnswerDto) {
   const snap = await getDoc(surveyRef);
 
   const survey = snap.data() as SurveyResponse | undefined;
-  if (!survey) return undefined;
+  if (!survey) throw new Error('Survey not found!');
 
   const updatedQuestions = [...survey.questions];
   const questionIndex = updatedQuestions.findIndex((q) => q.id === questionId);
@@ -85,9 +86,9 @@ async function deleteAnswer(dto: DeleteAnswerDto) {
   const updateSnap = await getDoc(surveyRef);
   const updatedSurvey = updateSnap.data() as SurveyResponse;
 
-  if (!updatedSurvey) return undefined;
+  if (!updatedSurvey) throw new Error('Survey is not updated');
 
-  return updatedSurvey.questions;
+  return await QuestionsSchema.parseAsync(updatedSurvey.questions);
 }
 
 async function changeAnswer(dto: ChangeAnswerDto) {
@@ -97,16 +98,18 @@ async function changeAnswer(dto: ChangeAnswerDto) {
   const snap = await getDoc(surveyRef);
 
   const survey = snap.data() as SurveyResponse | undefined;
-  if (!survey) return undefined;
+  if (!survey) throw new Error('Survey not found!');
 
   const questions = survey.questions;
   const question = questions.find((question) => question.id === questionId);
-  if (!question) return undefined;
+  if (!question) throw new Error('Question is not found!');
 
   const answer = question.answers.find(
     (answer) => answer.id === answerData.answerId
   );
-  if (!answer) return undefined;
+  if (!answer) throw new Error('Answer is not found!');
+
+  if (!answerData.title.trim()) throw new Error('Title is empty');
 
   answer.title = answerData.title;
 
@@ -117,9 +120,18 @@ async function changeAnswer(dto: ChangeAnswerDto) {
   const updatedSnap = await getDoc(surveyRef);
   const updatedSurvey = updatedSnap.data() as SurveyResponse;
 
-  if (!updatedSurvey) return undefined;
+  if (!updatedSurvey) throw new Error('Survey is not updated');
 
-  return updatedSurvey;
+  const updatedQuestion = updatedSurvey.questions.find(
+    (q) => q.id === questionId
+  );
+  if (!updatedQuestion) throw new Error('Question is not found');
+
+  const changedAnswer = updatedQuestion.answers.find(
+    (a) => a.id === answerData.answerId
+  );
+
+  return await AnswerSchema.parseAsync(changedAnswer);
 }
 
 export { createAnswer, deleteAnswer, changeAnswer };
