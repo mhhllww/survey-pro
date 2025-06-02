@@ -18,6 +18,7 @@ import { PreviewSection } from '@/pages/create-survey/ui/preview-section.tsx';
 import { NotFoundSurvey } from '@/pages/create-survey/not-found-survey.tsx';
 import { useSurvey } from '@/pages/create-survey/model/use-survey.ts';
 import { CreateSurveySkeleton } from '@/pages/create-survey/create-survey-skeleton.tsx';
+import { UiScrollArea } from '@/shared/ui/scroll-area/scroll-area';
 
 export const CreateSurvey = () => {
   const navigate = useNavigate();
@@ -33,28 +34,32 @@ export const CreateSurvey = () => {
   if (surveyId !== data?.id) return <NotFoundSurvey />;
 
   return (
-    <SurveyContextProvider surveyId={surveyId}>
-      <header className={'header-create-survey'}>
-        <UiButton design={'link'} onClick={() => navigate('/dashboard')}>
-          <ChevronLeft />
-          Back to Dashboard
-        </UiButton>
-      </header>
-      <main className={'main-create-survey'}>
-        <h2>Create New Survey</h2>
-        <UiTabs defaultValue='design' className={'create-survey-tabs'}>
-          <UiTabsList>
-            <UiTabsTrigger value='design'>Design Survey</UiTabsTrigger>
-            <UiTabsTrigger value='preview'>Preview</UiTabsTrigger>
-          </UiTabsList>
-          <UiTabsContent value='design'>
-            <DesignSection />
-          </UiTabsContent>
-          <UiTabsContent value='preview'>
-            <PreviewSection />
-          </UiTabsContent>
-        </UiTabs>
-      </main>
-    </SurveyContextProvider>
+    <UiScrollArea>
+      <SurveyContextProvider surveyId={surveyId}>
+        <header className={'header-create-survey'}>
+          <nav className={'header-create-survey__content'}>
+            <UiButton design={'link'} onClick={() => navigate('/dashboard')}>
+              <ChevronLeft />
+              Back to Dashboard
+            </UiButton>
+          </nav>
+        </header>
+        <main className={'main-create-survey'}>
+          <h2>Create New Survey</h2>
+          <UiTabs defaultValue='design' className={'create-survey-tabs'}>
+            <UiTabsList>
+              <UiTabsTrigger value='design'>Design Survey</UiTabsTrigger>
+              <UiTabsTrigger value='preview'>Preview</UiTabsTrigger>
+            </UiTabsList>
+            <UiTabsContent value='design'>
+              <DesignSection />
+            </UiTabsContent>
+            <UiTabsContent value='preview'>
+              <PreviewSection />
+            </UiTabsContent>
+          </UiTabs>
+        </main>
+      </SurveyContextProvider>
+    </UiScrollArea>
   );
 };
