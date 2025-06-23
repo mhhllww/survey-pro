@@ -12,16 +12,22 @@ export const CreateSurveySchema = z.object({
 export type CreateSurveyDto = z.infer<typeof CreateSurveySchema>;
 
 async function createSurvey(dto: CreateSurveyDto, userId: string) {
-  const res = await addDoc(collection(db, 'surveys'), dto);
+  const surveyData = {
+    ...dto,
+    userId,
+    status: 'in_progress',
+    questions: [],
+    respondents: [],
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+  };
+
+  const res = await addDoc(collection(db, 'surveys'), surveyData);
 
   const doc = await getDoc(res);
 
   return SurveySchema.parseAsync({
     id: res.id,
-    userId,
-    status: 'in_progress',
-    questions: [],
-    respondents: [],
     ...doc.data(),
   });
 }
