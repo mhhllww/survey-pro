@@ -148,7 +148,11 @@ export const Settings = () => {
               <UiButton size='lg' type='submit'>
                 Update Password
               </UiButton>
-              <UiButton design='outline' size='lg' onClick={signOutUser}>
+              <UiButton
+                design='outline'
+                size='lg'
+                type='button'
+                onClick={signOutUser}>
                 <LogOutIcon /> Sign Out
               </UiButton>
             </div>
