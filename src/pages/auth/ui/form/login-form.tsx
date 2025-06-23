@@ -34,6 +34,7 @@ import {
 } from '@/assets/icons/icons.tsx';
 import clsx from 'clsx';
 import { LoginSchema, RegisterSchema } from '@/pages/auth/model/schema.ts';
+import { RouterPaths } from '@/app/consts/RouterPaths.ts';
 
 export type LoginFormProps = {
   action: 'login' | 'register';
@@ -84,10 +85,13 @@ export function LoginForm({ action }: LoginFormProps) {
 
   return (
     <div className='login-form'>
-      <div className='login-form__logo'>
-        <LogoIcon className={'login-form__logo-icon'} />
-        <span className='login-form__logo-text'>Survey Pro.</span>
-      </div>
+      <Link to={RouterPaths.HOME}>
+        <div className='login-form__logo'>
+          <span className='login-form__logo-text'>Survey Pro.</span>
+          <LogoIcon className={'login-form__logo-icon'} />
+        </div>
+      </Link>
+
       <div className='login-form-card'>
         <div className='login-form-card__header'>
           <span className='login-form-card__title'>Welcome back</span>

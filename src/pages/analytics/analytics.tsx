@@ -31,6 +31,7 @@ import { QuestionTable } from '@/components/ui/questions-table/questions-table.t
 import { fullSurveyData } from '@/pages/analytics/full-survey-data.ts';
 import { UiScrollArea } from '@/shared/ui/scroll-area/scroll-area.tsx';
 import { getChartData } from '@/pages/analytics/get-chart-data.ts';
+import { DashBoardHeader } from '@/components/dashboard-header/dashboard-header.tsx';
 
 const surveys = [
   'Graph with first survey',
@@ -43,6 +44,7 @@ export const Analytics = () => {
 
   return (
     <UiScrollArea>
+      <DashBoardHeader />
       <div className={'analytics'}>
         <div className={'analytics__container'}>
           <div className={'analytics-content'}>
