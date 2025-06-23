@@ -29,7 +29,7 @@ export function CreateSurveyFormDialog() {
 
   return (
     <UiDialog open={isDialogOpened} onOpenChange={setIsDialogOpened}>
-      <UiButton onClick={() => setIsDialogOpened(true)}>
+      <UiButton onClick={() => setIsDialogOpened(true)} size='sm'>
         <CirclePlusIcon /> Create new survey
       </UiButton>
       <UiDialogContent className='survey-form-dialog'>

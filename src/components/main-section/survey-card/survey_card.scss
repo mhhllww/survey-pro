@@ -23,19 +23,52 @@
 }
 
 .survey-card__actions {
-  width: 100%;
+  padding: 16px;
+}
+
+.survey-card__actions-group {
   display: flex;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
-  padding: 0 16px 16px;
+}
+
+.survey-card__edit-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.survey-card__actions button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  height: 40px;
+}
+
+.survey-card__actions a:first-child button {
+  width: auto;
+  padding: 8px 16px;
+}
+
+.copy-button {
+  background-color: black !important;
+  color: white !important;
+  border-color: black !important;
+}
+
+.copy-button:hover {
+  background-color: #333 !important;
 }
 
 @media (min-width: map-get(var.$screens, md)) {
-  .survey-card__header{
+  .survey-card__header {
     padding: 24px;
   }
 
-  .survey-card__actions{
+  .survey-card__actions {
     padding: 24px;
   }
 }
+
+

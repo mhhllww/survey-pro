@@ -16,15 +16,27 @@ import { showToast } from '@/shared/ui/toast/toast.tsx';
 
 export const SurveyPage = () => {
   const { surveyId } = useParams<{ surveyId: string }>();
-  console.log(surveyId);
+  const searchParams = new URLSearchParams(window.location.search);
+  const source = searchParams.get('source');
+
+  // Проверяем источник данных (тестовые или Firebase)
+  const isFirebaseSource = source === 'firebase';
+  console.log(
+    `Survey source: ${isFirebaseSource ? 'Firebase' : 'Test data'}, ID: ${surveyId}`
+  );
+
+  // Если используем тестовые данные
   const surveyIndex = surveyId ? parseInt(surveyId, 10) - 1 : NaN;
   const surveyNames = Object.keys(fullSurveyData);
   const surveyName = surveyNames[surveyIndex];
   const survey = fullSurveyData[surveyName];
   const questions = formatQuestions(surveyName);
 
+  // Если источник Firebase, но пока используем тестовые данные
+  // В будущем здесь будет запрос к Firebase по surveyId
+
   if (!questions || questions.length === 0 || !survey) {
-    return <span>Survey not found</span>;
+    return <span>Survey not found. Please check the URL and try again.</span>;
   }
 
   const [selectedQuestion, setSelectedQuestion] = useState(0);
@@ -44,7 +56,10 @@ export const SurveyPage = () => {
             <header className={'survey-name__header'}>
               <span className={'survey-name__header-title'}>{surveyName}</span>
               <span className={'survey-name__header-subtitle'}>
-                Survey Temporary Description
+                Survey ID: {surveyId} (from{' '}
+                {new URLSearchParams(window.location.search).get('source') ||
+                  'test data'}
+                )
               </span>
             </header>
             <div className={'survey-name__content'}>

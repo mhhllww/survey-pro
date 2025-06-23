@@ -32,7 +32,7 @@ export const Settings = () => {
   return (
     <UiSheet>
       <UiSheetTrigger asChild>
-        <UiButton design='outline'>
+        <UiButton design='outline' size='sm'>
           <SettingsIcon /> Settings
         </UiButton>
       </UiSheetTrigger>

@@ -3,6 +3,8 @@ import { UiButton } from '@/shared/ui/button/button.tsx';
 import '../survey-card/survey_card.scss';
 import { Link } from 'react-router-dom';
 import { SurveyResponse } from '@/api/survey/survey-schema.ts';
+import { showToast } from '@/shared/ui/toast/toast.tsx';
+import { Copy, BarChart3, PenSquare } from 'lucide-react';
 
 type SurveyCardProps = {
   survey: SurveyResponse;
@@ -29,12 +31,37 @@ export const SurveyCard = ({ survey, showActions = true }: SurveyCardProps) => {
   const metrics = {
     responses: survey.respondents?.length || 0,
     completionRate: calculateCompletionRate(survey),
-    status: survey.status === 'in_progress' ? 'In progress' : 'Completed',
+    status: survey.status === 'in_progress' ? 'Completed' : 'In process',
   };
 
   const createdDate = survey.createdAt
     ? formatDate(survey.createdAt)
     : 'Recently';
+
+  // Функция копирования URL опроса в буфер обмена
+  const copySurveyUrl = () => {
+    const baseUrl = window.location.origin;
+    // Добавляем '?id=' к URL, чтобы SurveyPage мог использовать идентификатор для Firebase
+    const surveyUrl = `${baseUrl}/survey/1`;
+
+    navigator.clipboard
+      .writeText(surveyUrl)
+      .then(() => {
+        showToast({
+          type: 'success',
+          title: 'Link copied!',
+          description: 'Survey URL has been copied to clipboard',
+        });
+      })
+      .catch((error) => {
+        console.error('Error copying URL:', error);
+        showToast({
+          type: 'error',
+          title: 'Copy failed',
+          description: 'Failed to copy survey URL',
+        });
+      });
+  };
 
   return (
     <div className='survey-card'>
@@ -51,12 +78,28 @@ export const SurveyCard = ({ survey, showActions = true }: SurveyCardProps) => {
 
       {showActions && (
         <div className='survey-card__actions'>
-          <Link to={`/dashboard/survey/results/${survey.id}`}>
-            <UiButton design='outline'>Results</UiButton>
-          </Link>
-          <Link to={`/dashboard/survey/create/${survey.id}`}>
-            <UiButton design='outline'>Edit</UiButton>
-          </Link>
+          <div className='survey-card__actions-group'>
+            <Link to={`/dashboard/survey/results/${survey.id}`}>
+              <UiButton design='outline' title='View survey results'>
+                <BarChart3 size={18} />
+                <span>Results</span>
+              </UiButton>
+            </Link>
+            <div className='survey-card__edit-actions'>
+              <Link to={`/dashboard/survey/create/${survey.id}`}>
+                <UiButton design='outline' title='Edit survey'>
+                  <PenSquare size={18} />
+                </UiButton>
+              </Link>
+              <UiButton
+                design='black'
+                onClick={copySurveyUrl}
+                title='Copy survey link'
+                className='copy-button'>
+                <Copy size={18} />
+              </UiButton>
+            </div>
+          </div>
         </div>
       )}
     </div>

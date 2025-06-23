@@ -26,9 +26,6 @@ export const DashBoardHeader = () => {
               <Link to='/dashboard'>Dashboard</Link>
             </UiButton>
             <UiButton design='link' asChild>
-              <Link to='/surveys'>Surveys</Link>
-            </UiButton>
-            <UiButton design='link' asChild>
               <Link to='/analytics'>Analytics</Link>
             </UiButton>
           </ul>
@@ -51,9 +48,6 @@ export const DashBoardHeader = () => {
                 <ul className='header-nav__list'>
                   <UiButton design='link' asChild>
                     <Link to='/dashboard'>Dashboard</Link>
-                  </UiButton>
-                  <UiButton design='link' asChild>
-                    <Link to='/surveys'>Surveys</Link>
                   </UiButton>
                   <UiButton design='link' asChild>
                     <Link to='/analytics'>Analytics</Link>
