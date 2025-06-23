@@ -1,5 +1,5 @@
 import './questions-table.scss';
-import { formatQuestions } from '@/components/ui/questions-table/modal/format-questions.ts';
+import { formatQuestions } from '@/components/ui/questions-table/model/format-questions.ts';
 
 export const QuestionTable = ({ surveyName }: { surveyName: string }) => {
   const questionsList = formatQuestions(surveyName);
