@@ -168,6 +168,13 @@
   animation: slide-in-from-right 0.3s ease-in-out forwards;
 }
 
+@keyframes pulse {
+  50% {
+    opacity: 0.5;
+  }
+}
+
+
 @keyframes spin {
   from {
     transform: rotate(0deg);

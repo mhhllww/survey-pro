@@ -10,13 +10,12 @@
   width: 100%;
   padding: 8px 12px;
 
-  font-size: var.$text-md;
+  font-size: var.$text-sm;
 
   border-radius: var.$radius-md;
   border: 1px solid var.$input;
   background-color: transparent;
 
-  box-shadow: var.$shadow;
 
   &::placeholder {
     color: var.$muted-foreground;
