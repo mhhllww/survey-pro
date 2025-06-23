@@ -13,6 +13,7 @@ export const SurveySchema = z.object({
   status: SurveyStatusSchema,
   questions: z.array(QuestionSchema),
   respondents: z.array(z.string()),
+  createdAt: z.string(),
 });
 
 export type SurveyResponse = z.infer<typeof SurveySchema>;
