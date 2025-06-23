@@ -12,7 +12,7 @@ import {
 } from '@/pages/survey/hooks/use-survey-validation.ts';
 import { ChevronRightIcon } from 'lucide-react';
 import { ChevronLeftIcon } from 'lucide-react';
-import { useToast } from '@/shared/ui/toast/toast.tsx';
+import { showToast } from '@/shared/ui/toast/toast.tsx';
 
 export const SurveyPage = () => {
   const { surveyId } = useParams<{ surveyId: string }>();
@@ -168,21 +168,21 @@ export const SurveyPage = () => {
                       navigate('/');
                     } else {
                       if (currentQuestion.type === 'radio') {
-                        useToast({
+                        showToast({
                           type: 'warning',
                           title: 'Warning!',
                           description:
                             'Please select one of the suggested answers.',
                         });
                       } else if (currentQuestion.type === 'checkbox') {
-                        useToast({
+                        showToast({
                           type: 'warning',
                           title: 'Warning!',
                           description:
                             'Please select at least one of the suggested answers.',
                         });
                       } else {
-                        useToast({
+                        showToast({
                           type: 'warning',
                           title: 'Warning!',
                           description: 'Please write your answer.',
@@ -207,21 +207,21 @@ export const SurveyPage = () => {
                       setSelectedQuestion(selectedQuestion + 1);
                     } else {
                       if (currentQuestion.type === 'radio') {
-                        useToast({
+                        showToast({
                           type: 'warning',
                           title: 'Warning!',
                           description:
                             'Please select one of the suggested answers.',
                         });
                       } else if (currentQuestion.type === 'checkbox') {
-                        useToast({
+                        showToast({
                           type: 'warning',
                           title: 'Warning!',
                           description:
                             'Please select at least one of the suggested answers.',
                         });
                       } else {
-                        useToast({
+                        showToast({
                           type: 'warning',
                           title: 'Warning!',
                           description: 'Please write your answer.',
