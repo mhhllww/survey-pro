@@ -3,6 +3,7 @@ import { Home } from '@/pages/home/home.tsx';
 import { Login } from '@/pages/auth/ui/login.tsx';
 import { Register } from '@/pages/auth/ui/register.tsx';
 import { RouterPaths } from '@/app/consts/RouterPaths.ts';
+import { CreateSurvey } from '@/pages/create-survey/create-survey.tsx';
 import { Dashboard } from '@/pages/dashboard/dashboard.tsx';
 import { GuardForAuthentication } from '@/components/guard-for-authentication.tsx';
 import { Analytics } from '@/pages/analytics/analytics.tsx';
@@ -22,6 +23,7 @@ export const RouteProvider = () => {
           <Route path={RouterPaths.ANALYTICS} element={<Analytics />} />
           <Route path={RouterPaths.SURVEY} element={<SurveyPage />} />
         </Route>
+        <Route path={RouterPaths.CREATE} element={<CreateSurvey />} />
       </Routes>
     </BrowserRouter>
   );

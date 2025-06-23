@@ -32,7 +32,7 @@ interface ToastProps {
   description?: string;
 }
 
-const useToast = ({ title, description, type }: ToastProps) => {
+const showToast = ({ title, description, type }: ToastProps) => {
   switch (type) {
     case 'success':
       return toast.success(title, {
@@ -52,4 +52,4 @@ const useToast = ({ title, description, type }: ToastProps) => {
       });
   }
 };
-export { Toaster, useToast };
+export { Toaster, showToast };
