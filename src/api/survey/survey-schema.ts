@@ -7,6 +7,7 @@ export type SurveyStatus = z.infer<typeof SurveyStatusSchema>;
 
 export const SurveySchema = z.object({
   id: z.string(),
+  userId: z.string(),
   title: z.string(),
   description: z.string(),
   status: SurveyStatusSchema,

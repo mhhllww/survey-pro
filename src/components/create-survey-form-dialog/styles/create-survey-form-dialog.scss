@@ -1,0 +1,21 @@
+.survey-form-dialog {
+  max-width: 450px;
+}
+
+.survey-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.survey-form-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.btn-row {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}

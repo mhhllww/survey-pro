@@ -1,6 +1,5 @@
 import { UiButton } from '@/shared/ui/button/button.tsx';
 import { Settings } from '@/components/dashboard-header/settings/settings.tsx';
-import { NewSurvey } from '@/components/dashboard-header/new-survey/new-survey.tsx';
 import '../dashboard-header/dashboard_header.scss';
 import { ChartColumnIcon, AlignRightIcon } from 'lucide-react';
 import {
@@ -9,6 +8,7 @@ import {
   UiSheetContent,
 } from '@/shared/ui/sheet/sheet.tsx';
 import { Link } from 'react-router-dom';
+import { CreateSurveyFormDialog } from '@/components/create-survey-form-dialog/create-survey-form-dialog.tsx';
 
 export const DashBoardHeader = () => {
   return (
@@ -37,7 +37,7 @@ export const DashBoardHeader = () => {
         <div className='header-actions'>
           <div className='desktop-only'>
             <Settings />
-            <NewSurvey />
+            <CreateSurveyFormDialog />
           </div>
 
           <div className='mobile-only'>
@@ -60,7 +60,7 @@ export const DashBoardHeader = () => {
                   </UiButton>
                 </ul>
                 <Settings />
-                <NewSurvey />
+                <CreateSurveyFormDialog />
               </UiSheetContent>
             </UiSheet>
           </div>
