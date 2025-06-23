@@ -59,10 +59,10 @@ export function LoginForm({ action }: LoginFormProps) {
     try {
       if (action === 'login') {
         await loginUser(data.email, data.password);
-        navigate('/dashboard');
+        navigate(RouterPaths.DASHBOARD);
       } else {
         await registerUser(data.email, data.password);
-        navigate('/dashboard');
+        navigate(RouterPaths.DASHBOARD);
       }
     } catch (err: unknown) {
       if (err instanceof FirebaseError) {
@@ -80,6 +80,26 @@ export function LoginForm({ action }: LoginFormProps) {
           });
         }
       }
+    }
+  };
+
+  const gitLogin = async () => {
+    try {
+      await loginWithGithub();
+
+      navigate(RouterPaths.DASHBOARD);
+    } catch (e: unknown) {
+      console.error(e);
+    }
+  };
+
+  const googleLogin = async () => {
+    try {
+      await loginWithGoogle();
+
+      navigate(RouterPaths.DASHBOARD);
+    } catch (e: unknown) {
+      console.error(e);
     }
   };
 
@@ -101,11 +121,11 @@ export function LoginForm({ action }: LoginFormProps) {
         </div>
 
         <div className='login-form-card__oauth'>
-          <UiButton design={'outline'} size={'md'} onClick={loginWithGithub}>
+          <UiButton design={'outline'} size={'md'} onClick={gitLogin}>
             <GithubIcon />
             <span>Login With Github</span>
           </UiButton>
-          <UiButton onClick={loginWithGoogle} design='outline' size='md'>
+          <UiButton onClick={googleLogin} design='outline' size='md'>
             <GoogleIcon />
             <span>Login With Google</span>
           </UiButton>
