@@ -1,0 +1,74 @@
+@use '@/scss/base/variables' as var;
+
+.survey-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: var.$muted 1px solid;
+  border-radius: var.$radius-md;
+}
+
+.survey-card__header {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+}
+
+.survey-card__date {
+  color: var.$muted-foreground;
+}
+
+.survey-card__title {
+  letter-spacing: var.$tracking-wider;
+}
+
+.survey-card__actions {
+  padding: 16px;
+}
+
+.survey-card__actions-group {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.survey-card__edit-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.survey-card__actions button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  height: 40px;
+}
+
+.survey-card__actions a:first-child button {
+  width: auto;
+  padding: 8px 16px;
+}
+
+.copy-button {
+  background-color: black !important;
+  color: white !important;
+  border-color: black !important;
+}
+
+.copy-button:hover {
+  background-color: #333 !important;
+}
+
+@media (min-width: map-get(var.$screens, md)) {
+  .survey-card__header {
+    padding: 24px;
+  }
+
+  .survey-card__actions {
+    padding: 24px;
+  }
+}
+
+

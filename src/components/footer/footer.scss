@@ -1,5 +1,6 @@
 @use '@/scss/base/variables' as var;
 @use '@/scss/base/mixins' as mixins;
+@use 'sass:map';
 
 .footer {
   width: 100%;
@@ -33,7 +34,7 @@
   border-bottom: 1px solid var.$muted-foreground;
 }
 
-@media (max-width: map-get(var.$screens, md)) {
+@media (max-width: map.get(var.$screens, md)) {
   .footer {
     padding: 30px;
   }
@@ -47,7 +48,7 @@
   }
 }
 
-@media (max-width: map-get(var.$screens, sm)) {
+@media (max-width: map.get(var.$screens, sm)) {
   .footer__content{
     gap: 15px;
   }
@@ -70,7 +71,7 @@
   }
 }
 
-@media (max-width: map-get(var.$screens, xs)) {
+@media (max-width: map.get(var.$screens, xs)) {
   .footer__content {
     gap: 10px;
   }

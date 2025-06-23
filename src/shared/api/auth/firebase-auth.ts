@@ -35,12 +35,11 @@ export const resetPassword = async (
 ) => {
   const user = auth.currentUser;
 
-  // FIXME: Будем делать норм систему уведомлений??
   if (!user) {
-    return;
+    return { success: false };
   }
   if (currentPassword === newPassword) {
-    return;
+    return { success: false };
   }
 
   if (user && user.email) {
@@ -52,17 +51,21 @@ export const resetPassword = async (
     try {
       await reauthenticateWithCredential(user, credential);
       await updatePassword(user, newPassword);
+
+      return { success: true };
     } catch (error: unknown) {
       const authError = error as AuthError;
 
-      // FIXME: Будем делать норм систему уведомлений??
       switch (authError.code) {
         case 'auth/wrong-password':
           break;
         case 'auth/requires-recent-login':
           break;
+        case 'auth/invalid-credential':
+          return { success: false };
         default:
-          console.error(authError.message);
+          console.error(authError);
+          return { success: false };
       }
     }
   }

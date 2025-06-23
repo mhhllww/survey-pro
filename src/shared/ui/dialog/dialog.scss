@@ -2,6 +2,7 @@
 @use '@/scss/base/variables' as var;
 @use '@/scss/base/mixins' as mixins;
 @use '@/scss/base/reset';
+@use 'sass:map';
 
 .dialog-overlay {
   position: fixed;
@@ -29,7 +30,6 @@
   grid-gap: 16px;
   padding: 24px;
 
-  border: 1px solid var.$foreground;
   background-color: var.$background;
   border-radius: var.$radius-sm;
 
@@ -44,7 +44,7 @@
     @include animation.fade-out;
   }
 
-  @media (min-width: map-get(var.$screens, sm)) {
+  @media (min-width: map.get(var.$screens, sm)) {
     border-radius: var.$radius-lg;
   }
 }

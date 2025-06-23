@@ -4,10 +4,15 @@ import clsx from 'clsx';
 
 const Textarea = React.forwardRef<
   HTMLTextAreaElement,
-  React.ComponentProps<'textarea'>
->(({ className, ...props }, ref) => {
+  React.ComponentProps<'textarea'> & { error?: boolean }
+>(({ className, error, ...props }, ref) => {
   return (
-    <textarea className={clsx('textarea', className)} ref={ref} {...props} />
+    <textarea
+      className={clsx('textarea', className)}
+      data-error={!!error}
+      ref={ref}
+      {...props}
+    />
   );
 });
 Textarea.displayName = 'Textarea';

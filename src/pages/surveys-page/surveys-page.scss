@@ -1,0 +1,61 @@
+@use '@/scss/base/variables' as var;
+@use '@/scss/base/mixins' as mixins;
+
+.surveys-page {
+  @include mixins.container;
+  padding: 32px 0;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+  }
+
+  &__title {
+    font-size: var.$text-2xl;
+    font-weight: var.$semibold;
+    margin: 0 0 8px 0;
+  }
+
+  &__subtitle {
+    color: var.$muted-foreground;
+    margin: 0;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+  }
+
+  &__loading,
+  &__error,
+  &__empty {
+    padding: 48px;
+    text-align: center;
+    background-color: var.$background;
+    border: 1px solid var.$border;
+    border-radius: var.$radius-md;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__error {
+    color: var.$destructive;
+  }
+
+  &__empty {
+    h2 {
+      font-size: var.$text-xl;
+      font-weight: var.$semibold;
+      margin: 0;
+    }
+    p {
+      color: var.$muted-foreground;
+      margin: 0 0 24px 0;
+    }
+  }
+}

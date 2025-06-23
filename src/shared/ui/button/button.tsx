@@ -4,7 +4,7 @@ import { Slot } from '@radix-ui/react-slot';
 import styles from './button.module.scss';
 import clsx from 'clsx';
 
-type ButtonDesign = 'destructive' | 'outline' | 'foreground' | 'link';
+type ButtonDesign = 'destructive' | 'outline' | 'foreground' | 'link' | 'black';
 type ButtonSize = 'md' | 'sm' | 'lg' | 'icon';
 type ButtonLayout = 'block' | 'inline';
 

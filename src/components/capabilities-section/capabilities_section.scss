@@ -1,6 +1,7 @@
 @use '@/scss/base/variables' as var;
 @use '@/scss/base/mixins' as mixins;
 @use '@/components/header/header.scss';
+@use 'sass:map';
 
 .capabilities {
   @include mixins.container;
@@ -55,7 +56,7 @@
   color: var.$muted-foreground;
 }
 
-@media (min-width: map-get(var.$screens, md)) {
+@media (min-width: map.get(var.$screens, md)) {
   .capabilities {
     padding-top: 96px;
     padding-bottom: 96px;
@@ -70,7 +71,7 @@
   }
 }
 
-@media (min-width: map-get(var.$screens, lg)) {
+@media (min-width: map.get(var.$screens, lg)) {
   .capabilities {
     padding-top: 128px;
     padding-bottom: 128px;
@@ -81,7 +82,7 @@
   }
 }
 
-@media (min-width: map-get(var.$screens, xl)) {
+@media (min-width: map.get(var.$screens, xl)) {
   .capabilities {
     padding-top: 192px;
     padding-bottom: 192px;

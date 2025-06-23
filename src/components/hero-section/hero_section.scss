@@ -1,5 +1,6 @@
 @use '@/scss/base/variables' as var;
 @use '@/scss/base/mixins' as mixins;
+@use 'sass:map';
 
 .hero {
   @include mixins.container;
@@ -27,7 +28,7 @@
   object-fit: cover;
 }
 
-@media (min-width: map-get(var.$screens, md)) {
+@media (min-width: map.get(var.$screens, md)) {
   .hero {
     padding-top: 96px;
     padding-bottom: 96px;
@@ -46,7 +47,7 @@
   }
 }
 
-@media (min-width: map-get(var.$screens, lg)) {
+@media (min-width: map.get(var.$screens, lg)) {
   .hero {
     flex-direction: row;
     gap: 40px;
@@ -59,7 +60,7 @@
   }
 }
 
-@media (min-width: map-get(var.$screens, xl)) {
+@media (min-width: map.get(var.$screens, xl)) {
   .hero {
     padding-top: 192px;
     padding-bottom: 192px;

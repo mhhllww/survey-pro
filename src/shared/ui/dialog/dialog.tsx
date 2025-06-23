@@ -87,7 +87,7 @@ DialogDescription.displayName = DialogPrimitive.Description.displayName;
 
 export {
   Dialog as UiDialog,
-  DialogTrigger as UiDialogTriggerProps,
+  DialogTrigger as UiDialogTrigger,
   DialogClose as UiDialogClose,
   DialogContent as UiDialogContent,
   DialogHeader as UiDialogHeader,

@@ -167,3 +167,32 @@
 @mixin slide-in-from-right {
   animation: slide-in-from-right 0.3s ease-in-out forwards;
 }
+
+@keyframes pulse {
+  50% {
+    opacity: 0.5;
+  }
+}
+
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@mixin spin(
+  $duration: 1s,
+  $timing-function: linear,
+  $iteration-count: infinite,
+  $direction: normal
+) {
+  animation-name: spin;
+  animation-duration: $duration;
+  animation-timing-function: $timing-function;
+  animation-iteration-count: $iteration-count;
+  animation-direction: $direction;
+}
